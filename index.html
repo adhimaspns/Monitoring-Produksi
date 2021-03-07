@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Responsive Fixed Sidebar</title>
+
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+		/>
+		<link rel="stylesheet" href="./assets/css/main.css" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
+		<link rel="stylesheet" href="./assets/css/sidebar.css" />
+	</head>
+	<body>
+		<aside class="sidebar">
+			<nav>
+				<ul class="sidebar__nav">
+					<li>
+						<a href="#" class="sidebar__nav__link sidebar-active">
+							<i class="fa fa-home"></i>
+							<span class="sidebar__nav__text">Beranda</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sidebar__nav__link">
+							<i class="fas fa-archive"></i>
+							<span class="sidebar__nav__text">Data Bahan</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sidebar__nav__link">
+							<i class="fas fa-calendar-check"></i>
+							<span class="sidebar__nav__text">Rencana Produksi</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sidebar__nav__link">
+							<i class="mdi mdi-camera"></i>
+							<span class="sidebar__nav__text">Camera</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sidebar__nav__link">
+							<i class="mdi mdi-settings"></i>
+							<span class="sidebar__nav__text">Settings</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sidebar__nav__link">
+							<i class="mdi mdi-settings"></i>
+							<span class="sidebar__nav__text">Settings</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="sidebar__nav__link">
+							<!-- <i class="mdi mdi-settings"></i> -->
+							<i class="fa fa-user"></i>
+							<span class="sidebar__nav__text">Log Out</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+		<main class="main">
+			<section>
+				<h2>Title 1</h2>
+				<div class="breadcrumb">
+						<h3>
+							<a href="">Beranda</a> <i class="fa fa-angle-right"></i>
+							<a>Data Bahan</a> <i class="fa fa-angle-right"></i>
+							<span class="akhir-link-breadcrumb">Tambah Data</span>
+						</h3>
+				</div>
+
+				<div class="form-box">
+					<form action="/action_page.php">
+						<label for="fname">First Name</label>
+						<input type="text" name="" class="form" placeholder="Your name..">
+				
+						<label for="lname">Last Name</label>
+						<input type="text" name="" class="form" placeholder="Your last name..">
+				
+						<label for="country">Country</label>
+						<select name="country" class="form form-edit">
+							<option value="australia">Australia</option>
+							<option value="canada">Canada</option>
+							<option value="usa">USA</option>
+						</select>
+					
+						<input type="submit" class="button-form-full tmbl-hijau" value="Submit">
+					</form>
+				</div>
+
+				<div class="table-box">
+					<table class="table-responsive">
+						<tr class="thead-dark">
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Points</th>
+							<th>Points</th>
+							<th>Points</th>
+							<th>Points</th>
+							<th>Points</th>
+							<th>Points</th>
+							<th>Points</th>
+							<th>Points</th>
+							<th>Points</th>
+							<th>Points</th>
+						</tr>
+						<tr>
+							<td>Jill</td>
+							<td>Smith</td>
+							<td>50</td>
+							<td>50</td>
+							<td>50</td>
+							<td>50</td>
+							<td>50</td>
+							<td>50</td>
+							<td>50</td>
+							<td>50</td>
+							<td>50</td>
+							<td>50</td>
+						</tr>
+						<tr>
+							<td>Eve</td>
+							<td>Jackson</td>
+							<td>94</td>
+							<td>94</td>
+							<td>94</td>
+							<td>94</td>
+							<td>94</td>
+							<td>94</td>
+							<td>94</td>
+							<td>94</td>
+							<td>94</td>
+							<td>94</td>
+						</tr>
+						<tr>
+							<td>Adam</td>
+							<td>Johnson</td>
+							<td>67</td>
+							<td>67</td>
+							<td>67</td>
+							<td>67</td>
+							<td>67</td>
+							<td>67</td>
+							<td>67</td>
+							<td>67</td>
+							<td>67</td>
+							<td>67</td>
+						</tr>
+					</table>
+				</div>
+				<a href="#" class="tmbl tmbl-hijau">
+					tmbl-hijau
+				</a>
+				<a href="#" class="tmbl tmbl-biru">
+					tmbl-biru
+				</a>
+				<a href="#" class="tmbl tmbl-kuning">
+					tmbl-kuning
+				</a>
+				<a href="#" class="tmbl tmbl-abu-abu">
+					tmbl-abu-abu
+				</a>
+				<a href="#" class="tmbl tmbl-merah">
+					tmbl-merah
+				</a>
+				<a href="#" class="tmbl tmbl-info">
+					tmbl-info
+				</a>
+			</section>
+
+			<section>
+				<h2>Title 2</h2>
+				<div class="container">
+					<div class="baris baris-tengah">
+						<div class="kolom-100">
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem vero eveniet assumenda, harum nisi nostrum sunt quod? Dolorum fugiat in eos aperiam suscipit asperiores libero omnis beatae deserunt. Nam, pariatur.
+							</p>
+						</div>
+
+						<div class="kolom-50">
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam sit animi rem ipsa repellendus accusantium, delectus vitae, ducimus ad voluptatum, optio suscipit est. In unde eum iusto. Suscipit, recusandae deserunt.
+							</p>
+						</div>
+
+					</div>
+
+					<div class="baris">
+						<div class="kolom-kiri-50">
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem voluptatibus expedita quas eum itaque sint. Tenetur veniam quis minus rerum ad error beatae hic odit! Dignissimos est ea commodi vitae!
+							</p>
+						</div>
+						<div class="kolom-kanan-50">
+							<p>
+								Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius in omnis, quasi molestiae similique aut eum iusto. Placeat iusto vel aliquid doloremque laudantium excepturi, quaerat labore optio esse, perspiciatis laborum!
+							</p>
+						</div>
+					</div>
+
+				</div>
+				
+			</section>
+			<section>
+				<h2>Title 3</h2>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro odio
+					placeat nobis quisquam, maxime, dolorem aperiam accusamus commodi eius
+					iste obcaecati. Mollitia magnam blanditiis asperiores. Voluptatibus
+					molestiae vel perspiciatis animi?
+				</p>
+			</section>
+			<section>
+				<h2>Title 4</h2>
+				<p>
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Architecto,
+					aut necessitatibus, non ab nemo illum adipisci alias sed expedita
+					dicta ut repellendus laborum ratione iusto facilis fugit deleniti
+					neque numquam?
+				</p>
+			</section>
+		</main>
+	</body>
+</html>

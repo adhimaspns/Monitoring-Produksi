@@ -1,0 +1,724 @@
+body {
+  background-color: #f2f2f2;
+}
+
+/* breadcrumb */
+  .breadcrumb {
+    text-align: right;
+    font-family: open sans;
+    margin-bottom: 50px;
+  }
+  .akhir-link-breadcrumb {
+    font-weight: 400;
+    font-style: italic;
+    color: #444;
+  }
+  .breadcrumb a {
+    color: #0376f0;
+  }
+/* breadcrumb */
+
+/* UTILITY */
+  
+  /* FORM */
+    .form{
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    .form-radius{
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      border-radius: 15px !important;
+    }
+    
+    .button-form-full {
+      width: 100%;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-box {
+      border-radius: 5px;
+      /* background-color: #e2e2e2; */
+      /* background-color: #e9e9e9; */
+      background-color: #e7e7e7;
+      padding: 20px;
+    }
+
+    .form-edit {
+      /* background-color: #f1e9a1 !important; */
+      /* background-color: #f3eba5 !important; */
+      background-color: #f0e9ab !important;
+    }
+  /* FORM */
+
+  /* TABLE */
+    .table-box {
+      overflow-x:auto !important;
+    }
+    .table-responsive {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+    
+    .table-responsive .thead-dark, th {
+      background-color: #343a40 !important;
+      border: 1px solid #343a40;
+      color: #ffffff;
+    }
+    
+    .table-responsive, th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    
+    .table-responsive tr:nth-child(even){background-color: #e2e2e2 !important}
+  /* TABLE */
+
+  /* TMBL */
+    .tmbl {
+      display: inline-block;
+      font-weight: 400;
+      color: #212529;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 0.25rem;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .tmbl-radius {
+      display: inline-block;
+      font-weight: 400;
+      color: #212529;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-color: transparent;
+      border: 1px solid transparent;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 15px !important;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+
+    .tmbl-biru {
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+    .tmbl-biru:hover {
+      color: #fff;
+      background-color: #0069d9;
+      border-color: #0062cc;
+    }
+
+
+    .tmbl-hijau {
+      color: #fff;
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .tmbl-hijau:hover {
+      color: #fff;
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+
+
+    .tmbl-abu-abu {
+      color: #fff;
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+    .tmbl-abu-abu:hover {
+      color: #fff;
+      background-color: #5a6268;
+      border-color: #545b62;
+    }
+
+
+    .tmbl-kuning {
+      color: #212529;
+      background-color: #ffc107;
+      border-color: #ffc107;
+    }
+    .tmbl-kuning:hover {
+      color: #212529;
+      background-color: #e0a800;
+      border-color: #d39e00;
+    }
+
+
+    .tmbl-merah {
+      color: #fff;
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    .tmbl-merah:hover{
+      color: #fff;
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+
+
+    .tmbl-info {
+      color: #fff;
+      background-color: #17a2b8;
+      border-color: #17a2b8;
+    }
+    .tmbl-info:hover {
+      color: #fff;
+      background-color: #138496;
+      border-color: #117a8b;
+    }
+  /* TMBL */
+
+
+  /* BACKGROUND */
+    .background-biru {
+      background-color: #007bff !important;
+    }
+
+
+    .background-hijau {
+      background-color: #28a745 !important;
+    }
+
+
+    .background-kuning {
+      background-color: #ffc107 !important;
+    }
+
+
+    .background-merah {
+      background-color: #dc3545 !important;
+    }
+
+
+    .background-abu-abu {
+      background-color: #6c757d !important;
+    }
+
+
+    .background-info {
+      background-color: #17a2b8 !important;
+    }
+
+    .backgorund-e7 {
+      background-color: #e7e7e7 !important;
+    }
+
+    .background-hitam {
+      background-color: #343a40 !important;
+    }
+  /* BACKGROUND */
+
+  /* COLOR */
+    .teks-putih {
+      color: #ffffff !important;
+    }
+    .teks-merah {
+      color: #dc3545 !important;
+    } 
+    .teks-kuning {
+      color: #ffc107 !important;
+    }
+    .teks-hijau {
+      color: #28a745 !important;
+    }
+  /* COLOR */
+
+  
+  /* MODAL */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 20px !important;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      /* color: #000; */
+      color: #dc3545;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  /* MODAL */
+
+
+  /* LENCANA */
+    .lencana {
+      display: inline-block;
+      padding: 0.25em 0.4em;
+      font-size: 75%;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 0.25rem;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+
+    .lencana-biru {
+      color: #fff;
+      background-color: #007bff;
+    }
+
+
+    .lencana-kuning {
+      color: #212529;
+      background-color: #ffc107;
+    }
+
+
+    .lencana-merah {
+      color: #fff;
+      background-color: #dc3545;
+    }
+
+
+    .lencana-hijau {
+      color: #fff;
+      background-color: #28a745;
+    }
+
+
+    .lencana-info {
+      color: #fff;
+      background-color: #17a2b8;
+    }
+  /* LENCANA */
+
+
+  /* LECANA RADIUS */
+    .lencana-radius {
+      padding-right: 0.6em;
+      padding-left: 0.6em;
+      border-radius: 10rem;
+    }
+  /* LECANA RADIUS */
+
+  /* BOX KONTEN */
+    .box-konten {
+      width: 100%;
+      height: auto;
+    }
+
+    .box-konten-radius {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      overflow: hidden;
+      /* border: 1px solid rgb(108, 117, 125); */
+      box-shadow: 2px 2px 6px grey;
+    }
+
+    .box-header {
+      width: 100%;
+      background-color: white;
+      height: 80px;
+      padding: 1.25rem;
+    }
+
+    .box-header-radius-80 {
+      width: 80%;
+      margin-top: 15px;
+      background-color: white;
+      border-radius: 20px;
+      /* padding: 1.25rem; */
+      padding: 5px;
+    }
+
+    .box-header-radius-50 {
+      width: 50%;
+      margin-top: 15px;
+      background-color: white;
+      border-radius: 20px;
+      /* padding: 1.25rem; */
+      padding: 5px;
+    }
+
+    .box-header-radius {
+      width: 100%;
+      margin-top: 15px;
+      background-color: white;
+      border-radius: 20px;
+      /* padding: 1.25rem; */
+      padding: 5px;
+    }
+
+    .box-badan-konten {
+      padding: 1.25rem;
+    }
+
+    /* .box-header-radius-20 {
+      width: 20% !important;
+      margin-top: 15px;
+      background-color: white;
+      border-radius: 20px;
+      padding: 1.25rem;
+    } */
+  /* BOX KONTEN */
+
+
+  /* TYPHOGRAPHY */
+    .paragh {
+      font-size: 1.25rem;
+      font-weight: 300;
+    }
+  
+  
+    .teks-center {
+      text-align: center !important;
+    }
+  
+  
+    a {
+      text-decoration: none;
+    }
+  
+    .teks-mati {
+      color: #6c757d !important;
+    }
+
+    small {
+      font-size: 80%;
+    }
+  /* TYPHOGRAPHY */
+
+  /* BORDER RADIUS */
+    .border-radius-20 {
+      border-radius: 20px !important;
+    }
+  /* BORDER RADIUS */
+
+
+  /* GRID SISTEM */
+    .container {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .baris {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+
+    .baris-tengah {
+      -ms-flex-pack: center !important;
+      justify-content: center !important;
+    }
+
+    .margin-20-0 {
+      margin: 20px 0;
+    }
+
+    .margin-top-100px {
+      margin-top: 100px !important;
+    }
+
+    .margin-bottom-100 {
+      margin-bottom: 100px !important;
+    }
+
+    .margin-top-20 {
+      margin-top: 20px !important;
+    }
+
+    .margin-top-50 {
+      margin-top: 50px !important;
+    }
+
+    .margin-top-10 {
+      margin-top: 10px !important;
+    }
+    .margin-bottom-50 {
+      margin-bottom: 50px !important;
+    }
+
+    .margin-bottom-20 {
+      margin-bottom: 20px !important;
+    }
+
+    .padding-20 {
+      padding: 20px !important;
+    }
+
+    .padding-10 {
+      padding: 10px !important;
+    } 
+
+  /* GRID SISTEM */
+
+
+/* UTILITY */
+
+
+/*! RESPONSIVE VIEW */
+
+  /*TODO VIEW PHONE  */
+    @media screen and (min-width: 400px) {
+
+       /* GRID SISTEM TABLET */
+        .container {
+          max-width: 400px;
+          /* background-color: yellow; */
+        }
+
+        .kolom-100 {
+          width: 100% !important;
+        }
+    
+        .kolom-50 {
+          padding: 10px;
+          width: 100% !important;
+        }
+
+        .kolom-50-kanan {
+          padding: 10px;
+          width: 100% !important;
+          float: right !important;
+        }
+
+        .kolom-50-kiri {
+          padding: 10px;
+          width: 100% !important;
+          float: left !important;
+        }
+
+        .kolom-20 {
+          padding: 10px;
+          width: 100% !important;
+        }
+
+        .text-center {
+          text-align: center !important;
+        }
+
+        .text-left {
+          text-align: left !important;
+        }
+
+        .text-right {
+          text-align: right !important;
+        }
+
+        .text-justify {
+          text-align: justify !important;
+        }
+
+        .float-right {
+          float: right !important;
+        }
+
+        .float-left {
+          float: left !important;
+        }
+        .margin-bottom-50 {
+          margin-bottom: 50px !important;
+        }
+        .margin-top-150 {
+          margin-top: 150px !important;
+        }
+      /* GRID SISTEM TABLET */
+
+      /* BOX KONTEN */
+      .box-header-radius-20 {
+        width: 100% !important;
+        margin-top: 15px;
+        background-color: white;
+        border-radius: 20px;
+        padding: 1.25rem;
+        /* padding: 5px; */
+      }
+      /* BOX KONTEN */
+    }
+  /*TODO VIEW PHONE  */
+
+
+  /*? VIEW TABLET */
+    @media (min-width: 576px) {
+
+      /* GRID SISTEM TABLET */
+      .container {
+        max-width: 540px;
+        /* background-color: blue; */
+      }
+      /* GRID SISTEM TABLET */
+    }
+  /* VIEW TABLET */
+
+  /*? VIEW TABLET 2 */
+@media (min-width: 768px) {
+
+  /* GRID SISTEM TABLET 2 */
+    .container {
+      max-width: 720px;
+      /* background-color: green; */
+    }
+
+    .margin-top-150 {
+      margin-top: 150px !important;
+    }
+  /* GRID SISTEM TABLET 2 */
+}
+/* VIEW TABLET 2 */
+
+/** VIEW DEKSTOP */
+@media (min-width: 992px) {
+
+  /* GRID SISTEM DEKSTOP */
+    .container {
+      max-width: 960px;
+      /* background-color: black; */
+    }
+  /* GRID SISTEM DEKSTOP */
+}
+/* VIEW DEKSTOP */
+
+
+  /** VIEW DEKSTOP LARGE */
+    @media (min-width: 1200px) {
+
+      /* GIRD SISTEM DEKSTOP LARGE */
+        .container {
+          max-width: 1140px;
+          /* background-color: red; */
+        }
+
+        .kolom-100 {
+          width: 100% !important;
+        }
+    
+        .kolom-50 {
+          padding: 10px;
+          width: 50% !important;
+        }
+
+        .kolom-50-kanan {
+          padding: 10px;
+          width: 50% !important;
+          float: right !important;
+        }
+
+        .kolom-50-kiri {
+          padding: 10px;
+          width: 50% !important;
+          float: left !important;
+        }
+
+        .kolom-20 {
+          padding: 10px;
+          width: 20% !important;
+        }
+
+        .kolom-20 {
+          padding: 10px;
+          width: 20% !important;
+        }
+
+        .text-center {
+          text-align: center !important;
+        }
+
+        .text-left {
+          text-align: left !important;
+        }
+
+        .text-right {
+          text-align: right !important;
+        }
+
+        .text-justify {
+          text-align: justify !important;
+        }
+
+        .float-right {
+          float: right !important;
+        }
+
+        .float-left {
+          float: left !important;
+        }
+      /* GIRD SISTEM DEKSTOP LARGE */
+      
+      /* BOX KONTEN */
+        .box-header-radius-20 {
+          width: 20% !important;
+          margin-top: 15px;
+          background-color: white;
+          border-radius: 20px;
+          padding: 1.25rem;
+        }
+      /* BOX KONTEN */
+    }
+  /* VIEW DEKSTOP LARGE */
+
+/*! RESPONSIVE VIEW */
