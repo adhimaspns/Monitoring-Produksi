@@ -15,23 +15,24 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
 		/>
-		<link rel="stylesheet" href="../../assets/css/main.css" />
-		<link rel="stylesheet" href="../../assets/css/style.css" />
-		<link rel="stylesheet" href="../../assets/css/sidebar.css" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<link rel="stylesheet" href="../../../assets/css/style.css" />
+		<link rel="stylesheet" href="../../../assets/css/sidebar.css" />
 	</head>
 	<body>
 
 		<?php
-			include '../layout/sidebar.php';
+			include '../../layout/sidebar.php';
 		?>
 
 		<main class="main">
 			<section>
-				<h2>Data Bahan Baku</h2>
+				<h2>Data Bahan Jadi</h2>
 				<div class="breadcrumb">
 						<h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Data Bahan Baku</span>
+							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+							<span class="akhir-link-breadcrumb">Data Bahan Jadi</span>
 						</h3>
 				</div>
 
@@ -39,8 +40,12 @@
 					<div class="baris">
 						<div class="kolom-100">
 
-							<a href="tambah.php?page=bahanbaku" class="tmbl tmbl-biru margin-20-0">
+							<a href="tambah.php?page=bahan" class="tmbl tmbl-biru margin-20-0">
 								<i class="fa fa-plus"></i>
+							</a>
+
+							<a href="../index.php?page=bahan" class="tmbl tmbl-abu-abu">
+								Kembali
 							</a>
 
 							<div class="table-box">
@@ -50,7 +55,7 @@
 										if (isset($_GET['cari'])) {
 											$cari = $_GET['cari'];
 
-											echo "<b> Hasil Pencarian :" .$cari. "</b>";
+											echo "<b> Hasil Pencarian : " .$cari. "</b>";
 										}
 									
 									?>
@@ -58,14 +63,14 @@
 
 								<div class="kolom-20 float-right margin-20-0">
 									
-									<form action="index.php" method="get">	
+									<form action="cari.php?page=bahan" method="post">	
 										<label>Carikan</label>
 										<input type="text" name="cari" class="form" placeholder="Ketikan Sesuatu..."> 
 										
-										<input type="submit" value="Cari" class="tmbl tmbl-hijau">
+										<input type="submit" name="btncari" value="Cari" class="tmbl tmbl-hijau">
 									</form>
 								</div>
-
+								
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
@@ -78,26 +83,20 @@
 
 									<?php
 									
-										include '../../database/koneksi.php';
+										include '../../../database/koneksi.php';
 
 										//? Pagination
 										$halaman = 10;
 										$page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
 										$mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
-										$result  = mysqli_query($host, "SELECT * FROM bahan WHERE kategori = 'bahan baku'");
+										$result  = mysqli_query($host, "SELECT * FROM bahan WHERE kategori = 'bahan jadi'");
 										$total   = mysqli_num_rows($result);
 										$pages   = ceil($total/$halaman);
 
 										//? Pencarian 
-										if (isset($_GET['cari'])) {
-											$cari       = $_GET['cari'];
-											$sql_cari   = "SELECT * FROM bahan WHERE kategori = 'bahan baku' AND nama_bahan LIKE '%".$cari."%' LIMIT $mulai, $halaman";
-											$query       = mysqli_query($host, $sql_cari);
-										} else {
 
-											$sql   = "SELECT * FROM bahan WHERE kategori = 'bahan baku' ORDER BY nama_bahan ASC LIMIT $mulai, $halaman";
-											$query = mysqli_query($host, $sql);
-										}
+                    $sql   = "SELECT * FROM bahan WHERE kategori = 'bahan jadi' ORDER BY nama_bahan ASC LIMIT $mulai, $halaman";
+                    $query = mysqli_query($host, $sql);
 										
 										$no  = 1;
 										while ($data = mysqli_fetch_assoc($query) ) {
@@ -111,10 +110,10 @@
 										<td><?php echo $data['kuantitas'] . " " . $data['satuan']?></td>
 										<td><?php echo "Rp " . number_format($data['harga'],0,',','.')?></td>
 										<td>
-											<a href="edit.php?id_bahan=<?php echo $data['id_bahan'];?>&page=bahanbaku" class="tmbl tmbl-kuning">
+											<a href="edit.php?id_bahan=<?php echo $data['id_bahan'];?>&page=bahan" class="tmbl tmbl-kuning">
 												<i class="fa fa-edit"></i>
 											</a>
-											<a onclick="return confirm('Anda yakin ingin menghapus data ?')" href="../../backend/bahan_baku/hapus.php?id_bahan=<?php echo $data['id_bahan'];?>" class="tmbl tmbl-merah">
+											<a onclick="return confirm('Anda yakin ingin menghapus data ?')" href="../../../backend/bahan_baku/hapus.php?id_bahan=<?php echo $data['id_bahan'];?>" class="tmbl tmbl-merah">
 												<i class="fa fa-trash"></i>
 											</a>
 										</td>
@@ -133,7 +132,7 @@
 									for ($i=1; $i <= $pages ; $i++) { 
 
 								?>
-									<a href="?halaman=<?php echo $i; ?>" class="tmbl tmbl-abu-abu margin-20-0">
+									<a href="?halaman=<?php echo $i; ?>&page=bahan" class="tmbl tmbl-abu-abu margin-20-0">
 											<?php echo $i; ?>
 										</a>
 								<?php

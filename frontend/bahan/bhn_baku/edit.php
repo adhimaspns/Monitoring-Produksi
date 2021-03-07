@@ -15,14 +15,14 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
 		/>
-		<link rel="stylesheet" href="../../assets/css/main.css" />
-		<link rel="stylesheet" href="../../assets/css/style.css" />
-		<link rel="stylesheet" href="../../assets/css/sidebar.css" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<link rel="stylesheet" href="../../../assets/css/style.css" />
+		<link rel="stylesheet" href="../../../assets/css/sidebar.css" />
 	</head>
 	<body>
 
 		<?php
-			include '../layout/sidebar.php';
+			include '../../layout/sidebar.php';
 		?>
 
 		<main class="main">
@@ -31,8 +31,9 @@
 
 				<div class="breadcrumb">
 						<h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<a href="index.php?page=bahanbaku">Data Bahan Baku</a> <i class="fa fa-angle-right"></i>
+							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+							<a href="index.php?page=bahan">Data Bahan Baku</a> <i class="fa fa-angle-right"></i>
 							<span class="akhir-link-breadcrumb">Edit Data</span>
 						</h3>
 				</div>
@@ -42,11 +43,11 @@
             <div class="kolom-50">
               <div class="form-box">
                 <h2 class="text-center">Edit Data Bahan Baku</h2>
-                <form action="../../backend/bahan_baku/edit.php" method="POST">
+                <form action="../../../backend/bahan_baku/edit.php" method="POST">
 
 									<?php
 									
-										include '../../database/koneksi.php';
+										include '../../../database/koneksi.php';
 
 										$id_bahan = $_GET['id_bahan'];
 

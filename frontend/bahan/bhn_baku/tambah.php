@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Tambah Data Jasa</title>
+		<title>Monitoring Biaya Produksi | Data Bahan | Tambah Data Bahan Baku</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -15,25 +15,26 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
 		/>
-		<link rel="stylesheet" href="../../assets/css/main.css" />
-		<link rel="stylesheet" href="../../assets/css/style.css" />
-		<link rel="stylesheet" href="../../assets/css/sidebar.css" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<link rel="stylesheet" href="../../../assets/css/style.css" />
+		<link rel="stylesheet" href="../../../assets/css/sidebar.css" />
 	</head>
 	<body>
-
+		
 		<?php
-			include '../layout/sidebar.php';
+			include '../../layout/sidebar.php';
 		?>
 
 		<main class="main">
 			<section>
-				<h2>Tambah Data Bahan Jadi</h2>
+				<h2>Tambah Data Bahan Baku</h2>
 
 				<div class="breadcrumb">
 						<h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<a href="index.php?page=bahanjadi">Bahan Jadi</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Tambah Data Bahan Jadi</span>
+							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+							<a href="index.php?page=bahan">Data Bahan Baku</a> <i class="fa fa-angle-right"></i>
+							<span class="akhir-link-breadcrumb">Tambah Data</span>
 						</h3>
 				</div>
 
@@ -41,25 +42,25 @@
           <div class="baris baris-tengah">
             <div class="kolom-50">
               <div class="form-box">
-                <h2 class="text-center">Tambah Data Bahan Jadi</h2>
-                <form action="../../backend/bhn_jadi/tambah.php" method="POST">
+                <h2 class="text-center">Tambah Data Bahan Baku</h2>
+                <form action="../../../backend/bahan_baku/tambah.php" method="POST">
 
-                  <label>Nama Bahan Jadi</label>
-                  <input type="text" name="nama_bahan" class="form" placeholder="Selep Tanah" required>
+                  <label>Nama Bahan Baku</label>
+                  <input type="text" name="nama_bahan" class="form" placeholder="Tanah Liat" required>
 
 									<label>Kuantitas</label>
-									<input type="text" name="kuantitas" class="form" placeholder="1" required>
+									<input type="number" name="kuantitas" class="form" placeholder="1" required>
 
                   <label>Satuan</label>
-                  <input type="text" name="satuan" class="form" placeholder="Orang" required>
+                  <input type="text" name="satuan" class="form" placeholder="Pick Up" required>
 
-                  <label>Harga Satuan</label>
+                  <label>Harga</label>
                   <input id="harga" type="text" name="harga" class="form" required>
 
                   <button type="submit" name="simpan" class="tmbl tmbl-hijau">
                     Simpan
                   </button>
-                  <a href="index.php?page=bahanjadi" class="tmbl tmbl-abu-abu">
+                  <a href="index.php?page=bahan" class="tmbl tmbl-abu-abu">
                     Kembali
                   </a>
                 </form>
@@ -71,8 +72,8 @@
 
 		</main>
 
-    <script src="../../assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../assets/js/jquery.maskMoney.min.js"></script>
+    <script src="../../../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/js/jquery.maskMoney.min.js"></script>
     <script>
         $('#harga').maskMoney({prefix:'Rp. ',allowNegative:true,thousand:'.',decimal:'.',precision:0,affixesStay:false});
     </script>

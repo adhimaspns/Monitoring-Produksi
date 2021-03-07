@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Data Jasa</title>
+		<title>Monitoring Biaya Produksi | Data Bahan</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -15,63 +15,63 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
 		/>
-		<link rel="stylesheet" href="../../assets/css/main.css" />
-		<link rel="stylesheet" href="../../assets/css/style.css" />
-		<link rel="stylesheet" href="../../assets/css/sidebar.css" />
+		<link rel="stylesheet" href="../../../assets/css/main.css" />
+		<link rel="stylesheet" href="../../../assets/css/style.css" />
+		<link rel="stylesheet" href="../../../assets/css/sidebar.css" />
 	</head>
 	<body>
 
 		<?php
-			include '../layout/sidebar.php';
+			include '../../layout/sidebar.php';
 		?>
 
 		<main class="main">
 			<section>
-
 				<h2>Data Bahan Jadi</h2>
-
 				<div class="breadcrumb">
 						<h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Data Bahan Jadi</span>
+							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+							<a href="index.php?page=bahan">Data Bahan Jadi</a> <i class="fa fa-angle-right"></i>
+							<span class="akhir-link-breadcrumb">Cari Bahan Jadi</span>
 						</h3>
 				</div>
 
-				<div class="container" style="margin-bottom: 150px;">
-					<div class="baris baris-tengah">
+				<div class="container">
+					<div class="baris">
 						<div class="kolom-100">
 
-							<a href="tambah.php?page=bahanjadi" class="tmbl tmbl-biru">
-								<i class="fa fa-plus"></i>
+							<a href="index.php?page=bahan" class="tmbl tmbl-abu-abu margin-20-0">
+								Kembali
 							</a>
 
 							<div class="table-box">
 
-								<div class="kolom-20 float-right margin-20-0">
-									
-									<form action="index.php?page=bahanjadi" method="get">	
-										<label>Carikan</label>
-										<input type="text" name="cari" class="form" placeholder="Ketikan Sesuatu..."> 
-										
-										<input type="submit" value="Cari" class="tmbl tmbl-hijau">
-									</form>
-								</div>
-
 								<div class="kolom-20 float-left">
 									<?php
-										if (isset($_GET['cari'])) {
-											$cari = $_GET['cari'];
+										if (isset($_POST['btncari'])) {
+											$cari = $_POST['cari'];
 
-											echo "<b> Hasil Pencarian :" .$cari. "</b>";
+											echo "<b> Hasil Pencarian : " .$cari. "</b>";
 										}
 									
 									?>
 								</div>
 
+								<div class="kolom-20 float-right margin-20-0">
+									
+									<!-- <form action="index.php?page=bahan" method="get">	
+										<label>Carikan</label>
+										<input type="text" name="cari" class="form" placeholder="Ketikan Sesuatu..."> 
+										
+										<input type="submit" value="Cari" class="tmbl tmbl-hijau">
+									</form> -->
+								</div>
+
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
-										<th>Bahan Jadi</th>
+										<th>Bahan Baku</th>
 										<th>Tanggal Beli</th>
 										<th>Satuan</th>
 										<th>Harga Satuan</th>
@@ -80,23 +80,24 @@
 
 									<?php
 									
-										include '../../database/koneksi.php';
+										include '../../../database/koneksi.php';
 
 										//? Pagination
 										$halaman = 10;
 										$page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
 										$mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
-										$result  = mysqli_query($host, "SELECT * FROM bahan WHERE kategori = 'bahan jadi' ");
+										$result  = mysqli_query($host, "SELECT * FROM bahan WHERE kategori = 'bahan jadi'");
 										$total   = mysqli_num_rows($result);
 										$pages   = ceil($total/$halaman);
 
-										if (isset($_GET['cari'])) {
-											$cari       = $_GET['cari'];
-											$sql_cari   = "SELECT * FROM bahan WHERE  kategori = 'bahan jadi' AND nama_bahan LIKE '%".$cari."%' ORDER BY nama_bahan ASC LIMIT $mulai, $halaman";
+										//? Pencarian 
+										if (isset($_POST['btncari']))  {
+											$cari        = $_POST['cari'];
+											$sql_cari    = "SELECT * FROM bahan WHERE kategori = 'bahan jadi' AND nama_bahan LIKE '%".$cari."%' LIMIT $mulai, $halaman";
 											$query       = mysqli_query($host, $sql_cari);
 										} else {
 
-											$sql   = "SELECT * FROM bahan WHERE  kategori = 'bahan jadi' ORDER BY nama_bahan ASC LIMIT $mulai, $halaman";
+											$sql   = "SELECT * FROM bahan WHERE kategori = 'bahan jadi' ORDER BY nama_bahan ASC LIMIT $mulai, $halaman";
 											$query = mysqli_query($host, $sql);
 										}
 										
@@ -112,10 +113,10 @@
 										<td><?php echo $data['kuantitas'] . " " . $data['satuan']?></td>
 										<td><?php echo "Rp " . number_format($data['harga'],0,',','.')?></td>
 										<td>
-											<a href="edit.php?id_bahan=<?php echo $data['id_bahan']?>&page=bahanjadi" class="tmbl tmbl-kuning">
+											<a href="edit.php?id_bahan=<?php echo $data['id_bahan'];?>&page=bahanbaku" class="tmbl tmbl-kuning">
 												<i class="fa fa-edit"></i>
 											</a>
-											<a onclick="return confirm('Anda yakin ingin menghapus data ?')" href="../../backend/bhn_jadi/hapus.php?id_bahan=<?php echo $data['id_bahan'];?>" class="tmbl tmbl-merah">
+											<a onclick="return confirm('Anda yakin ingin menghapus data ?')" href="../../backend/bahan_baku/hapus.php?id_bahan=<?php echo $data['id_bahan'];?>" class="tmbl tmbl-merah">
 												<i class="fa fa-trash"></i>
 											</a>
 										</td>
@@ -134,7 +135,7 @@
 									for ($i=1; $i <= $pages ; $i++) { 
 
 								?>
-										<a href="?halaman=<?php echo $i; ?>&page=bahanjadi" class="tmbl tmbl-abu-abu margin-20-0">
+									<a href="?halaman=<?php echo $i; ?>&page=bahan" class="tmbl tmbl-abu-abu margin-20-0">
 											<?php echo $i; ?>
 										</a>
 								<?php
@@ -163,7 +164,7 @@
 								</table>
 
 							</div>
-
+							
 						</div>
 
 					</div>

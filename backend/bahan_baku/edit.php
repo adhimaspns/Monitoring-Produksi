@@ -17,9 +17,9 @@
 
 
     if ($query) {
-      echo "<script>window.location.href='../../frontend/bahan_baku/index.php?page=bahanbaku'</script>";
+      echo "<script>window.location.href='../../frontend/bahan/bhn_baku/index.php?page=bahan'</script>";
     }else{
-      echo "<script>alert('Data gagal diedit !');window.location.href='../../frontend/bahan_baku/tambah.php?page=bahanbaku'</script>"; 
+      echo "<script>alert('Data gagal diedit !');window.location.href='../../frontend/bahan/bhn_baku/edit.php?page=bahan'</script>"; 
       
     }
   }

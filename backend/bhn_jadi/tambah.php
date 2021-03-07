@@ -16,9 +16,9 @@
 
 
     if ($query) {
-      echo "<script>window.location.href='../../frontend/bhn_jadi/index.php?page=bahanjadi'</script>";
+      echo "<script>window.location.href='../../frontend/bahan/bhn_jadi/index.php?page=bahan'</script>";
     }else{
-      echo "<script>alert('Data gagal ditambah !');window.location.href='../../frontend/bhn_jadi/tambah.php?page=bahanjadi'</script>"; 
+      echo "<script>alert('Data gagal ditambah !');window.location.href='../../frontend/bahan/bhn_jadi/tambah.php?page=bahan'</script>"; 
       
     }
 
