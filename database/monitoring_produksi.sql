@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Mar 2021 pada 23.47
+-- Waktu pembuatan: 08 Mar 2021 pada 22.58
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -73,16 +73,16 @@ CREATE TABLE `detail_produksi` (
 --
 
 INSERT INTO `detail_produksi` (`id_detail_produksi`, `produksi_id`, `bhn_id`, `qty`, `sub_total`) VALUES
-(8, 82, 1, 1, 200000),
-(9, 82, 2, 35, 60000),
+(8, 82, 1, 1, 600000),
+(9, 82, 2, 4, 60000),
 (10, 82, 7, 2, 200000),
-(27, 84, 1, 1, 200000),
-(28, 84, 2, 4, 60000),
-(29, 84, 11, 1, 75000),
 (30, 84, 12, 380, 95000),
 (31, 84, 13, 380, 95000),
 (32, 84, 14, 380, 114000),
-(33, 84, 7, 2, 200000);
+(38, 84, 2, 4, 60000),
+(39, 84, 11, 1, 75000),
+(45, 84, 1, 1, 200000),
+(46, 84, 7, 2, 200000);
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,7 @@ ALTER TABLE `bahan`
 -- AUTO_INCREMENT untuk tabel `detail_produksi`
 --
 ALTER TABLE `detail_produksi`
-  MODIFY `id_detail_produksi` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_detail_produksi` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT untuk tabel `pra_produksi`
