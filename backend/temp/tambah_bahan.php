@@ -213,11 +213,11 @@
 
     }
 
-    // if($query){
-    //   echo "<script>window.location.href='../../frontend/produksi/produksi.php?produksi_id=$id_produksi&page=produksi'</script>";
-    // }else{
-    //   echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/produksi.php?produksi_id=$id_produksi&page=produksi'</script>";
-    // }
+    if($query){
+      echo "<script>window.location.href='../../frontend/produksi/produksi.php?produksi_id=$id_produksi&page=produksi'</script>";
+    }else{
+      echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/produksi.php?produksi_id=$id_produksi&page=produksi'</script>";
+    }
     
   }
 

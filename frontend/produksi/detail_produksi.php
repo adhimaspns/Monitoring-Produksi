@@ -114,10 +114,16 @@
 								</div>
 							</div>
 
+							<div class="kolom-50">
+								<h2>Detail Bahan</h2>
+
+								<a href="edit_detail_produksi.php?id_produksi=<?php echo $id_produksi?>&page=produksi" class="tmbl tmbl-kuning float-left">
+									Edit Bahan
+								</a>
+							</div>
 
 							<div class="kolom-100 margin-bottom-50">
 
-								<h2>Detail Bahan</h2>
 								<div class="kolom-50-kiri">
 									<div class="box-konten-radius backgorund-e7">
 										<center>
