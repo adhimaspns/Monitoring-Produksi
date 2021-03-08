@@ -32,6 +32,51 @@
 							Beranda
 						</h3>
 				</div>
+
+				<div class="container">
+					<div class="baris baris-tengah">
+
+						<div class="kolom-25">
+							<div class="box-konten-radius background-biru padding-10">
+								<h2 class="teks-putih text-center-sm">150</h2>
+								<p class="teks-putih text-center-sm">
+									Penjualan Bulan Ini
+								</p>
+								<!-- <p class="teks-center">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aut sapiente similique atque totam beatae, esse odio doloremque deleniti dignissimos expedita repellendus accusantium iusto nihil, harum consequuntur quia error sit.
+								</p> -->
+							</div>
+						</div>
+
+						<div class="kolom-25">
+							<div class="box-konten-radius background-hijau padding-10">
+								<h2 class="teks-putih text-center-sm">150</h2>
+								<p class="teks-putih text-center-sm">
+									Penjualan Bulan Ini
+								</p>
+							</div>
+						</div>
+
+						<div class="kolom-25">
+							<div class="box-konten-radius background-info padding-10">
+								<h2 class="teks-putih text-center-sm">150</h2>
+								<p class="teks-putih text-center-sm">
+									Penjualan Bulan Ini
+								</p>
+							</div>
+						</div>
+
+						<div class="kolom-25">
+							<div class="box-konten-radius background-kuning padding-10">
+								<h2 class="teks-hitam text-center-sm">150</h2>
+								<p class="teks-hitam text-center-sm">
+									Penjualan Bulan Ini
+								</p>
+							</div>
+						</div>
+
+					</div>
+				</div>
 				
       </section>
 

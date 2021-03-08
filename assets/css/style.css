@@ -259,6 +259,9 @@ body {
     .teks-hijau {
       color: #28a745 !important;
     }
+    .teks-hitam {
+      color: #343a40 !important;
+    }
   /* COLOR */
 
   
@@ -538,6 +541,7 @@ body {
 
         .kolom-25 {
           width: 100% !important;
+          margin-bottom: 30px;
         }
     
         .kolom-50 {
@@ -563,6 +567,10 @@ body {
         }
 
         .text-center {
+          text-align: center !important;
+        }
+
+        .text-center-sm {
           text-align: center !important;
         }
 
@@ -663,6 +671,7 @@ body {
 
         .kolom-25 {
           width: 25% !important;
+          padding: 10px;
         }
     
         .kolom-50 {
@@ -694,6 +703,10 @@ body {
 
         .text-center {
           text-align: center !important;
+        }
+
+        .text-center-sm {
+          text-align: left !important;
         }
 
         .text-left {
