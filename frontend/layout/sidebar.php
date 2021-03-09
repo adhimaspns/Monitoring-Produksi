@@ -27,7 +27,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/Monitoring/frontend/produksi/index.php?page=produksi" class="sidebar__nav__link <?php if($_GET['page'] == 'produksi'){  ?>sidebar-active <?php } ?>">
+						<a href="/Monitoring/frontend/data_barang/index.php?page=databarang" class="sidebar__nav__link <?php if($_GET['page'] == 'databarang'){  ?>sidebar-active <?php } ?>">
 							<i class="fas fa-box"></i>
 							<span class="sidebar__nav__text">Data Barang</span>
 						</a>
