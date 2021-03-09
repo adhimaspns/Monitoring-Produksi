@@ -27,6 +27,12 @@
 						</a>
 					</li>
 					<li>
+						<a href="/Monitoring/frontend/produksi/index.php?page=produksi" class="sidebar__nav__link <?php if($_GET['page'] == 'produksi'){  ?>sidebar-active <?php } ?>">
+							<i class="fas fa-box"></i>
+							<span class="sidebar__nav__text">Data Barang</span>
+						</a>
+					</li>
+					<li>
 						<a onclick="return confirm('Anda yakin ingin logout ?')" href="#" class="sidebar__nav__link link-lgout">
 							<i class="fas fa-user"></i>
 							<span class="sidebar__nav__text">Logout</span>
