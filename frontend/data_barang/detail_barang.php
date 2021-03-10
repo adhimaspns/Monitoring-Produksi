@@ -49,13 +49,12 @@
 
                       $id_barang = $_GET['id_barang'];
                     
-                      $sql    = "SELECT * FROM barang WHERE id_barang = '$id_barang' ";
+                      $sql    = "SELECT * FROM barang INNER JOIN produksi ON barang.produksi_id = produksi.id_produksi WHERE id_barang = '$id_barang' ";
                       $query  = mysqli_query($host, $sql);
                       $data   = mysqli_fetch_assoc($query);
                     
                     ?>
 										<div class="table-box">
-                      <?php?>
 											<table class="table-responsive">
 
 												<tr>
@@ -65,20 +64,36 @@
 
                         <tr>
 													<td>Stok Barang</td>
-													<td>: <?= $data['stok_barang'] . " " . $data['satuan_stok_barang']  ?></td>
+													<td> : 
+                            <?php 
+                              if ($data['stok_barang'] >= 10) {
+                                echo number_format($data['stok_barang'],0,',','.') . " " . "<span class='lencana-radius lencana-hijau'>" . $data['satuan_stok_barang'] . "</span>" ;
+                              } elseif (condition) {
+                                # code...
+                              }
+                              
+                            ?>
+                          </td>
 												</tr>
 
                         <tr>
 													<td>Untung Per Item</td>
-													<td>: <?= $data['untung_barang'] ?></td>
+													<td>: <?= "Rp. " . number_format($data['untung_barang'],0,',','.')  ?></td>
 												</tr>
 
-												
+                        <tr>
+													<td>Tanggal Produksi</td>
+													<td>: <?= date('d M Y', strtotime($data['tgl_produksi']))  ?></td>
+												</tr>
+
 											</table>
 										</div>
 									</div>
 								</div>
 							</div>
+              <a href="index.php?page=databarang" class="tmbl tmbl-abu-abu margin-20-0 margin-bottom-100">
+                Kembali
+              </a>
 					</div>
 				</div>
 
