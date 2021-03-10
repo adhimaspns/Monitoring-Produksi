@@ -42,7 +42,7 @@
 
 
       //! UPDATE SUBTOTAL DETAIL PRODUKSI
-      $sqlSubProduksi  = mysqli_query($host, "UPDATE detail_produksi SET sub_total = '$subtotal' WHERE bhn_id = '$bhn_id' ");
+      $sqlSubProduksi  = mysqli_query($host, "UPDATE detail_produksi SET sub_total = '$subtotal' WHERE bhn_id = '$bhn_id' AND produksi_id = '$id_produksi' ");
 
 
     } else {

@@ -53,13 +53,13 @@
 
                 ?>
 
-                <input type="hidden" name="id_produksi" value="<?php echo $produksi_id?>">
+                <input type="hidden" name="id_produksi" value="<?php echo $produksi_id ?>">
 
                 <label>Keinginan Untung Per Item</label>
                 <input id="untung" type="text" name="untung_produk" class="form" value="<?php echo $untung['untung_produk'] ?>">
 
                 <input type="submit" value="Simpan" name="editUntung" class="tmbl tmbl-hijau">
-                <a href="detail_produksi.php?nama_produk=<?= $nama_produk?>" class="tmbl tmbl-abu-abu">
+                <a href="detail_produksi.php?id_produksi=<?= $produksi_id?>" class="tmbl tmbl-abu-abu">
                   Kembali
                 </a>
               </form>

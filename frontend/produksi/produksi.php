@@ -179,7 +179,7 @@
 														</select>
 
 														<label>Jumlah</label>
-														<input type="number" name="qty" class="form-radius" value="1">
+														<input type="number" name="jumlah_qty" class="form-radius" value="1">
 
 														<button type="submit" name="simpan_bhn_jadi" class="tmbl-radius tmbl-hijau margin-20-0">
 															<i class="fa fa-plus fa-lg"></i>

@@ -22,7 +22,7 @@
     $querySelectSubTotal = mysqli_query($host, $sqlSelectSubTotal);
     $data_sub_total      = mysqli_fetch_assoc($querySelectSubTotal);
     $harga               = $data_sub_total['harga'];
-    $subtotal            = $qty['qty'] * $harga;
+    $subtotal            = $qty * $harga;
 
 
     //! UPDATE SUBTOTAL PRODUKSI
