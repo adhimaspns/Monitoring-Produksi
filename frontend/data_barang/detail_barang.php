@@ -30,7 +30,8 @@
 				<div class="breadcrumb">
             <h3>
 							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Data produksi</span>
+							<a href="index.php?page=databarang">Data Barang</a> <i class="fa fa-angle-right"></i>
+							<span class="akhir-link-breadcrumb">Detail Data Barang</span>
 						</h3>
 				</div>
 
@@ -38,37 +39,41 @@
 					<div class="baris">
 						<div class="kolom-100">
 							<div class="box-konten-radius backgorund-e7">
+                  <center>
+                    <div class="box-header-radius-80 background-biru teks-putih">
+                      <h2>Data Detail Barang</h2>
+                    </div>
+                  </center>
 									<div class="box-badan-konten">
+                    <?php
 
+                      $id_barang = $_GET['id_barang'];
+                    
+                      $sql    = "SELECT * FROM barang WHERE id_barang = '$id_barang' ";
+                      $query  = mysqli_query($host, $sql);
+                      $data   = mysqli_fetch_assoc($query);
+                    
+                    ?>
 										<div class="table-box">
+                      <?php?>
 											<table class="table-responsive">
-												<tr class="thead-dark">
-													<th>No</th>
-													<th>Nama Produk</th>
-													<th>Stok</th>
-													<th>Aksi</th>
-												</tr>
 
-												<?php
-
-													$no    = 1;
-													$sql   = "SELECT * FROM barang ORDER BY nama_barang ASC";
-													$query = mysqli_query($host, $sql);
-
-													while ($data = mysqli_fetch_assoc($query) ) {
-
-												?>
 												<tr>
-													<td><?= $no++ ?></td>
-													<td><?= $data['nama_barang'] ?></td>
-													<td><?= $data['stok_barang'] . " " . $data['satuan_stok_barang'] ?></td>
-													<td>
-														<a href="detail_barang.php?id_barang=<?= $data['id_barang']?>&page=databarang" class="tmbl tmbl-biru">
-															<i class="fa fa-eye"></i>
-														</a>
-													</td>
+													<td>Nama Produk</td>
+													<td>: <?= $data['nama_barang'] ?></td>
 												</tr>
-												<?php } ?>
+
+                        <tr>
+													<td>Stok Barang</td>
+													<td>: <?= $data['stok_barang'] . " " . $data['satuan_stok_barang']  ?></td>
+												</tr>
+
+                        <tr>
+													<td>Untung Per Item</td>
+													<td>: <?= $data['untung_barang'] ?></td>
+												</tr>
+
+												
 											</table>
 										</div>
 									</div>
