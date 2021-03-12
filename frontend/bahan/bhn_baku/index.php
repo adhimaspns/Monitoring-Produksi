@@ -106,7 +106,7 @@
 									<tr>
 										<td><?php echo $no++;?></td>
 										<td><?php echo $data['nama_bahan']; ?></td>
-										<td><?php echo date('d F Y', strtotime($data['tgl']))?></td>
+										<td><?php echo date('d M Y', strtotime($data['tgl']))?></td>
 										<td><?php echo $data['kuantitas'] . " " . $data['satuan']?></td>
 										<td><?php echo "Rp " . number_format($data['harga'],0,',','.')?></td>
 										<td>
