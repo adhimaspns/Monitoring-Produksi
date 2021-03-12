@@ -71,7 +71,7 @@
 												$pages   = ceil($total/$halaman);
                       
                         $nomor = 1;
-                        $sql   = "SELECT * FROM produksi LIMIT $mulai, $halaman";
+                        $sql   = "SELECT * FROM produksi ORDER BY nama_produk LIMIT $mulai, $halaman";
                         $query = mysqli_query($host, $sql);
 
                         while ($data = mysqli_fetch_assoc($query) ) {
@@ -81,8 +81,18 @@
                       <tr>
                         <td><?= $nomor++?></td>
                         <td><?= $data['nama_produk']?></td>
-                        <td><?= date('d-m-Y', strtotime($data['tgl_produksi']))?></td>
-                        <td><?= $data['stok_produk'] . " " . $data['satuan_stok_produk']?></td>
+                        <td><?= date('d M Y', strtotime($data['tgl_produksi'])) ?></td>
+                        <td>
+													<?php 
+														if ($data['stok_produk'] >= 10) {
+															echo number_format($data['stok_produk'],0,',','.') . " " . "<span class='lencana-radius lencana-hijau'>" . $data['satuan_stok_produk'] . "</span>" ;
+														} elseif ($data['stok_produk'] >= 0) {
+															echo "<span class='teks-merah'>" .  number_format($data['stok_produk'],0,',','.') . "</span>" . " " . "<span class='lencana-radius lencana-hijau'>" . $data['satuan_stok_produk'] . "</span>" ;
+														} elseif ($data['stok_produk'] = 0) {
+															echo "<span class='lencana-radius lencana-merah'>Stok Habis</span>";
+														}
+													?>
+												</td>
                         <td>
                           <a href="detail_produksi.php?id_produksi=<?php echo $data['id_produksi']?>&page=produksi" class="tmbl tmbl-biru">
                             <i class="fa fa-eye"></i>
