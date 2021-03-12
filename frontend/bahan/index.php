@@ -53,7 +53,7 @@
 							<div class="box-konten-radius backgorund-e7 padding-20">
 								<center>
 									<a href="bhn_jadi/index.php?page=bahan">
-										<div class="box-header-radius-80 background-biru teks-putih">
+										<div class="box-header-radius-80 background-hijau teks-putih">
 											<h2>Data Bahan Jadi</h2>
 										</div>
 									</a>
