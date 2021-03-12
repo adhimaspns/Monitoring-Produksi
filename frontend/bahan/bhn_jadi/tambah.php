@@ -60,7 +60,7 @@
                   <button type="submit" name="simpan" class="tmbl tmbl-hijau">
                     Simpan
                   </button>
-                  <a href="index.php?page=bahanjadi" class="tmbl tmbl-abu-abu">
+                  <a href="index.php?page=bahan" class="tmbl tmbl-abu-abu">
                     Kembali
                   </a>
                 </form>
