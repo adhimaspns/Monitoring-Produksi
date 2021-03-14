@@ -60,6 +60,11 @@ body {
       padding: 20px;
     }
 
+    .form-box-clear {
+      border-radius: 5px;
+      padding: 20px;
+    }
+
     .form-edit {
       /* background-color: #f1e9a1 !important; */
       /* background-color: #f3eba5 !important; */
@@ -205,6 +210,13 @@ body {
       border-color: #117a8b;
     }
   /* TMBL */
+
+
+  /* Textarea */
+    .textarea-no-resize {
+      resize: none;
+    } 
+  /* Akhir Textarea */
 
 
   /* BACKGROUND */
