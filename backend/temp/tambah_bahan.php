@@ -13,12 +13,8 @@
 
 
     //! INSERT PRODUKSI 
-    $sqlProduksi    = "INSERT INTO produksi VALUES('', '$nama_produk', '$stok_pra_produksi', '$satuan_pra_produksi', '$untung_pra_produksi',  '$tgl_produksi') "; 
+    $sqlProduksi    = "INSERT INTO produksi VALUES('', '$nama_produk', '$stok_pra_produksi', '$satuan_pra_produksi', '$untung_pra_produksi', 0, '$tgl_produksi') "; 
     $queryProduksi  = mysqli_query($host, $sqlProduksi); 
-
-    //! INSERT DATA BARANG
-    $sqlBarang      = "INSERT INTO barang VALUES(0, '$nama_produk', '$stok_pra_produksi', '$satuan_pra_produksi', '$untung_pra_produksi') ";
-    $query          = mysqli_query($host, $sqlBarang);
 
     //! SELECT ID PRODUKSI
     $selectIdProduksi     = "SELECT * FROM produksi ORDER BY id_produksi DESC LIMIT 1";
@@ -26,8 +22,12 @@
     $dataProduksi         = mysqli_fetch_assoc($queryIdProduksi);
     $id_produksi          = $dataProduksi['id_produksi'];
 
+    //! INSERT DATA BARANG
+    $sqlBarang      = "INSERT INTO barang VALUES(0, '$nama_produk', '$stok_pra_produksi', '$satuan_pra_produksi', '$untung_pra_produksi', 0, '$id_produksi') ";
+    $query          = mysqli_query($host, $sqlBarang);
 
-    if($queryIdProduksi ){
+
+    if($query){
       echo "<script>window.location.href='../../frontend/produksi/produksi.php?id_produksi=$id_produksi&page=produksi'</script>";
     }else{
       echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/tambah_produksi.php?id_produksi=$id_produksi&page=produksi'</script>";
@@ -55,7 +55,7 @@
 
 
       $qtyAwal   = mysqli_fetch_assoc($sqlCek); // menampilkan qty awal dari tabel temp
-      $qtyAkhir  = $qtyAwal['qty'] + $qty;  // menambahkan qty jika data barang ada pada tabel temp
+      $qtyAkhir  = $qtyAwal['qty'] + $jumlah_qty;  // menambahkan qty jika data barang ada pada tabel temp
 
 
       //! SELECT NAMA_PRODUK DARI PRODUKSI
@@ -153,7 +153,7 @@
 
       //! Akan dijalankan jika ada data dengan id sesuai yang di dapat dari $cekId
       $qtyAwal   = mysqli_fetch_assoc($sqlCek); // menampilkan qty awal dari tabel temp
-      $qtyAkhir  = $qtyAwal['qty'] + $qty;  // menambahkan qty jika data barang ada pada tabel temp
+      $qtyAkhir  = $qtyAwal['qty'] + $jumlah_qty;  // menambahkan qty jika data barang ada pada tabel temp
 
 
       //! QUERY Update Qty Temp

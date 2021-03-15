@@ -25,15 +25,6 @@
 		<main class="main">
 			<section>
 
-				<!-- <h2>Produksi</h2> -->
-
-				<!-- <div class="breadcrumb">
-						<h3>
-							<a href="../../beranda.php">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Produksi</span>
-						</h3>
-				</div> -->
-
 				<div class="container">
 
 					<div class="baris baris-tengah">
@@ -45,19 +36,19 @@
 
                 <?php
 
-                  $id_detail_produksi   = $_GET['id_detail_produksi'];
-                  $produksi_id          = $_GET['produksi_id'];
-                  $bhn_id               = $_GET['bhn_id'];
+                  $idp   = $_GET['idp'];
+                  $pid   = $_GET['pid'];
+                  $bid   = $_GET['bid'];
 
-                  $sql   = "SELECT * FROM detail_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan WHERE  id_detail_produksi = '$id_detail_produksi' ";
+                  $sql   = "SELECT * FROM detail_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan WHERE  id_detail_produksi = '$idp' ";
                   $query = mysqli_query($host, $sql);
                   $qty   = mysqli_fetch_assoc($query);
 
                 ?>
 
-                <input type="hidden" name="id_detail_produksi" value="<?php echo $id_detail_produksi?>">
-                <input type="hidden" name="produksi_id" value="<?php echo $produksi_id?>">
-                <input type="hidden" name="bhn_id" value="<?php echo $bhn_id?>">
+                <input type="hidden" name="id_detail_produksi" value="<?php echo $idp?>">
+                <input type="hidden" name="produksi_id" value="<?php echo $pid?>">
+                <input type="hidden" name="bhn_id" value="<?php echo $bid?>">
 
                 <label>Bahan</label>
                 <input type="text" class="form" value="<?php echo $qty['nama_bahan']?>" readonly>
@@ -66,7 +57,7 @@
                 <input type="number" name="qty" class="form" value="<?php echo $qty['qty'] ?>">
 
                 <input type="submit" value="Simpan" name="editQtyTemp" class="tmbl tmbl-hijau">
-                <a href="edit_detail_produksi.php?id_produksi=<?php echo $produksi_id?>" class="tmbl tmbl-abu-abu">
+                <a href="edit_detail_produksi.php?ip=<?php echo $pid ?>&page=produksi" class="tmbl tmbl-abu-abu">
                   Kembali
                 </a>
               </form>

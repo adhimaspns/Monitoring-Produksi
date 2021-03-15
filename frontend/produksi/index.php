@@ -94,7 +94,7 @@
 													?>
 												</td>
                         <td>
-                          <a href="detail_produksi.php?id_produksi=<?php echo $data['id_produksi']?>&page=produksi" class="tmbl tmbl-biru">
+                          <a href="detail_produksi.php?ip=<?php echo $data['id_produksi']?>&page=produksi" class="tmbl tmbl-biru">
                             <i class="fa fa-eye"></i>
                           </a>
                         </td>

@@ -45,21 +45,26 @@
 
                 <?php
 
-                  $produksi_id   = $_GET['produksi_id'];
+                  $ip   						= $_GET['ip'];
+                  $biaya_produksi   = $_GET['biaya_produksi'];
+                  $stok   					= $_GET['stok'];
 
-                  $sql      = "SELECT * FROM produksi WHERE  id_produksi = '$produksi_id' ";
+
+                  $sql      = "SELECT * FROM produksi WHERE  id_produksi = '$ip' ";
                   $query    = mysqli_query($host, $sql);
                   $untung   = mysqli_fetch_assoc($query);
 
                 ?>
 
-                <input type="hidden" name="id_produksi" value="<?php echo $produksi_id ?>">
+                <input type="hidden" name="ip" value="<?php echo $ip ?>">
+                <input type="hidden" name="biaya_produksi" value="<?php echo $biaya_produksi ?>">
+                <input type="hidden" name="stok" value="<?php echo $stok ?>">
 
                 <label>Keinginan Untung Per Item</label>
                 <input id="untung" type="text" name="untung_produk" class="form" value="<?php echo $untung['untung_produk'] ?>">
 
                 <input type="submit" value="Simpan" name="editUntung" class="tmbl tmbl-hijau">
-                <a href="detail_produksi.php?id_produksi=<?= $produksi_id?>" class="tmbl tmbl-abu-abu">
+                <a href="detail_produksi.php?ip=<?= $ip?>" class="tmbl tmbl-abu-abu">
                   Kembali
                 </a>
               </form>

@@ -44,24 +44,24 @@
 						<!-- Cek Data & Tampilkan -->
 						<?php
 
-							$id_produksi = $_GET['id_produksi'];
+							$ip = $_GET['ip'];
 
 
 							//! CEK DATA WHERE ID 
-							$cekData   =  "SELECT * FROM detail_produksi WHERE produksi_id = '$id_produksi' "; 
+							$cekData   =  "SELECT * FROM detail_produksi WHERE produksi_id = '$ip' "; 
 							$queryData = mysqli_query($host, $cekData);
 							$cekdId    = mysqli_num_rows($queryData);
 
 							if ($cekdId != null) {
 
 								//! SELECT DATA WHERE ID 
-								$sql        = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi WHERE produksi_id = '$id_produksi' ";
+								$sql        = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi WHERE produksi_id = '$ip' ";
 								$query      = mysqli_query($host, $sql);
 								$list_biaya = mysqli_fetch_assoc($query);
 
 
 								//! SELECT SUM WHERE ID
-								$sqlSum     = "SELECT SUM(sub_total) AS total_biaya_produksi FROM detail_produksi WHERE produksi_id = '$id_produksi' "; 
+								$sqlSum     = "SELECT SUM(sub_total) AS total_biaya_produksi FROM detail_produksi WHERE produksi_id = '$ip' "; 
 								$querySum   = mysqli_query($host, $sqlSum);
 								$dataSum    = mysqli_fetch_assoc($querySum);
 
@@ -86,7 +86,7 @@
 													<th>Stok Produk</th>
 													<th>Keinginan Untung Per Item</th>
 													<th>Harga Jual Per Item</th>
-													<th>Estimasi Keuntungan Yang Didapat</th>
+													<th>Estimasi Keuntungan Bersih Yang Didapat</th>
 												</tr>
 
 												<tr>
@@ -96,7 +96,7 @@
 													<td><?= $list_biaya['stok_produk'] . " " . $list_biaya['satuan_stok_produk'] ?></td>
 													<td>
 														<?= "Rp." . number_format($list_biaya['untung_produk'], 0, ',' , '.') ?>
-														<a href="edit_untung.php?produksi_id=<?= $list_biaya['produksi_id']?>" class="lencana lencana-kuning">
+														<a href="edit_untung.php?ip=<?= $list_biaya['produksi_id']?>&biaya_produksi=<?= $dataSum['total_biaya_produksi'] ?>&stok=<?= $list_biaya['stok_produk'] ?>" class="lencana lencana-kuning">
 															<i class="fa fa-edit"></i>
 														</a>
 													</td>
@@ -106,9 +106,9 @@
 
 											</table>
 
-											<small class="teks-mati">
-												<b>* Estimasi Keuntungan</b> adalah keuntungan yang didapat jika semua barang telah laku terjual
-											</small>
+											<i class="teks-mati">
+												<b>* Estimasi Keuntungan Bersih</b> adalah keuntungan yang didapat jika semua barang telah laku terjual
+											</i>
 										</div>
 									</div>
 								</div>
@@ -117,7 +117,7 @@
 							<div class="kolom-50">
 								<h2>Detail Bahan</h2>
 
-								<a href="edit_detail_produksi.php?id_produksi=<?php echo $id_produksi?>&page=produksi" class="tmbl tmbl-kuning float-left">
+								<a href="edit_detail_produksi.php?ip=<?php echo $ip?>&page=produksi" class="tmbl tmbl-kuning float-left">
 									Edit Bahan
 								</a>
 							</div>
@@ -145,7 +145,7 @@
 													<?php
 													
 														$nomor = 1;
-														$dataBahanBaku = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$id_produksi' AND kategori = 'bahan baku' ";
+														$dataBahanBaku = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$ip' AND kategori = 'bahan baku' ";
 														$query         = mysqli_query($host, $dataBahanBaku);
 														while ($bahanBaku = mysqli_fetch_assoc($query) ) {
 
@@ -166,13 +166,13 @@
 												<div class="box-header-radius-80 background-hijau teks-putih padding-10">
 													<?php
 
-														$dataBahanBaku = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$id_produksi' AND kategori = 'bahan baku' ";
+														$dataBahanBaku = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$ip' AND kategori = 'bahan baku' ";
 														$query         = mysqli_query($host, $dataBahanBaku);
 														$data          = mysqli_fetch_assoc($query);
 														$kategori      = $data['kategori'];
 														$nama_produk   = $data['nama_produk'];
 
-														$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total_baku FROM detail_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$id_produksi' AND kategori = 'bahan baku' ");
+														$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total_baku FROM detail_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$ip' AND kategori = 'bahan baku' ");
 														$total      = mysqli_fetch_assoc($sqlTotal);
 
 													?>
@@ -206,7 +206,7 @@
 													<?php
 													
 														$nomor = 1;
-														$dataBahanBaku = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$id_produksi' AND kategori = 'bahan jadi' ";
+														$dataBahanBaku = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$ip' AND kategori = 'bahan jadi' ";
 														$query         = mysqli_query($host, $dataBahanBaku);
 														while ($bahanBaku = mysqli_fetch_assoc($query) ) {
 
@@ -226,13 +226,13 @@
 													<div class="box-header-radius-80 background-hijau teks-putih padding-10">
 														<?php
 
-															$dataBahanBaku = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$id_produksi' AND kategori = 'bahan jadi' ";
+															$dataBahanBaku = "SELECT * FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$ip' AND kategori = 'bahan jadi' ";
 															$query         = mysqli_query($host, $dataBahanBaku);
 															$data          = mysqli_fetch_assoc($query);
 															$kategori      = $data['kategori'];
 															$nama_produk   = $data['nama_produk'];
 														
-															$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total_jadi FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$id_produksi' AND kategori = 'bahan jadi' ");
+															$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total_jadi FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$ip' AND kategori = 'bahan jadi' ");
 															$total      = mysqli_fetch_assoc($sqlTotal);
 
 														?>
@@ -254,23 +254,21 @@
 						<!-- Cek Data Kosong -->
 							<?php
 
-								$id_produksi = $_GET['id_produksi'];
+								$ip = $_GET['ip'];
 
 
 								//! CEK DATA WHERE ID 
-								$cekData   =  "SELECT * FROM detail_produksi WHERE produksi_id = '$id_produksi' "; 
+								$cekData   =  "SELECT * FROM detail_produksi WHERE produksi_id = '$ip' "; 
 								$queryData = mysqli_query($host, $cekData);
 								$cekdId    = mysqli_num_rows($queryData);
 
 								if ($cekdId == null) {
 
-								
-
 							?>
 							<div class="kolom-100 margin-top-50 margin-bottom-100">
 
 								<h2>Kalkulasi Biaya Produksi & Harga Jual</h2>
-								<a href="produksi.php?id_produksi=<?php echo $id_produksi ?>" class="tmbl tmbl-biru margin-20-0">
+								<a href="produksi.php?id_produksi=<?php echo $ip ?>" class="tmbl tmbl-biru margin-20-0">
 									Tambah Data Bahan
 								</a>
 								<div class="box-konten-radius backgorund-e7">

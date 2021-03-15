@@ -253,17 +253,41 @@
 
 										<form action="../../backend/temp/hapus_temp.php?id_produksi=<?php echo $id_produksi ?>" method="post">
 											<input type="hidden" name="id_produksi" value="<?php echo $id_produksi ?>">
+											
 											<input type="submit" value="Simpan" class="tmbl tmbl-hijau margin-20-0" name="hapus_temp">
+											<small>* Pastikan ya anda sudah klik tombol simpan sebelum berpindah halaman</small>
 										</form>
 										
 									</div>
 
 									<div class="kolom-kalulasi-sementara">
 										<div class="box-header-radius-20 background-hijau teks-putih float-right margin-20-0">
+
 											<?php
-											
+
+
 												$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total FROM temp");
 												$total      = mysqli_fetch_assoc($sqlTotal);
+
+
+												//! Variabel 
+												$biaya_produksi = $total['total'];
+												$estimasi_stok  = $data_produk['stok_produk'];
+												$untung_produk  = $data_produk['untung_produk'];
+
+
+												//! Aritmatika Biaya Produksi 
+												$cuan   = $biaya_produksi / $estimasi_stok + $untung_produk;
+
+
+												//! Update harga jual produk pada table produksi 
+												$sql    = "UPDATE produksi SET harga_jual = '$cuan' WHERE id_produksi = '$id_produksi' ";
+												$query  = mysqli_query($host, $sql);
+
+
+												//! Update harga jual produk pada table produksi 
+												$sql    = "UPDATE barang SET harga_jual_item = '$cuan' WHERE produksi_id = '$id_produksi' ";
+												$query  = mysqli_query($host, $sql);
 
 											?>
 
@@ -316,6 +340,12 @@
 				modal3.style.display = "none";
 			}
 		</script>
+
+		<script src="../../../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/js/jquery.maskMoney.min.js"></script>
+    <script>
+        $('#harga').maskMoney({prefix:'Rp. ',allowNegative:true,thousand:'.',decimal:'.',precision:0,affixesStay:false});
+    </script>
 
 	</body>
 </html>

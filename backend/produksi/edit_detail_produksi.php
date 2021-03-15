@@ -24,7 +24,7 @@
 
 
       $qtyAwal   = mysqli_fetch_assoc($sqlCek); // menampilkan qty awal dari tabel temp
-      $qtyAkhir  = $qtyAwal['qty'] + $qty;  // menambahkan qty jika data barang ada pada tabel temp
+      $qtyAkhir  = $qtyAwal['qty'] + $jumlah_qty;  // menambahkan qty jika data barang ada pada tabel temp
 
 
       //! UPDATE QTY DETAIL PRODUKSI
@@ -69,9 +69,9 @@
     }
 
     if($sqlSubProduksi){
-      echo "<script>window.location.href='../../frontend/produksi/edit_detail_produksi.php?id_produksi=$id_produksi&page=produksi'</script>";
+      echo "<script>window.location.href='../../frontend/produksi/edit_detail_produksi.php?ip=$id_produksi&page=produksi'</script>";
     }else{
-      echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/edit_detail_produksi.php?id_produksi=$id_produksi&page=produksi'</script>";
+      echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/edit_detail_produksi.php?ip=$id_produksi&page=produksi'</script>";
     }
     
   }
@@ -93,7 +93,7 @@
 
       //! Akan dijalankan jika ada data dengan id sesuai yang di dapat dari $cekId
       $qtyAwal   = mysqli_fetch_assoc($sqlCek); // menampilkan qty awal dari tabel 
-      $qtyAkhir  = $qtyAwal['qty'] + $qty;  // menambahkan qty jika data barang ada pada tabel 
+      $qtyAkhir  = $qtyAwal['qty'] + $jumlah_qty;  // menambahkan qty jika data barang ada pada tabel 
 
 
       //! QUERY Update Qty Produksi
@@ -136,9 +136,9 @@
     }
 
     if($sqlSubProduksi){
-      echo "<script>window.location.href='../../frontend/produksi/edit_detail_produksi.php?id_produksi=$id_produksi&page=produksi'</script>";
+      echo "<script>window.location.href='../../frontend/produksi/edit_detail_produksi.php?ip=$id_produksi&page=produksi'</script>";
     }else{
-      echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/edit_detail_produksi.php?id_produksi=$id_produksi&page=produksi'</script>";
+      echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/edit_detail_produksi.php?ip=$id_produksi&page=produksi'</script>";
     }
     
   }

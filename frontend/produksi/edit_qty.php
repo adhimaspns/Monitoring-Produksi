@@ -49,9 +49,9 @@
                   $produksi_id          = $_GET['produksi_id'];
                   $bhn_id               = $_GET['bhn_id'];
 
-                  $sql   = "SELECT * FROM temp WHERE  id_temp = '$id_temp' ";
+                  $sql   = "SELECT * FROM temp INNER JOIN bahan ON temp.bhn_id = bahan.id_bahan WHERE  id_temp = '$id_temp' ";
                   $query = mysqli_query($host, $sql);
-                  $qty   = mysqli_fetch_assoc($query);
+                  $data   = mysqli_fetch_assoc($query);
 
                 ?>
 
@@ -59,8 +59,11 @@
                 <input type="hidden" name="produksi_id" value="<?php echo $produksi_id?>">
                 <input type="hidden" name="bhn_id" value="<?php echo $bhn_id?>">
 
+								<label>Nama Bahan</label>
+								<input type="text" class="form" value="<?php echo $data['nama_bahan']?>" readonly>
+
                 <label>Qty</label>
-                <input type="number" name="qty" class="form" value="<?php echo $qty['qty'] ?>">
+                <input type="number" name="qty" class="form" value="<?php echo $data['qty'] ?>">
 
                 <input type="submit" value="Simpan" name="editQtyTemp" class="tmbl tmbl-hijau">
               </form>

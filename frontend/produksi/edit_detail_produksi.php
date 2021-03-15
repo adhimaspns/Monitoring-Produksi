@@ -51,9 +51,9 @@
 									<form action="" method="POST">
 
 										<?php
-											$id_produksi  = $_GET['id_produksi'];
+											$ip  = $_GET['ip'];
 
-											$sql_produk  = mysqli_query($host, "SELECT * FROM produksi WHERE id_produksi = '$id_produksi' ");
+											$sql_produk  = mysqli_query($host, "SELECT * FROM produksi WHERE id_produksi = '$ip' ");
 											$data_produk = mysqli_fetch_assoc($sql_produk); 
 										?>
 										<label>Nama Produk</label>
@@ -100,7 +100,7 @@
 													<h2>Tambah Bahan Baku</h2>
 
 													
-													<form action="../../backend/produksi/edit_detail_produksi.php?ket=bhn_baku&id_produksi=<?php echo $id_produksi ?>" method="POST">
+													<form action="../../backend/produksi/edit_detail_produksi.php?ket=bhn_baku&id_produksi=<?php echo $ip ?>" method="POST">
 
 														<label>Bahan Baku</label>
 														<select name="bhn_id" class="form-radius">
@@ -160,7 +160,7 @@
 														<i class="fa fa-times"> </i>
 													</span>
 													<h2>Tambah Bahan Jadi</h2>
-													<form action="../../backend/produksi/edit_detail_produksi.php?ket=bhn_jadi&id_produksi=<?php echo $id_produksi ?>" method="POST">
+													<form action="../../backend/produksi/edit_detail_produksi.php?ket=bhn_jadi&id_produksi=<?php echo $ip ?>" method="POST">
 
 														<label>Bahan Jadi</label>
 														<select name="bhn_id" class="form-radius">
@@ -219,7 +219,7 @@
 											<?php
 											
 												$nomer = 1;
-												$sql = "SELECT * FROM detail_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan WHERE produksi_id = '$id_produksi' ORDER BY nama_bahan  ";
+												$sql = "SELECT * FROM detail_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan WHERE produksi_id = '$ip' ORDER BY nama_bahan  ";
 												$query = mysqli_query($host,$sql);
 
 												while ($dt = mysqli_fetch_assoc($query)) {
@@ -232,14 +232,14 @@
 												<td><?= $dt['kategori'] ?></td>
 												<td>
 													<?= $dt['qty'] . " " . $dt['satuan'] ?>
-													<a href="edit_qty_detail_produksi.php?id_detail_produksi=<?php echo $dt['id_detail_produksi']?>&produksi_id=<?php echo $id_produksi ?>&bhn_id=<?php echo $dt['bhn_id']?>" class="lencana lencana-kuning">
+													<a href="edit_qty_detail_produksi.php?idp=<?php echo $dt['id_detail_produksi']?>&pid=<?php echo $ip ?>&bid=<?php echo $dt['bhn_id']?>" class="lencana lencana-kuning">
 														<i class="fa fa-edit"></i>
 													</a>
 												</td>
 												<td><?= "Rp " . number_format($dt['harga'],0,',','.')  ?></td>
 												<td><?= "Rp " . number_format($dt['sub_total'],0,',','.') ?></td>
 												<td>
-													<a onclick="return confirm('Anda yakin ingin hapus item ?')" href="../../backend/produksi/hapus_item_detail_produksi.php?id_detail_produksi=<?php echo $dt['id_detail_produksi']?>&produksi_id=<?php echo $id_produksi ?>" class="teks-merah">
+													<a onclick="return confirm('Anda yakin ingin hapus item ?')" href="../../backend/produksi/hapus_item_detail_produksi.php?id_detail_produksi=<?php echo $dt['id_detail_produksi']?>&produksi_id=<?php echo $ip ?>" class="teks-merah">
 														<i class="fa fa-trash"></i>
 													</a>
 												</td>
@@ -251,7 +251,7 @@
 
 										</table>
 
-                    <a href="detail_produksi.php?id_produksi=<?php echo $id_produksi ?>&page=produksi" class="tmbl tmbl-hijau margin-20-0">
+                    <a href="detail_produksi.php?ip=<?php echo $ip?>&page=produksi" class="tmbl tmbl-hijau margin-20-0">
                       Simpan
                     </a>
 
@@ -261,8 +261,29 @@
 										<div class="box-header-radius-20 background-hijau teks-putih float-right margin-20-0">
 											<?php
 											
-												$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total FROM detail_produksi WHERE produksi_id = '$id_produksi' ");
+												//! SQL SUM Subtotal 
+												$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total FROM detail_produksi WHERE produksi_id = '$ip' ");
 												$total      = mysqli_fetch_assoc($sqlTotal);
+
+
+												//! Variabel 
+												$biaya_produksi = $total['total'];
+												$estimasi_stok  = $data_produk['stok_produk'];
+												$untung_produk  = $data_produk['untung_produk'];
+
+
+												//! Aritmatika Biaya Produksi 
+												$cuan   = $biaya_produksi / $estimasi_stok + $untung_produk;
+
+
+												//! Update harga jual produk pada table produksi 
+												$sql    = "UPDATE produksi SET harga_jual = '$cuan' WHERE id_produksi = '$ip' ";
+												$query  = mysqli_query($host, $sql);
+
+
+												//! Update harga jual produk pada table produksi 
+												$sql    = "UPDATE barang SET harga_jual_item = '$cuan' WHERE produksi_id = '$ip' ";
+												$query  = mysqli_query($host, $sql);
 
 											?>
 

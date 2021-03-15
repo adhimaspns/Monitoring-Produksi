@@ -30,9 +30,9 @@
 
 
     if($sqlSubProduksi){
-      echo "<script>window.location.href='../../frontend/produksi/edit_detail_produksi.php?id_produksi=$produksi_id&page=produksi'</script>";
+      echo "<script>window.location.href='../../frontend/produksi/edit_detail_produksi.php?ip=$produksi_id&page=produksi'</script>";
     }else{
-      echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/edit_detail_produksi.php?id_produksi=$produksi_id&page=produksi'</script>";
+      echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/edit_detail_produksi.php?ip=$produksi_id&page=produksi'</script>";
     }
   }
 

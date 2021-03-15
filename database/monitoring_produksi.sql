@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Mar 2021 pada 23.32
+-- Waktu pembuatan: 16 Mar 2021 pada 03.07
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -66,6 +66,7 @@ CREATE TABLE `barang` (
   `stok_barang` int(200) NOT NULL,
   `satuan_stok_barang` varchar(100) NOT NULL,
   `untung_barang` int(100) NOT NULL,
+  `harga_jual_item` int(20) NOT NULL,
   `produksi_id` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -73,9 +74,11 @@ CREATE TABLE `barang` (
 -- Dumping data untuk tabel `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `stok_barang`, `satuan_stok_barang`, `untung_barang`, `produksi_id`) VALUES
-(2, 'Kendil (tanggung)', 380, 'Pcs', 500, '86'),
-(3, 'Cowek ', 1000, 'Pcs', 750, '87');
+INSERT INTO `barang` (`id_barang`, `nama_barang`, `stok_barang`, `satuan_stok_barang`, `untung_barang`, `harga_jual_item`, `produksi_id`) VALUES
+(2, 'Kendil (tanggung)', 380, 'Pcs', 750, 2800, '86'),
+(3, 'Cowek ', 1000, 'Pcs', 750, 1275, '87'),
+(7, 'Layah Bolong', 1500, 'Pcs', 750, 1107, '90'),
+(9, 'Kren', 500, 'Pcs', 850, 850, '92');
 
 -- --------------------------------------------------------
 
@@ -96,7 +99,7 @@ CREATE TABLE `detail_produksi` (
 --
 
 INSERT INTO `detail_produksi` (`id_detail_produksi`, `produksi_id`, `bhn_id`, `qty`, `sub_total`) VALUES
-(55, 86, 7, 2, 200000),
+(55, 86, 7, 2, 100100000),
 (57, 86, 12, 380, 95000),
 (58, 86, 13, 380, 95000),
 (59, 86, 14, 380, 114000),
@@ -104,8 +107,12 @@ INSERT INTO `detail_produksi` (`id_detail_produksi`, `produksi_id`, `bhn_id`, `q
 (61, 86, 1, 1, 200000),
 (62, 87, 1, 1, 200000),
 (63, 87, 11, 1, 75000),
-(64, 87, 7, 2, 200000),
-(65, 87, 10, 1, 50000);
+(64, 87, 7, 2, 100100000),
+(65, 87, 10, 1, 50000),
+(73, 90, 11, 1, 75000),
+(74, 90, 7, 2, 100100000),
+(77, 90, 1, 1, 200000),
+(78, 90, 2, 4, 60000);
 
 -- --------------------------------------------------------
 
@@ -147,6 +154,7 @@ CREATE TABLE `produksi` (
   `stok_produk` int(12) NOT NULL,
   `satuan_stok_produk` varchar(100) NOT NULL,
   `untung_produk` int(12) NOT NULL,
+  `harga_jual` int(20) NOT NULL,
   `tgl_produksi` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -154,9 +162,11 @@ CREATE TABLE `produksi` (
 -- Dumping data untuk tabel `produksi`
 --
 
-INSERT INTO `produksi` (`id_produksi`, `nama_produk`, `stok_produk`, `satuan_stok_produk`, `untung_produk`, `tgl_produksi`) VALUES
-(86, 'Kendil (tanggung)', 380, 'Pcs', 1500, '2021-03-10'),
-(87, 'Cowek ', 1000, 'Pcs', 750, '2021-03-10');
+INSERT INTO `produksi` (`id_produksi`, `nama_produk`, `stok_produk`, `satuan_stok_produk`, `untung_produk`, `harga_jual`, `tgl_produksi`) VALUES
+(86, 'Kendil (tanggung)', 380, 'Pcs', 750, 2800, '2021-03-10'),
+(87, 'Cowek ', 1000, 'Pcs', 750, 1275, '2021-03-10'),
+(90, 'Layah Bolong', 1500, 'Pcs', 750, 1107, '2021-03-16'),
+(92, 'Kren', 500, 'Pcs', 850, 850, '2021-03-16');
 
 -- --------------------------------------------------------
 
@@ -260,13 +270,13 @@ ALTER TABLE `bahan`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_barang` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_produksi`
 --
 ALTER TABLE `detail_produksi`
-  MODIFY `id_detail_produksi` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id_detail_produksi` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT untuk tabel `detail_transaksi`
@@ -284,13 +294,13 @@ ALTER TABLE `kasir`
 -- AUTO_INCREMENT untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id_produksi` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_produksi` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT untuk tabel `temp`
 --
 ALTER TABLE `temp`
-  MODIFY `id_temp` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id_temp` int(13) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
