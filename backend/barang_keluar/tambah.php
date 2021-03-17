@@ -78,14 +78,11 @@
     $dataHarga = mysqli_fetch_assoc($query);
     $harga     = $dataHarga['harga_jual_item'];
 
-    // echo $harga;
-
 
     //! Cek Qty Produk Pada Table Kasir
     $sqlQty     = "SELECT * FROM kasir WHERE barang_id = '$barang_id'  AND nomor_tr = '$Tr' ";
     $queryCek   = mysqli_query($host, $sqlQty);
     $cekProduk  = mysqli_num_rows($queryCek);
-    // $dataProduk = mysqli_fetch_assoc();
 
 
     //! Cek Id_produk Pada Table Kasir 
@@ -101,10 +98,29 @@
       $sqlDetail  = "INSERT INTO detail_transaksi VALUES(0, '$Tr', '$barang_id', '$jumlah_qty', '$subTotal')";
       $query      = mysqli_query($host, $sqlDetail);
 
-      // echo "Data Berhasil ditambahkan";
-    } else {
 
-      // echo $jumlah_qty;
+      //! Select Qty Table Kasir
+      $sqlSelectKasir  = "SELECT * FROM kasir WHERE nomor_tr = '$Tr' AND barang_id = '$barang_id' ";
+      $queryKasir      = mysqli_query($host, $sqlSelectKasir);
+      $dataQtyKasir    = mysqli_fetch_assoc($queryKasir);
+      $qtyKasir        = $dataQtyKasir['qty'];
+
+      //! Select Stok Barang
+      $sqlStokBarang   = "SELECT stok_barang FROM barang WHERE id_barang = '$barang_id' ";
+      $queryStokBarang = mysqli_query($host, $sqlStokBarang);
+      $dataStokBarang  = mysqli_fetch_assoc($queryStokBarang);
+      $qtyStokBarang   = $dataStokBarang['stok_barang'];
+
+
+      //! Aritmatika Qty Akhir Barang
+      $QtyAkhirBarang  = $qtyStokBarang - $qtyKasir;
+
+      //! Update Qty Barang 
+      $sqlUpdatebarang   = "UPDATE barang SET stok_barang = '$QtyAkhirBarang' WHERE id_barang = '$barang_id' ";
+      $queryUpdateBarang = mysqli_query($host, $sqlUpdatebarang);
+
+
+    } else {
 
       //! Select Qty Table Kasir
       $sqlSelectKasir  = "SELECT * FROM kasir WHERE nomor_tr = '$Tr' AND barang_id = '$barang_id' ";
@@ -118,6 +134,12 @@
       $dataQtyDetail   = mysqli_fetch_assoc($queryDetail);
       $qtyDetail       = $dataQtyDetail['qty'];
 
+      //! Select Stok Barang
+      $sqlStokBarang   = "SELECT stok_barang FROM barang WHERE id_barang = '$barang_id' ";
+      $queryStokBarang = mysqli_query($host, $sqlStokBarang);
+      $dataStokBarang  = mysqli_fetch_assoc($queryStokBarang);
+      $qtyStokBarang   = $dataStokBarang['stok_barang'];
+
       //! Aritmatika 
         //! Qty 
         $qtyAkhirKasir   = $qtyKasir + $jumlah_qty;
@@ -127,34 +149,23 @@
         $subTotalKasir   = $qtyAkhirKasir * $harga; 
         $subTotalDetail  = $qtyAkhirDetail * $harga; 
 
-
       //! Update Qty & Subtotal Kasir 
       $sqlUpdateKasir   = "UPDATE kasir SET qty = '$qtyAkhirKasir', sub_total_kasir = '$subTotalKasir' WHERE nomor_tr = '$Tr' AND barang_id = '$barang_id' ";
       $query            = mysqli_query($host, $sqlUpdateKasir);
 
-      echo $sqlUpdateKasir;
-
       //! Update Qty & Subtotal Detail Transaksi  
-      
-      // echo "Qty Akhir Kasir " .  $qtyAkhirKasir . "<br>";
-      // echo "Qty Akhir Detail " .  $qtyAkhirDetail . "<br>";
+      $sqlUpdateDetail  = "UPDATE detail_transaksi SET qty = '$qtyAkhirDetail', sub_total = '$subTotalDetail' WHERE nomor_tr = '$Tr' AND barang_id = '$barang_id' ";
+      $query            = mysqli_query($host, $sqlUpdateDetail);
 
-      // echo "Harga" .  $harga . "<br>";
-      // // echo "Qty Akhir Detail " .  $qtyAkhirDetail . "<br>";
 
-      // echo "Subtotal Akhir Kasir" . "Rp " . number_format($subTotalKasir,0,',','.')   . "<br>";
-      // echo "Subtotal Akhir Detail" . "Rp " . number_format($subTotalDetail,0,',','.')   . "<br>";
-      
-      // echo "Barang sudah tersedia";
+      //! Aritmatika Qty Akhir Barang
+      $akhirQtyBarang  = $qtyStokBarang - $jumlah_qty;
+
+      //! Update Qty Barang 
+      $sqlUpdatebarang   = "UPDATE barang SET stok_barang = '$akhirQtyBarang' WHERE id_barang = '$barang_id' ";
+      $queryUpdateBarang = mysqli_query($host, $sqlUpdatebarang);
+
     }
-    
 
-
-
-
-  } 
-  
-
-
-
+  }
 ?>

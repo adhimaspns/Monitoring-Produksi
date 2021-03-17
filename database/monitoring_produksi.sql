@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 17 Mar 2021 pada 18.31
+-- Waktu pembuatan: 18 Mar 2021 pada 02.49
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -76,9 +76,9 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `stok_barang`, `satuan_stok_barang`, `untung_barang`, `harga_jual_item`, `produksi_id`) VALUES
 (2, 'Kendil (tanggung)', 380, 'Pcs', 750, 2800, '86'),
-(3, 'Cowek ', 1000, 'Pcs', 750, 1275, '87'),
+(3, 'Cowek ', 850, 'Pcs', 750, 1275, '87'),
 (7, 'Layah Bolong', 1500, 'Pcs', 750, 1107, '90'),
-(9, 'Kren', 500, 'Pcs', 850, 850, '92');
+(9, 'Kren', 0, 'Pcs', 850, 850, '92');
 
 -- --------------------------------------------------------
 
@@ -133,8 +133,7 @@ CREATE TABLE `detail_transaksi` (
 --
 
 INSERT INTO `detail_transaksi` (`id_detail_transaksi`, `nomor_tr`, `barang_id`, `qty`, `sub_total`) VALUES
-(1, '202103160001', '3', 10, 12750),
-(2, '202103160001', '2', 15, 42000);
+(17, '202103160001', '3', 150, 191250);
 
 -- --------------------------------------------------------
 
@@ -155,8 +154,7 @@ CREATE TABLE `kasir` (
 --
 
 INSERT INTO `kasir` (`id_kasir`, `nomor_tr`, `barang_id`, `qty`, `sub_total_kasir`) VALUES
-(2, '202103160001', 3, 20, 25500),
-(3, '202103160001', 2, 115, 322000);
+(18, '202103160001', 3, 150, 191250);
 
 -- --------------------------------------------------------
 
@@ -299,13 +297,13 @@ ALTER TABLE `detail_produksi`
 -- AUTO_INCREMENT untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detail_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `kasir`
 --
 ALTER TABLE `kasir`
-  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `produksi`

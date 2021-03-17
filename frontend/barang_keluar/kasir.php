@@ -101,19 +101,18 @@
                         <select name="barang_id" class="form-radius">
                           <?php
                         
-                            $sql   = "SELECT * FROM barang";
+                            $sql   = "SELECT * FROM barang WHERE stok_barang != 0";
                             $query = mysqli_query($host, $sql);
                             while ($listBarang = mysqli_fetch_assoc($query) ) {
 
                           ?>
-                            <option value="<?= $listBarang['id_barang'] ?>"><?= $listBarang['nama_barang'] ?></option>
+                            <option value="<?= $listBarang['id_barang'] ?>"><?= $listBarang['nama_barang'] . " | " . " Stok : " . $listBarang['stok_barang'] ?></option>
                           <?php } ?>
 
                         </select>
 
                         <label>Qty</label>
                         <input type="number" name="jumlah_qty" class="form-radius" value="1">
-
 
                         <input type="submit" name="simpan_barang" class="tmbl-radius tmbl-hijau margin-20-0" value="Simpan">
                       </form>
@@ -153,7 +152,12 @@
                   <tr>
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $dataProduk['nama_barang'] ?></td>
-                    <td><?php echo $dataProduk['qty'] . " " . $dataProduk['satuan_stok_barang'] ?></td>
+                    <td>
+                      <?php echo $dataProduk['qty'] . " " . $dataProduk['satuan_stok_barang'] ?>
+                      <a href="" class="lencana lencana-kuning">
+                        <i class="fa fa-edit"></i>
+                      </a>
+                    </td>
                     <td><?php echo "@ " . "Rp. " . number_format($dataProduk['harga_jual_item'],0,',','.') ?></td>
                     <td><?php echo "Rp. " . number_format($dataProduk['sub_total_kasir'],0,',','.') ?></td>
                     <td>
