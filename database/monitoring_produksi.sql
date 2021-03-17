@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Mar 2021 pada 03.07
+-- Waktu pembuatan: 17 Mar 2021 pada 18.31
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -128,6 +128,14 @@ CREATE TABLE `detail_transaksi` (
   `sub_total` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `detail_transaksi`
+--
+
+INSERT INTO `detail_transaksi` (`id_detail_transaksi`, `nomor_tr`, `barang_id`, `qty`, `sub_total`) VALUES
+(1, '202103160001', '3', 10, 12750),
+(2, '202103160001', '2', 15, 42000);
+
 -- --------------------------------------------------------
 
 --
@@ -141,6 +149,14 @@ CREATE TABLE `kasir` (
   `qty` int(20) NOT NULL,
   `sub_total_kasir` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `kasir`
+--
+
+INSERT INTO `kasir` (`id_kasir`, `nomor_tr`, `barang_id`, `qty`, `sub_total_kasir`) VALUES
+(2, '202103160001', 3, 20, 25500),
+(3, '202103160001', 2, 115, 322000);
 
 -- --------------------------------------------------------
 
@@ -201,7 +217,8 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_tbl_transaksi`, `no_transaksi`, `nama_pembeli`, `keterangan`, `nama_kasir`) VALUES
-(7, '202103140001', 'Bambang Setyo Nur Cahyo', 'anjay ini keterangan lho ', 'Adhimas P');
+(7, '202103140001', 'Bambang Setyo Nur Cahyo', 'anjay ini keterangan lho ', 'Adhimas P'),
+(8, '202103160001', 'M Suryo', 'Beli Cowek', 'Adhimas Pns');
 
 --
 -- Indexes for dumped tables
@@ -282,13 +299,13 @@ ALTER TABLE `detail_produksi`
 -- AUTO_INCREMENT untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `kasir`
 --
 ALTER TABLE `kasir`
-  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `produksi`
@@ -306,7 +323,7 @@ ALTER TABLE `temp`
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_tbl_transaksi` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_tbl_transaksi` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

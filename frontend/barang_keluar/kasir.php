@@ -136,15 +136,37 @@
 										<th>No</th>
 										<th>Nama Barang</th>
 										<th>Qty</th>
+										<th>Harga Satuan</th>
 										<th>Sub Total</th>
 										<th>Aksi</th>
 									</tr>
 
-									
+									<?php
+                  
+                    $no       = 1;
+                    $sqlData  = "SELECT * FROM kasir INNER JOIN barang ON kasir.barang_id = barang.id_barang WHERE nomor_tr  = '$Tr' ORDER BY nama_barang ASC ";
+                    $query    = mysqli_query($host, $sqlData);
+                    while ($dataProduk  = mysqli_fetch_assoc($query) ) {
+
+                  ?>
+
+                  <tr>
+                    <td><?php echo $no++ ?></td>
+                    <td><?php echo $dataProduk['nama_barang'] ?></td>
+                    <td><?php echo $dataProduk['qty'] . " " . $dataProduk['satuan_stok_barang'] ?></td>
+                    <td><?php echo "@ " . "Rp. " . number_format($dataProduk['harga_jual_item'],0,',','.') ?></td>
+                    <td><?php echo "Rp. " . number_format($dataProduk['sub_total_kasir'],0,',','.') ?></td>
+                    <td>
+                      <a onclick="return confirm('Yakin nih mau di hapus ?')" href="">
+                        <i class="fa fa-trash teks-merah"></i>
+                      </a>
+                    </td>
+                  </tr>
+
+                  <?php } ?>
 								</table>
 
                 <form action="../../backend/temp/hapus_temp.php" method="post">
-                  <!-- <input type="hidden" name="id_produksi" value="<?php echo $id_produksi ?>"> -->
                   <input type="submit" value="Simpan" class="tmbl tmbl-hijau margin-20-0" name="hapus_temp">
                 </form>
 
@@ -154,14 +176,15 @@
                 <div class="box-header-radius-20 background-hijau teks-putih float-right margin-20-0">
                   <?php
                   
-                    // $sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total FROM temp");
-                    // $total      = mysqli_fetch_assoc($sqlTotal);
+                    $sqlTotal   = "SELECT SUM(sub_total_kasir) AS total FROM kasir";
+                    $queryTotal = mysqli_query($host, $sqlTotal);
+                    $total      = mysqli_fetch_assoc($queryTotal);
 
                   ?>
 
                   Total
-                  <!-- <b> : <?= "Rp " . number_format($total['total'],0,',','.') ?></b> -->
-                  <b> : Rp. 250.000</b>
+                  <b> : <?= "Rp " . number_format($total['total'],0,',','.') ?></b>
+                  <!-- <b> : Rp. 250.000</b> -->
                 </div>
               </div>
 

@@ -77,12 +77,12 @@
 										$halaman = 10;
 										$page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
 										$mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
-										$result  = mysqli_query($host, "SELECT * FROM bahan WHERE kategori = 'bahan baku'");
+										$result  = mysqli_query($host, "SELECT * FROM barang");
 										$total   = mysqli_num_rows($result);
 										$pages   = ceil($total/$halaman);
 
 										$no    = 1;
-										$sql   = "SELECT * FROM barang INNER JOIN produksi ON barang.produksi_id = produksi.id_produksi ORDER BY nama_barang ASC";
+										$sql   = "SELECT * FROM barang INNER JOIN produksi ON barang.produksi_id = produksi.id_produksi WHERE stok_barang != 0 ORDER BY nama_barang ASC";
 										$query = mysqli_query($host, $sql);
 
 										while ($data = mysqli_fetch_assoc($query) ) {
