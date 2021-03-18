@@ -47,7 +47,50 @@
                 $sql           = "SELECT * FROM transaksi WHERE no_transaksi = '$Tr' ";
                 $query         = mysqli_query($host, $sql);
                 $detailDataTr  = mysqli_fetch_assoc($query); 
-              
+
+
+                //! Select Data Selain Data Transaksi Saat Ini
+                $sqlHapusKasir   = "SELECT * FROM kasir WHERE NOT nomor_tr = '$Tr' ";
+                $queryHapus      = mysqli_query($host, $sqlHapusKasir);
+                $cekData         = mysqli_num_rows($queryHapus);
+                $nomorTransaksi  = mysqli_fetch_assoc($queryHapus);
+
+                //! Jika Ada Data Pada Tabel Kasir Selain Nomor Transaksi Saat Ini, Maka Hapus
+                if ($cekData != 0) {
+
+                  $nomorTr = $nomorTransaksi['nomor_tr'];
+
+                  //! Hapus Data Transaksi (transaksi yang belum diselesaikan)
+                  $sqlHapusTransaksi   = "DELETE FROM transaksi WHERE no_transaksi = '$nomorTr' ";
+                  $queryTransaksi      = mysqli_query($host, $sqlHapusTransaksi);
+                  
+                  //! Hapus Detail Transaksi (transaksi yang belum diselesaikan) 
+                  $sqlHapusDetailTr    = "DELETE FROM detail_transaksi  WHERE nomor_tr = '$nomorTr' ";
+                  $queryDetailTr       = mysqli_query($host, $sqlHapusDetailTr);
+
+                  //! Hapus Data Kasir
+                  $sqlHapus       = "DELETE FROM kasir WHERE nomor_tr = '$nomorTr' ";
+                  $queryHapusData = mysqli_query($host, $sqlHapus);
+
+                }
+
+                //! Select Data Qty 0
+                $sqlData0        = "SELECT * FROM kasir WHERE qty = 0 ";
+                $queryData0      = mysqli_query($host, $sqlData0);
+                $cekQty          = mysqli_num_rows($queryData0); 
+                $cekdataQty      = mysqli_fetch_assoc($queryData0); 
+
+                //! Jika qty 0 maka hapus data tersebut
+                if ($cekQty != 0) {
+
+                  //! Delete Kasir
+                  $sqlhapuskasir   = "DELETE FROM kasir WHERE nomor_tr = '$Tr' AND qty = 0 ";
+                  $queryhapuskasir = mysqli_query($host, $sqlhapuskasir);
+                  
+                  //! Delete Detail Transaksi
+                  $sqlhapusdetail   = "DELETE FROM detail_transaksi WHERE nomor_tr = '$Tr' AND qty = 0 "; 
+                  $queryhapusdetail = mysqli_query($host, $sqlhapusdetail);  
+                } 
               ?>
 
               <div class="form-box-clear">
@@ -124,11 +167,9 @@
 
             </div>
 
-
 						<div class="kolom-100">
 
 							<div class="table-box">
-
 
 								<table class="table-responsive">
 									<tr class="thead-dark">
@@ -141,9 +182,9 @@
 									</tr>
 
 									<?php
-                  
+
                     $no       = 1;
-                    $sqlData  = "SELECT * FROM kasir INNER JOIN barang ON kasir.barang_id = barang.id_barang WHERE nomor_tr  = '$Tr' ORDER BY nama_barang ASC ";
+                    $sqlData  = "SELECT * FROM kasir INNER JOIN barang ON kasir.barang_id = barang.id_barang WHERE nomor_tr  = '$Tr' AND qty != 0 ORDER BY nama_barang ASC ";
                     $query    = mysqli_query($host, $sqlData);
                     while ($dataProduk  = mysqli_fetch_assoc($query) ) {
 
@@ -153,15 +194,18 @@
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $dataProduk['nama_barang'] ?></td>
                     <td>
+                      <a href="qty_kurang.php?i=<?php echo $dataProduk['id_kasir']?>&Tr=<?php echo $Tr ?>&b=<?php echo $dataProduk['id_barang'] ?>">
+                        <i class="fa fa-minus-square teks-kuning"></i>
+                      </a>
                       <?php echo $dataProduk['qty'] . " " . $dataProduk['satuan_stok_barang'] ?>
-                      <a href="" class="lencana lencana-kuning">
-                        <i class="fa fa-edit"></i>
+                      <a href="qty_tambah.php?i=<?php echo $dataProduk['id_kasir']?>&Tr=<?php echo $Tr ?>&b=<?php echo $dataProduk['id_barang'] ?>">
+                        <i class="fa fa-plus-square teks-biru"></i>
                       </a>
                     </td>
                     <td><?php echo "@ " . "Rp. " . number_format($dataProduk['harga_jual_item'],0,',','.') ?></td>
                     <td><?php echo "Rp. " . number_format($dataProduk['sub_total_kasir'],0,',','.') ?></td>
                     <td>
-                      <a onclick="return confirm('Yakin nih mau di hapus ?')" href="">
+                      <a onclick="return confirm('Yakin nih mau di hapus ?')" href="../../backend/barang_keluar/hapus_item_barang.php?i=<?php echo $dataProduk['id_kasir']?>&Tr=<?php echo $Tr ?>&b=<?php echo $dataProduk['id_barang'] ?>">
                         <i class="fa fa-trash teks-merah"></i>
                       </a>
                     </td>
@@ -180,7 +224,7 @@
                 <div class="box-header-radius-20 background-hijau teks-putih float-right margin-20-0">
                   <?php
                   
-                    $sqlTotal   = "SELECT SUM(sub_total_kasir) AS total FROM kasir";
+                    $sqlTotal   = "SELECT SUM(sub_total_kasir) AS total FROM kasir  WHERE nomor_tr = '$Tr' ";
                     $queryTotal = mysqli_query($host, $sqlTotal);
                     $total      = mysqli_fetch_assoc($queryTotal);
 

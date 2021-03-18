@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Mar 2021 pada 02.49
+-- Waktu pembuatan: 18 Mar 2021 pada 21.57
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -76,9 +76,9 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `stok_barang`, `satuan_stok_barang`, `untung_barang`, `harga_jual_item`, `produksi_id`) VALUES
 (2, 'Kendil (tanggung)', 380, 'Pcs', 750, 2800, '86'),
-(3, 'Cowek ', 850, 'Pcs', 750, 1275, '87'),
-(7, 'Layah Bolong', 1500, 'Pcs', 750, 1107, '90'),
-(9, 'Kren', 0, 'Pcs', 850, 850, '92');
+(3, 'Cowek ', 990, 'Pcs', 750, 1275, '87'),
+(7, 'Layah Bolong', 970, 'Pcs', 750, 1107, '90'),
+(9, 'Kren', 970, 'Pcs', 850, 850, '92');
 
 -- --------------------------------------------------------
 
@@ -133,7 +133,7 @@ CREATE TABLE `detail_transaksi` (
 --
 
 INSERT INTO `detail_transaksi` (`id_detail_transaksi`, `nomor_tr`, `barang_id`, `qty`, `sub_total`) VALUES
-(17, '202103160001', '3', 150, 191250);
+(23, '202103180001', '3', 10, 12750);
 
 -- --------------------------------------------------------
 
@@ -154,7 +154,20 @@ CREATE TABLE `kasir` (
 --
 
 INSERT INTO `kasir` (`id_kasir`, `nomor_tr`, `barang_id`, `qty`, `sub_total_kasir`) VALUES
-(18, '202103160001', 3, 150, 191250);
+(26, '202103180001', 3, 10, 12750);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `laporan`
+--
+
+CREATE TABLE `laporan` (
+  `id_laporan` int(11) NOT NULL,
+  `tgl_laporan` date NOT NULL,
+  `nomor_transaksi` varchar(20) NOT NULL,
+  `omzet` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -215,8 +228,7 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_tbl_transaksi`, `no_transaksi`, `nama_pembeli`, `keterangan`, `nama_kasir`) VALUES
-(7, '202103140001', 'Bambang Setyo Nur Cahyo', 'anjay ini keterangan lho ', 'Adhimas P'),
-(8, '202103160001', 'M Suryo', 'Beli Cowek', 'Adhimas Pns');
+(9, '202103180001', 'M Putra Hermawan', 'Beli Cowek Dan Kendil Tanggung', 'Adhimas Pns');
 
 --
 -- Indexes for dumped tables
@@ -251,6 +263,12 @@ ALTER TABLE `detail_transaksi`
 --
 ALTER TABLE `kasir`
   ADD PRIMARY KEY (`id_kasir`);
+
+--
+-- Indeks untuk tabel `laporan`
+--
+ALTER TABLE `laporan`
+  ADD PRIMARY KEY (`id_laporan`);
 
 --
 -- Indeks untuk tabel `produksi`
@@ -297,13 +315,19 @@ ALTER TABLE `detail_produksi`
 -- AUTO_INCREMENT untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_detail_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `kasir`
 --
 ALTER TABLE `kasir`
-  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT untuk tabel `laporan`
+--
+ALTER TABLE `laporan`
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `produksi`
@@ -321,7 +345,7 @@ ALTER TABLE `temp`
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_tbl_transaksi` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_tbl_transaksi` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

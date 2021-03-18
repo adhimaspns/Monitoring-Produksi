@@ -120,6 +120,21 @@
       $queryUpdateBarang = mysqli_query($host, $sqlUpdatebarang);
 
 
+      if ($query) {
+        echo "
+          <script>
+            window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+          </script>
+        ";
+      } else {
+        echo "
+          <script>
+            alert('Operasi Gagal');
+            window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+          </script>
+        ";
+      }
+
     } else {
 
       //! Select Qty Table Kasir
@@ -133,12 +148,6 @@
       $queryDetail     = mysqli_query($host, $sqlSelectDetail);
       $dataQtyDetail   = mysqli_fetch_assoc($queryDetail);
       $qtyDetail       = $dataQtyDetail['qty'];
-
-      //! Select Stok Barang
-      $sqlStokBarang   = "SELECT stok_barang FROM barang WHERE id_barang = '$barang_id' ";
-      $queryStokBarang = mysqli_query($host, $sqlStokBarang);
-      $dataStokBarang  = mysqli_fetch_assoc($queryStokBarang);
-      $qtyStokBarang   = $dataStokBarang['stok_barang'];
 
       //! Aritmatika 
         //! Qty 
@@ -158,6 +167,14 @@
       $query            = mysqli_query($host, $sqlUpdateDetail);
 
 
+
+      //! Select Stok Barang
+      $sqlStokBarang   = "SELECT stok_barang FROM barang WHERE id_barang = '$barang_id' ";
+      $queryStokBarang = mysqli_query($host, $sqlStokBarang);
+      $dataStokBarang  = mysqli_fetch_assoc($queryStokBarang);
+      $qtyStokBarang   = $dataStokBarang['stok_barang'];
+
+
       //! Aritmatika Qty Akhir Barang
       $akhirQtyBarang  = $qtyStokBarang - $jumlah_qty;
 
@@ -165,7 +182,126 @@
       $sqlUpdatebarang   = "UPDATE barang SET stok_barang = '$akhirQtyBarang' WHERE id_barang = '$barang_id' ";
       $queryUpdateBarang = mysqli_query($host, $sqlUpdatebarang);
 
+
+      if ($query) {
+        echo "
+          <script>
+            window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+          </script>
+        ";
+      } else {
+        echo "
+          <script>
+            alert('Operasi Gagal');
+            window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+          </script>
+        ";
+      }
+
     }
 
+
   }
+
+
+  if (isset($_POST['qtyTambah'])) {
+    
+    $i          = $_POST['i'];
+    $Tr         = $_POST['Tr'];
+    $b          = $_POST['b'];
+    $qtyawal    = $_POST['qtyawal'];
+    $qtytambah  = $_POST['qtytambah'];
+
+
+    //! Select Harga Barang
+    $sqlHargaBrg   = "SELECT * FROM barang WHERE id_barang = '$b' ";
+    $queryHargabrg = mysqli_query($host, $sqlHargaBrg);
+    $dataHarga     = mysqli_fetch_assoc($queryHargabrg);
+    $harga         = $dataHarga['harga_jual_item']; 
+    $qtybrg        = $dataHarga['stok_barang']; 
+
+    //! Aritmatika
+    $qtyAkhrKasir   = $qtyawal + $qtytambah;
+    $stokAkhrBarang = $qtybrg - $qtytambah;
+    $subtotal       = $harga * $qtyAkhrKasir;
+
+    //! Update Qty dan Subtotal Kasir
+    $sqlkasir    = "UPDATE kasir SET qty = '$qtyAkhrKasir', sub_total_kasir = '$subtotal' WHERE barang_id = '$b' AND nomor_tr = '$Tr' "; 
+    $query       = mysqli_query($host, $sqlkasir);
+
+    //! Update Qty dan Subtotal Detail Transaksi
+    $sqldetail   = "UPDATE detail_transaksi SET qty = '$qtyAkhrKasir', sub_total = '$subtotal' WHERE barang_id = '$b' AND nomor_tr = '$Tr' ";
+    $query       = mysqli_query($host, $sqldetail);
+    
+    //! Update Stok Barang
+    $sqlStkBrg   = "UPDATE barang SET stok_barang = '$stokAkhrBarang' WHERE id_barang = '$b' "; 
+    $query       = mysqli_query($host, $sqlStkBrg);
+
+    if ($query) {
+      echo "
+        <script>
+          window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+        </script>
+      ";
+    } else {
+      echo "
+        <script>
+          alert('Operasi Gagal');
+          window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+        </script>
+      ";
+    }
+    
+  }
+
+
+  if (isset($_POST['qtyKurang'])) {
+
+    $i          = $_POST['i'];
+    $Tr         = $_POST['Tr'];
+    $b          = $_POST['b'];
+    $qtyawal    = $_POST['qtyawal'];
+    $qtykurang  = $_POST['qtykurang'];
+
+
+    //! Select Harga Barang
+    $sqlHargaBrg   = "SELECT * FROM barang WHERE id_barang = '$b' ";
+    $queryHargabrg = mysqli_query($host, $sqlHargaBrg);
+    $dataHarga     = mysqli_fetch_assoc($queryHargabrg);
+    $harga         = $dataHarga['harga_jual_item']; 
+    $qtybrg        = $dataHarga['stok_barang']; 
+
+    //! Aritmatika
+    $qtyAkhrKasir   = $qtyawal - $qtykurang;
+    $stokAkhrBarang = $qtybrg + $qtykurang;
+    $subtotal       = $harga * $qtyAkhrKasir;
+
+    //! Update Qty dan Subtotal Kasir
+    $sqlkasir    = "UPDATE kasir SET qty = '$qtyAkhrKasir', sub_total_kasir = '$subtotal' WHERE barang_id = '$b' AND nomor_tr = '$Tr' "; 
+    $query       = mysqli_query($host, $sqlkasir);
+
+    //! Update Qty dan Subtotal Detail Transaksi
+    $sqldetail   = "UPDATE detail_transaksi SET qty = '$qtyAkhrKasir', sub_total = '$subtotal' WHERE barang_id = '$b' AND nomor_tr = '$Tr' ";
+    $query       = mysqli_query($host, $sqldetail);
+    
+    //! Update Stok Barang
+    $sqlStkBrg   = "UPDATE barang SET stok_barang = '$stokAkhrBarang' WHERE id_barang = '$b' "; 
+    $query       = mysqli_query($host, $sqlStkBrg);
+
+    if ($query) {
+      echo "
+        <script>
+          window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+        </script>
+      ";
+    } else {
+      echo "
+        <script>
+          alert('Operasi Gagal');
+          window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+        </script>
+      ";
+    }
+  }
+
 ?>
