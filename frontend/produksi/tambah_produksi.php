@@ -30,8 +30,8 @@
 
     <main class="main">
 			<section>
-				<h2>Tambah Produksi Baru</h2>
-
+        <h2>Monitoring Biaya Produksi</h2>
+				<h3>Tambah Produksi Baru</h3>
 				<div class="breadcrumb">
           <h3>
             <a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
@@ -49,7 +49,6 @@
                 </div>
               </center>
               <div class="box-konten-radius padding-20 margin-top-10">
-
                 <form action="../../backend/temp/tambah_bahan.php" method="POST">
 
                   <label>Nama Produk</label>
@@ -75,10 +74,7 @@
             </div>
           </div>
         </div>
-
-
 			</section>
-
 		</main>
 
     <!-- JavaScript -->

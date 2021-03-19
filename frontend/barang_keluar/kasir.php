@@ -96,8 +96,7 @@
 
                 $sql           = "SELECT * FROM transaksi WHERE no_transaksi = '$Tr' ";
                 $query         = mysqli_query($host, $sql);
-                $detailDataTr  = mysqli_fetch_assoc($query); 
-
+                $detailDataTr  = mysqli_fetch_assoc($query);
 
                 //! Select Data Selain Data Transaksi Saat Ini
                 $selectData      = "SELECT * FROM kasir WHERE NOT nomor_tr = '$Tr' ";
@@ -138,7 +137,7 @@
                       $queryHpusDetail  = mysqli_query($host, $sqlHpusDetail);
 
                       //! Hapus Data Transaksi
-                      $sqlHpusTransaksi     = "DELETE FROM detail_transaksi WHERE no_transaksi  = '$nmrTrs' "; 
+                      $sqlHpusTransaksi     = "DELETE FROM transaksi WHERE no_transaksi  = '$nmrTrs' "; 
                       $queryHpusTransaksi   = mysqli_query($host, $sqlHpusTransaksi);
 
                   }

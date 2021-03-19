@@ -26,9 +26,8 @@
 	?>
 		<main class="main">
 			<section>
-
-				<h2>Produksi</h2>
-
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Produksi</h3>
 				<div class="breadcrumb">
 						<h3>
 							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
@@ -38,9 +37,7 @@
 				</div>
 
 				<div class="container">
-
 					<div class="baris">
-
 						<!-- Cek Data & Tampilkan -->
 						<?php
 
@@ -92,20 +89,18 @@
 												<tr>
 													<td><?= $list_biaya['nama_produk'] ?></td>
 													<td><?= date('d-m-Y', strtotime($list_biaya['tgl_produksi'])) ?></td>
-													<td><?= "Rp." . number_format($dataSum['total_biaya_produksi'],0, ',' , '.') ?></td>
+													<td><?= "Rp. " . number_format($dataSum['total_biaya_produksi'],0, ',' , '.') ?></td>
 													<td><?= $list_biaya['stok_produk'] . " " . $list_biaya['satuan_stok_produk'] ?></td>
 													<td>
-														<?= "Rp." . number_format($list_biaya['untung_produk'], 0, ',' , '.') ?>
+														<?= "Rp. " . number_format($list_biaya['untung_produk'], 0, ',' , '.') ?>
 														<a href="edit_untung.php?ip=<?= $list_biaya['produksi_id']?>&biaya_produksi=<?= $dataSum['total_biaya_produksi'] ?>&stok=<?= $list_biaya['stok_produk'] ?>" class="lencana lencana-kuning">
 															<i class="fa fa-edit"></i>
 														</a>
 													</td>
-													<td><?= "Rp." . number_format($hargaSatuan, 0, ',' , '.') ?></td>
-													<td class="background-hijau teks-putih"><?= "Rp." . number_format($cuan, 0, ',' , '.') ?></td>
+													<td><?= "Rp. " . number_format($hargaSatuan, 0, ',' , '.') ?></td>
+													<td class="background-hijau teks-putih"><?= "Rp. " . number_format($cuan, 0, ',' , '.') ?></td>
 												</tr>
-
 											</table>
-
 											<i class="teks-mati">
 												<b>* Estimasi Keuntungan Bersih</b> adalah keuntungan yang didapat jika semua barang telah laku terjual
 											</i>
@@ -116,14 +111,12 @@
 
 							<div class="kolom-50">
 								<h2>Detail Bahan</h2>
-
 								<a href="edit_detail_produksi.php?ip=<?php echo $ip?>&page=produksi" class="tmbl tmbl-kuning float-left">
 									Edit Bahan
 								</a>
 							</div>
 
 							<div class="kolom-100 margin-bottom-50">
-
 								<div class="kolom-50-kiri">
 									<div class="box-konten-radius backgorund-e7">
 										<center>
@@ -154,8 +147,8 @@
 														<td><?= $nomor++ ?></td>
 														<td><?= $bahanBaku['nama_bahan'] ?></td>
 														<td><?= $bahanBaku['qty'] . " " .  $bahanBaku['satuan'] ?></td>
-														<td><?= "Rp." . number_format($bahanBaku['harga'], 0, ',' , '.') ?></td>
-														<td><?= "Rp." . number_format($bahanBaku['sub_total'], 0, ',' , '.') ?></td>
+														<td><?= "Rp. " . number_format($bahanBaku['harga'], 0, ',' , '.') ?></td>
+														<td><?= "Rp. " . number_format($bahanBaku['sub_total'], 0, ',' , '.') ?></td>
 													</tr>
 													<?php } ?>
 												</table>
@@ -178,13 +171,12 @@
 													?>
 
 													Total
-													<b> : <?= "Rp " . number_format($total['total_baku'],0,',','.') ?></b>
+													<b> : <?= "Rp. " . number_format($total['total_baku'],0,',','.') ?></b>
 												</div>
 											</div>
 										</center>
 									</div>
 								</div>
-
 								<div class="kolom-50-kanan">
 									<div class="box-konten-radius backgorund-e7">
 										<center>
@@ -215,8 +207,8 @@
 														<td><?= $nomor++ ?></td>
 														<td><?= $bahanBaku['nama_bahan'] ?></td>
 														<td><?= $bahanBaku['qty'] . " " .  $bahanBaku['satuan'] ?></td>
-														<td><?= "Rp." . number_format($bahanBaku['harga'], 0, ',' , '.') ?></td>
-														<td><?= "Rp." . number_format($bahanBaku['sub_total'], 0, ',' , '.') ?></td>
+														<td><?= "Rp. " . number_format($bahanBaku['harga'], 0, ',' , '.') ?></td>
+														<td><?= "Rp. " . number_format($bahanBaku['sub_total'], 0, ',' , '.') ?></td>
 													</tr>
 													<?php } ?>
 												</table>
@@ -232,20 +224,19 @@
 															$kategori      = $data['kategori'];
 															$nama_produk   = $data['nama_produk'];
 														
-															$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total_jadi FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$ip' AND kategori = 'bahan jadi' ");
-															$total      = mysqli_fetch_assoc($sqlTotal);
+															$sqlTotal      = mysqli_query($host, "SELECT SUM(sub_total) AS total_jadi FROM detail_produksi INNER JOIN produksi ON detail_produksi.produksi_id = produksi.id_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan  WHERE produksi_id = '$ip' AND kategori = 'bahan jadi' ");
+															$total         = mysqli_fetch_assoc($sqlTotal);
 
 														?>
 
 														Total
-														<b> : <?= "Rp " . number_format($total['total_jadi'],0,',','.') ?></b>
+														<b> : <?= "Rp. " . number_format($total['total_jadi'],0,',','.') ?></b>
 													</div>
 												</div>
 											</center>
 										</div>
 									</div>
 								</div>
-
 							</div>
 
 							<?php } ?>
@@ -255,7 +246,6 @@
 							<?php
 
 								$ip = $_GET['ip'];
-
 
 								//! CEK DATA WHERE ID 
 								$cekData   =  "SELECT * FROM detail_produksi WHERE produksi_id = '$ip' "; 
@@ -300,9 +290,7 @@
 					</a>
 
 				</div>
-
 			</section>
-
 		</main>
 
 	</body>

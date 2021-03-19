@@ -27,15 +27,16 @@
 
 		<main class="main">
 			<section>
-				<h2>Tambah Data Bahan Baku</h2>
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Tambah Data Bahan Baku</h3>
 
 				<div class="breadcrumb">
-						<h3>
-							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
-							<a href="index.php?page=bahan">Data Bahan Baku</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Tambah Data</span>
-						</h3>
+					<h3>
+						<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+						<a href="index.php?page=bahan">Data Bahan Baku</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Tambah Data</span>
+					</h3>
 				</div>
 
         <div class="container" style="margin-bottom: 150px;">
@@ -69,7 +70,6 @@
           </div>
         </div>
 			</section>
-
 		</main>
 
     <script src="../../../assets/js/jquery-3.3.1.min.js"></script>

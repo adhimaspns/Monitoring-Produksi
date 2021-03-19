@@ -27,15 +27,16 @@
 
 		<main class="main">
 			<section>
-				<h2>Edit Data Bahan Baku</h2>
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Edit Data Bahan Baku</h3>
 
 				<div class="breadcrumb">
-						<h3>
-							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
-							<a href="index.php?page=bahan">Data Bahan Baku</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Edit Data</span>
-						</h3>
+					<h3>
+						<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+						<a href="index.php?page=bahan">Data Bahan Baku</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Edit Data</span>
+					</h3>
 				</div>
 
         <div class="container" style="margin-bottom: 150px;">
@@ -44,9 +45,7 @@
               <div class="form-box">
                 <h2 class="text-center">Edit Data Bahan Baku</h2>
                 <form action="../../../backend/bahan_baku/edit.php" method="POST">
-
 									<?php
-									
 										include '../../../database/koneksi.php';
 
 										$id_bahan = $_GET['id_bahan'];
@@ -55,7 +54,7 @@
 										$query = mysqli_query($host, $sql);
 
 										$data  = mysqli_fetch_assoc($query);
-									
+
 									?>
 
 									<input type="hidden" name="id_bahan" value="<?php echo $data['id_bahan'];?>">
@@ -86,11 +85,10 @@
           </div>
         </div>
 			</section>
-
 		</main>
 
-    <script src="../../assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../assets/js/jquery.maskMoney.min.js"></script>
+    <script src="../../../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="../../../assets/js/jquery.maskMoney.min.js"></script>
     <script>
         $('#harga').maskMoney({prefix:'Rp. ',allowNegative:true,thousand:'.',decimal:'.',precision:0,affixesStay:false});
     </script>

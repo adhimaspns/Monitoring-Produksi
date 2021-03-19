@@ -26,20 +26,18 @@
 	?>
 		<main class="main">
 			<section>
-
-				<h2>Produksi</h2>
-
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Produksi</h3>
 				<div class="breadcrumb">
-						<h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Produksi</span>
-						</h3>
+					<h3>
+						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<a href="index.php?page=produksi">Data Produksi</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Produksi</span>
+					</h3>
 				</div>
 
 				<div class="container">
-
 					<div class="baris">
-
 						<div class="kolom-50-kiri">
 								<center>
 									<div class="box-header-radius background-biru teks-putih">
@@ -49,7 +47,6 @@
 
 								<div class="box-konten-radius backgorund-e7 padding-20 margin-top-10">
 									<form action="" method="POST">
-
 										<?php
 											$id_produksi  = $_GET['id_produksi'];
 
@@ -69,7 +66,6 @@
 										<input type="text" name="" class="form" value="<?php echo "Rp. " . number_format($data_produk['untung_produk'],0,',','.') ?>" readonly>
 									</form>
 								</div>
-
 						</div>
 
 						<div class="kolom-100 margin-top-50 margin-bottom-50">
@@ -199,11 +195,9 @@
 						</div>
 
 						<div class="kolom-100 margin-top-50 margin-bottom-100">
-
 							<h2>Kalkulasi Sementara Biaya Produksi</h2>
 							<div class="box-konten-radius backgorund-e7">
 								<div class="box-badan-konten">
-
 									<div class="table-box">
 										<table class="table-responsive">
 											<tr class="thead-dark">
@@ -221,7 +215,6 @@
 												$nomer = 1;
 												$sql = "SELECT * FROM temp INNER JOIN bahan ON temp.bhn_id = bahan.id_bahan ORDER BY nama_bahan ";
 												$query = mysqli_query($host,$sql);
-
 												while ($temp = mysqli_fetch_assoc($query)) {
 
 											?>
@@ -262,9 +255,7 @@
 
 									<div class="kolom-kalulasi-sementara">
 										<div class="box-header-radius-20 background-hijau teks-putih float-right margin-20-0">
-
 											<?php
-
 
 												$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total FROM temp");
 												$total      = mysqli_fetch_assoc($sqlTotal);
@@ -288,9 +279,7 @@
 												//! Update harga jual produk pada table produksi 
 												$sql    = "UPDATE barang SET harga_jual_item = '$cuan' WHERE produksi_id = '$id_produksi' ";
 												$query  = mysqli_query($host, $sql);
-
 											?>
-
 											Total
 											<b> : <?= "Rp " . number_format($total['total'],0,',','.') ?></b>
 										</div>
@@ -298,15 +287,10 @@
 								</div>
 
 							</div>
-
 						</div>
-
 					</div>
-
 				</div>
-
 			</section>
-
 		</main>
 
 		<script>

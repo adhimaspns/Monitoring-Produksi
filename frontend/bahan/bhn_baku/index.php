@@ -27,13 +27,15 @@
 
 		<main class="main">
 			<section>
-				<h2>Data Bahan Baku</h2>
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Data Bahan Baku</h3>
+
 				<div class="breadcrumb">
-						<h3>
-							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Data Bahan Baku</span>
-						</h3>
+					<h3>
+						<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Data Bahan Baku</span>
+					</h3>
 				</div>
 
 				<div class="container">
@@ -43,24 +45,19 @@
 							<a href="tambah.php?page=bahan" class="tmbl tmbl-biru margin-20-0">
 								<i class="fa fa-plus"></i>
 							</a>
-
 							<a href="../index.php?page=bahan" class="tmbl tmbl-abu-abu">
 								Kembali
 							</a>
-
 							<div class="table-box">
-
 								<div class="kolom-20 float-left">
 									<?php
 										if (isset($_GET['cari'])) {
 											$cari = $_GET['cari'];
-
 											echo "<b> Hasil Pencarian : " .$cari. "</b>";
 										}
 									
 									?>
 								</div>
-
 								<div class="kolom-20 float-right margin-20-0">
 									
 									<form action="cari.php?page=bahan" method="post">	
@@ -70,7 +67,6 @@
 										<input type="submit" name="btncari" value="Cari" class="tmbl tmbl-hijau">
 									</form>
 								</div>
-								
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
@@ -82,7 +78,7 @@
 									</tr>
 
 									<?php
-									
+
 										include '../../../database/koneksi.php';
 
 										//? Pagination
@@ -97,12 +93,11 @@
 
                     $sql   = "SELECT * FROM bahan WHERE kategori = 'bahan baku' ORDER BY nama_bahan ASC LIMIT $mulai, $halaman";
                     $query = mysqli_query($host, $sql);
-										
-										$no  = 1;
+										$no    = 1;
 										while ($data = mysqli_fetch_assoc($query) ) {
 											
 									?>
-									
+
 									<tr>
 										<td><?php echo $no++;?></td>
 										<td><?php echo $data['nama_bahan']; ?></td>
@@ -123,7 +118,6 @@
 										}
 									?>
 								</table>
-
 							</div>
 
 							<div class="penomoran">
@@ -133,8 +127,8 @@
 
 								?>
 									<a href="?halaman=<?php echo $i; ?>&page=bahan" class="tmbl tmbl-abu-abu margin-20-0">
-											<?php echo $i; ?>
-										</a>
+										<?php echo $i; ?>
+									</a>
 								<?php
 									}
 								?>
@@ -159,16 +153,11 @@
 										<td> : <span class="lencana-radius lencana-info"><?php echo $pages; ?></span> </td>
 									</tr>
 								</table>
-
 							</div>
-							
 						</div>
-
 					</div>
 				</div>
 			</section>
-
 		</main>
-
 	</body>
 </html>

@@ -27,7 +27,10 @@
 
 		<main class="main">
 			<section>
-				<h2>Data Bahan Baku & Bahan Jadi</h2>
+
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Data Bahan Baku & Bahan Jadi</h3>
+				
 				<div class="breadcrumb">
 						<h3>
 							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
@@ -75,7 +78,7 @@
 										</tr>
 
 										<?php
-										
+
 											include '../../database/koneksi.php';
 
 											//! Select data bahan
@@ -101,7 +104,7 @@
 												?>
 											</td>
 										</tr>
-										
+
 										<?php } ?>
 									</table>
 								</div>
@@ -109,10 +112,7 @@
 						</div>
 					</div>
 				</div>
-
 			</section>
-
 		</main>
-
 	</body>
 </html>

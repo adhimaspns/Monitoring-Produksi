@@ -27,23 +27,22 @@
 
 		<main class="main">
 			<section>
-				<h2>Data Bahan Baku</h2>
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Data Bahan Baku</h3>
 				<div class="breadcrumb">
-						<h3>
-							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Data Bahan Baku</span>
-						</h3>
+					<h3>
+						<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Data Bahan Baku</span>
+					</h3>
 				</div>
 
 				<div class="container">
 					<div class="baris">
 						<div class="kolom-100 margin-bottom-100">
-
 							<a href="index.php?page=databarang" class="tmbl tmbl-abu-abu margin-20-0">
 								Kembali
 							</a>
-
 							<div class="table-box">
 
 								<div class="kolom-20 float-left">
@@ -54,10 +53,6 @@
 											echo "<b> Hasil Pencarian : " .$cari. "</b>";
 										}
 									?>
-								</div>
-
-								<div class="kolom-20 float-right margin-20-0">
-									
 								</div>
 
 								<table class="table-responsive">
@@ -91,12 +86,10 @@
 											$sql   = "SELECT * FROM barang ORDER BY nama_barang ASC";
 											$query = mysqli_query($host, $sql);
 										}
-										
 										$no  = 1;
 										while ($data = mysqli_fetch_assoc($query) ) {
-											
+
 									?>
-									
 									<tr>
 										<td><?php echo $no++;?></td>
 										<td><?php echo $data['nama_barang']; ?></td>
@@ -118,20 +111,15 @@
 											</a>
 										</td>
 									</tr>
-
 									<?php
 										}
 									?>
 								</table>
-
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</section>
-
 		</main>
-
 	</body>
 </html>

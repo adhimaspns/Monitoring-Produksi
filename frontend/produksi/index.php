@@ -26,14 +26,13 @@
 	?>
 		<main class="main">
 			<section>
-
-				<h2>Produksi</h2>
-
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Produksi</h3>
 				<div class="breadcrumb">
-						<h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Produksi</span>
-						</h3>
+					<h3>
+						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Produksi</span>
+					</h3>
 				</div>
 
 				<div class="container">
@@ -73,11 +72,8 @@
                         $nomor = 1;
                         $sql   = "SELECT * FROM produksi ORDER BY nama_produk LIMIT $mulai, $halaman";
                         $query = mysqli_query($host, $sql);
-
                         while ($data = mysqli_fetch_assoc($query) ) {
-
                       ?>
-
                       <tr>
                         <td><?= $nomor++?></td>
                         <td><?= $data['nama_produk']?></td>
@@ -99,7 +95,6 @@
                           </a>
                         </td>
                       </tr>
-
                       <?php } ?>
 										</table>
 									</div>
@@ -107,14 +102,12 @@
 							</div>
 
 							<div class="penomoran">
-
 								<?php
 									for ($i=1; $i <= $pages ; $i++) { 
-
 								?>
-										<a href="?halaman=<?php echo $i; ?>&page=produksi" class="tmbl tmbl-abu-abu margin-20-0">
-											<?php echo $i; ?>
-										</a>
+									<a href="?halaman=<?php echo $i; ?>&page=produksi" class="tmbl tmbl-abu-abu margin-20-0">
+										<?php echo $i; ?>
+									</a>
 								<?php
 									}
 								?>
@@ -139,18 +132,11 @@
 										<td> : <span class="lencana-radius lencana-info"><?php echo $pages; ?></span> </td>
 									</tr>
 								</table>
-
 							</div>
-
 						</div>
-
 					</div>
-
 				</div>
-
 			</section>
-
 		</main>
-
 	</body>
 </html>

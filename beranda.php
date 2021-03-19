@@ -26,11 +26,12 @@
 	?>
 		<main class="main">
 			<section>
-				<h2>Beranda</h2>
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Beranda</h3>
 				<div class="breadcrumb">
-						<h3>
-							Beranda
-						</h3>
+					<h3>
+						Beranda
+					</h3>
 				</div>
 
 				<div class="container">

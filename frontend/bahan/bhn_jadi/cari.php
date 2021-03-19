@@ -27,45 +27,32 @@
 
 		<main class="main">
 			<section>
-				<h2>Data Bahan Jadi</h2>
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Data Bahan Jadi</h3>
 				<div class="breadcrumb">
-						<h3>
-							<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
-							<a href="index.php?page=bahan">Data Bahan Jadi</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Cari Bahan Jadi</span>
-						</h3>
+					<h3>
+						<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
+						<a href="index.php?page=bahan">Data Bahan Jadi</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Cari Bahan Jadi</span>
+					</h3>
 				</div>
 
 				<div class="container">
 					<div class="baris">
 						<div class="kolom-100">
-
 							<a href="index.php?page=bahan" class="tmbl tmbl-abu-abu margin-20-0">
 								Kembali
 							</a>
 
 							<div class="table-box">
-
 								<div class="kolom-20 float-left">
 									<?php
 										if (isset($_POST['btncari'])) {
 											$cari = $_POST['cari'];
-
 											echo "<b> Hasil Pencarian : " .$cari. "</b>";
 										}
-									
 									?>
-								</div>
-
-								<div class="kolom-20 float-right margin-20-0">
-									
-									<!-- <form action="index.php?page=bahan" method="get">	
-										<label>Carikan</label>
-										<input type="text" name="cari" class="form" placeholder="Ketikan Sesuatu..."> 
-										
-										<input type="submit" value="Cari" class="tmbl tmbl-hijau">
-									</form> -->
 								</div>
 
 								<table class="table-responsive">
@@ -79,7 +66,7 @@
 									</tr>
 
 									<?php
-									
+
 										include '../../../database/koneksi.php';
 
 										//? Pagination
@@ -100,12 +87,10 @@
 											$sql   = "SELECT * FROM bahan WHERE kategori = 'bahan jadi' ORDER BY nama_bahan ASC LIMIT $mulai, $halaman";
 											$query = mysqli_query($host, $sql);
 										}
-										
 										$no  = 1;
 										while ($data = mysqli_fetch_assoc($query) ) {
-											
-									?>
-									
+
+									?>									
 									<tr>
 										<td><?php echo $no++;?></td>
 										<td><?php echo $data['nama_bahan']; ?></td>
@@ -121,27 +106,22 @@
 											</a>
 										</td>
 									</tr>
-
 									<?php
 										}
 									?>
 								</table>
-
 							</div>
 
 							<div class="penomoran">
-
 								<?php
 									for ($i=1; $i <= $pages ; $i++) { 
-
 								?>
 									<a href="?halaman=<?php echo $i; ?>&page=bahan" class="tmbl tmbl-abu-abu margin-20-0">
-											<?php echo $i; ?>
-										</a>
+										<?php echo $i; ?>
+									</a>
 								<?php
 									}
 								?>
-
 								<table style="margin-bottom: 50px;">
 									<tr>
 										<td>Jumlah data per halaman </td>
@@ -162,16 +142,12 @@
 										<td> : <span class="lencana-radius lencana-info"><?php echo $pages; ?></span> </td>
 									</tr>
 								</table>
-
 							</div>
-							
-						</div>
 
+						</div>
 					</div>
 				</div>
 			</section>
-
 		</main>
-
 	</body>
 </html>

@@ -21,25 +21,24 @@
 		<link rel="stylesheet" href="../../assets/css/sidebar.css" />
 	</head>
 	<body>
-	<?php
-		include '../layout/sidebar.php';
-	?>
+		<?php
+			include '../layout/sidebar.php';
+			$ip  = $_GET['ip'];
+		?>
 		<main class="main">
 			<section>
-
-				<h2>Produksi</h2>
-
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Edit Detail Produksi</h3>
 				<div class="breadcrumb">
-						<h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Produksi</span>
-						</h3>
+					<h3>
+						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<a href="detail_produksi.php?ip=<?php echo $ip ?>&page=produksi">Detail Produksi</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Edit Detail Produksi</span>
+					</h3>
 				</div>
 
 				<div class="container">
-
 					<div class="baris">
-
 						<div class="kolom-50-kiri">
 								<center>
 									<div class="box-header-radius background-biru teks-putih">
@@ -51,8 +50,6 @@
 									<form action="" method="POST">
 
 										<?php
-											$ip  = $_GET['ip'];
-
 											$sql_produk  = mysqli_query($host, "SELECT * FROM produksi WHERE id_produksi = '$ip' ");
 											$data_produk = mysqli_fetch_assoc($sql_produk); 
 										?>
@@ -143,7 +140,6 @@
 											<h2 class="text-center">Bahan Jadi</h2>
 										</div>
 									</center>
-
 									<div class="box-badan-konten">
 										<center>
 											<button onclick="btn2()" id="myBtn" class="tmbl tmbl-biru margin-20-0">
@@ -168,11 +164,9 @@
 																$sql   = "SELECT * FROM bahan WHERE kategori = 'bahan jadi' ";
 																$query = mysqli_query($host, $sql);
 																while ($bhn_jdi = mysqli_fetch_assoc($query) ) {
-																
+
 															?>
-
 															<option value="<?php echo $bhn_jdi['id_bahan']; ?>"><?php echo $bhn_jdi['nama_bahan'] . " --- " . $bhn_jdi['satuan'] . " @" . "Rp " . number_format($bhn_jdi['harga'],0,',','.') ?></option>
-
 															<?php
 																}
 															?>
@@ -190,20 +184,14 @@
 											</div>
 										</center>
 									</div>
-
 								</div>
-
-
 							</div>
-
 						</div>
 
 						<div class="kolom-100 margin-top-50 margin-bottom-100">
-
 							<h2>Kalkulasi Sementara Biaya Produksi</h2>
 							<div class="box-konten-radius backgorund-e7">
 								<div class="box-badan-konten">
-
 									<div class="table-box">
 										<table class="table-responsive">
 											<tr class="thead-dark">
@@ -217,13 +205,10 @@
 											</tr>
 
 											<?php
-											
 												$nomer = 1;
 												$sql = "SELECT * FROM detail_produksi INNER JOIN bahan ON detail_produksi.bhn_id = bahan.id_bahan WHERE produksi_id = '$ip' ORDER BY nama_bahan  ";
 												$query = mysqli_query($host,$sql);
-
 												while ($dt = mysqli_fetch_assoc($query)) {
-
 											?>
 
 											<tr>
@@ -244,23 +229,19 @@
 													</a>
 												</td>
 											</tr>
-
 											<?php
 												}											
 											?>
-
 										</table>
-
                     <a href="detail_produksi.php?ip=<?php echo $ip?>&page=produksi" class="tmbl tmbl-hijau margin-20-0">
                       Simpan
                     </a>
-
 									</div>
 
 									<div class="kolom-kalulasi-sementara">
 										<div class="box-header-radius-20 background-hijau teks-putih float-right margin-20-0">
 											<?php
-											
+
 												//! SQL SUM Subtotal 
 												$sqlTotal   = mysqli_query($host, "SELECT SUM(sub_total) AS total FROM detail_produksi WHERE produksi_id = '$ip' ");
 												$total      = mysqli_fetch_assoc($sqlTotal);
@@ -291,19 +272,13 @@
 											<b> : <?= "Rp " . number_format($total['total'],0,',','.') ?></b>
 										</div>
 									</div>
-
 								</div>
 
 							</div>
-
 						</div>
-
 					</div>
-
 				</div>
-
 			</section>
-
 		</main>
 
 		<script>

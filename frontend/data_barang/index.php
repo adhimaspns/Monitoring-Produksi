@@ -20,18 +20,19 @@
 		<link rel="stylesheet" href="../../assets/css/sidebar.css" />
 	</head>
 	<body>
-	<?php
-		include '../../database/koneksi.php';
-		include '../layout/sidebar.php';
-	?>
+		<?php
+			include '../../database/koneksi.php';
+			include '../layout/sidebar.php';
+		?>
 		<main class="main">
 			<section>
-				<h2>Data Barang</h2>
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Data Barang</h3>
 				<div class="breadcrumb">
-            <h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Data produksi</span>
-						</h3>
+					<h3>
+						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Data produksi</span>
+					</h3>
 				</div>
 
 				<div class="container">
@@ -39,7 +40,6 @@
 						<div class="kolom-100">
 
 							<div class="table-box">
-
 								<div class="kolom-20 float-left">
 									<?php
 										if (isset($_GET['cari'])) {
@@ -50,17 +50,14 @@
 									
 									?>
 								</div>
-
 								<div class="kolom-20 float-right margin-20-0">
-									
 									<form action="cari.php?page=databarang" method="post">	
 										<label>Carikan</label>
 										<input type="text" name="cari" class="form" placeholder="Ketikan Sesuatu..."> 
-										
+
 										<input type="submit" name="btncari" value="Cari" class="tmbl tmbl-hijau">
 									</form>
 								</div>
-
 
 								<table class="table-responsive">
 									<tr class="thead-dark">
@@ -84,7 +81,6 @@
 										$no    = 1;
 										$sql   = "SELECT * FROM barang INNER JOIN produksi ON barang.produksi_id = produksi.id_produksi WHERE stok_barang != 0 ORDER BY nama_barang ASC";
 										$query = mysqli_query($host, $sql);
-
 										while ($data = mysqli_fetch_assoc($query) ) {
 
 									?>
@@ -149,15 +145,9 @@
 							</div>
 
 						</div>
-
-							
 					</div>
 				</div>
-
-				
       </section>
-
 		</main>
-
 	</body>
 </html>
