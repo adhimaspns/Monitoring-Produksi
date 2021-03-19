@@ -302,6 +302,41 @@
         </script>
       ";
     }
+
+  }
+
+  if (isset($_POST['transaksiSelesai'])) {
+
+    $Tr              = $_POST['Tr']; 
+    $tgl_hari_ini    = date('Ymd'); 
+    $total_transaksi = $_POST['total_transaksi']; 
+    $nama_kasir      = $_POST['nama_kasir'];
+    $keterangan      = $_POST['keterangan'];
+
+
+    //! Simpan Laporan Transaksi
+    $sqlSimpanTr     = "INSERT INTO laporan_brg_keluar VALUES(0, '$tgl_hari_ini', '$Tr', '$total_transaksi', '$nama_kasir', '$keterangan' )";
+    $querySimpanTr   = mysqli_query($host, $sqlSimpanTr); 
+
+    //! Hapus Data Transaksi Pada Tabel Kasir 
+    $sqlHapusTr      = "DELETE FROM kasir WHERE nomor_tr = '$Tr' ";
+    $queryHapusTr    = mysqli_query($host, $sqlHapusTr);
+
+    if ($queryHapusTr) {
+      echo "
+        <script>
+          window.location.href='../../frontend/barang_keluar/nota.php?Tr=$Tr&page=barangkeluar';
+        </script>
+      ";
+    } else {
+      echo "
+        <script>
+          alert('Operasi Gagal');
+          window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
+        </script>
+      ";
+    }
+
   }
 
 ?>

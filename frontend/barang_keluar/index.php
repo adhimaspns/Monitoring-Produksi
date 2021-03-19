@@ -26,7 +26,8 @@
 	?>
 		<main class="main">
 			<section>
-				<h2>Barang Keluar</h2>
+				<h2>Monitoring Biaya Produksi</h2>
+				<h3>Barang Keluar</h3>
 				<div class="breadcrumb">
             <h3>
 							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>

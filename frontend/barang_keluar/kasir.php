@@ -23,21 +23,71 @@
 	<body>
 	<?php
 		include '../../database/koneksi.php';
-		include '../layout/sidebar.php';
 	?>
+
+    <aside class="sidebar">
+      <nav>
+        <ul class="sidebar__nav">
+          <li>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="/Monitoring/beranda.php?page=beranda" class="sidebar__nav__link <?php if($_GET['page'] == 'beranda'){  ?>sidebar-active <?php }?>">
+              <i class="fa fa-home"></i>
+              <span class="sidebar__nav__text">Beranda</span>
+            </a>
+          </li>
+          <li>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="/Monitoring/frontend/bahan/index.php?page=bahan" class="sidebar__nav__link <?php if($_GET['page'] == 'bahan'){  ?>sidebar-active <?php } ?>">
+              <i class="fas fa-archive"></i>
+              <span class="sidebar__nav__text">Data Bahan</span>
+            </a>
+          </li>
+          <li>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="/Monitoring/frontend/produksi/index.php?page=produksi" class="sidebar__nav__link <?php if($_GET['page'] == 'produksi'){  ?>sidebar-active <?php } ?>">
+              <i class="fas fa-hammer"></i>
+              <span class="sidebar__nav__text">Produksi</span>
+            </a>
+          </li>
+          <li>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="/Monitoring/frontend/data_barang/index.php?page=databarang" class="sidebar__nav__link <?php if($_GET['page'] == 'databarang'){  ?>sidebar-active <?php } ?>">
+              <i class="fas fa-box"></i>
+              <span class="sidebar__nav__text">Data Barang</span>
+            </a>
+          </li>
+          <li>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="/Monitoring/frontend/barang_keluar/index.php?page=barangkeluar" class="sidebar__nav__link <?php if($_GET['page'] == 'barangkeluar'){  ?>sidebar-active <?php } ?>">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="sidebar__nav__text">Barang Keluar</span>
+            </a>
+          </li>
+          <li>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="/Monitoring/frontend/laporan/index.php?page=laporan" class="sidebar__nav__link <?php if($_GET['page'] == 'laporan'){  ?>sidebar-active <?php } ?>">
+              <i class="fas fa-clipboard"></i>
+              <span class="sidebar__nav__text">Laporan</span>
+            </a>
+          </li>
+          <li>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="#" class="sidebar__nav__link link-lgout">
+              <i class="fas fa-user"></i>
+              <span class="sidebar__nav__text">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
 		<main class="main">
 			<section>
-				<h2>Barang Keluar</h2>
+        <h2>Monitoring Biaya Produksi</h2>
+				<h3>Barang Keluar</h3>
 				<div class="breadcrumb">
-            <h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Barang Keluar</span>
-						</h3>
+          <h3>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="../../beranda.php?page=beranda">Barang Keluar</a> <i class="fa fa-angle-right"></i>
+            <span class="akhir-link-breadcrumb">Kasir</span>
+          </h3>
 				</div>
 
 				<div class="container margin-bottom-100">
 					<div class="baris">
-
             <div class="kolom-50 margin-bottom-50">
 
               <?php
@@ -50,47 +100,51 @@
 
 
                 //! Select Data Selain Data Transaksi Saat Ini
-                $sqlHapusKasir   = "SELECT * FROM kasir WHERE NOT nomor_tr = '$Tr' ";
-                $queryHapus      = mysqli_query($host, $sqlHapusKasir);
-                $cekData         = mysqli_num_rows($queryHapus);
-                $nomorTransaksi  = mysqli_fetch_assoc($queryHapus);
+                $selectData      = "SELECT * FROM kasir WHERE NOT nomor_tr = '$Tr' ";
+                $queryData       = mysqli_query($host, $selectData);
+                $cekData         = mysqli_num_rows($queryData);
 
                 //! Jika Ada Data Pada Tabel Kasir Selain Nomor Transaksi Saat Ini, Maka Hapus
                 if ($cekData != 0) {
 
-                  $nomorTr = $nomorTransaksi['nomor_tr'];
+                  //! Hapus Multi Data 
+                  while ($Data = mysqli_fetch_assoc($queryData)) {
 
-                  //! Hapus Data Transaksi (transaksi yang belum diselesaikan)
-                  $sqlHapusTransaksi   = "DELETE FROM transaksi WHERE no_transaksi = '$nomorTr' ";
-                  $queryTransaksi      = mysqli_query($host, $sqlHapusTransaksi);
-                  
-                  //! Hapus Detail Transaksi (transaksi yang belum diselesaikan) 
-                  $sqlHapusDetailTr    = "DELETE FROM detail_transaksi  WHERE nomor_tr = '$nomorTr' ";
-                  $queryDetailTr       = mysqli_query($host, $sqlHapusDetailTr);
+                    $nmrTrs     = $Data['nomor_tr'];
+                    $barang_id  = $Data['barang_id'];
+                    $qtyKasir   = $Data['qty'];
 
-                  //! Hapus Data Kasir
-                  $sqlHapus       = "DELETE FROM kasir WHERE nomor_tr = '$nomorTr' ";
-                  $queryHapusData = mysqli_query($host, $sqlHapus);
+                    //! Select Qty Where $barang_id
+                    $sqlStokBrg   = "SELECT stok_barang FROM barang WHERE id_barang = '$barang_id' ";
+                    $queryStokBrg = mysqli_query($host, $sqlStokBrg);
+                    $dataStok     = mysqli_fetch_assoc($queryStokBrg);
+                    $stokBarang   = $dataStok['stok_barang'];
+
+                    //! Aritmatika Pengembalian stok
+                    $stokKembali  = $stokBarang + $qtyKasir;
+
+                    //! Update Stok Barang Where $barang_id
+                    $sqlUpdateStokBrg  = "UPDATE barang SET stok_barang = '$stokKembali' WHERE id_barang = '$barang_id' ";
+                    $queryUpdateBrg    = mysqli_query($host, $sqlUpdateStokBrg);
+                    
+                    //! Hapus Data Transaksi (belum di selesaikan) Where $nmrTrs
+
+                      //! Hapus Data Kasir 
+                      $sqlHpusKasir   = "DELETE FROM kasir WHERE nomor_tr = '$nmrTrs' ";
+                      $queryHpusKasir = mysqli_query($host, $sqlHpusKasir);
+                    
+                      //! Hapus Data Detail Transaksi 
+                      $sqlHpusDetail    = "DELETE FROM detail_transaksi WHERE nomor_tr = '$nmrTrs' ";
+                      $queryHpusDetail  = mysqli_query($host, $sqlHpusDetail);
+
+                      //! Hapus Data Transaksi
+                      $sqlHpusTransaksi     = "DELETE FROM detail_transaksi WHERE no_transaksi  = '$nmrTrs' "; 
+                      $queryHpusTransaksi   = mysqli_query($host, $sqlHpusTransaksi);
+
+                  }
 
                 }
 
-                //! Select Data Qty 0
-                $sqlData0        = "SELECT * FROM kasir WHERE qty = 0 ";
-                $queryData0      = mysqli_query($host, $sqlData0);
-                $cekQty          = mysqli_num_rows($queryData0); 
-                $cekdataQty      = mysqli_fetch_assoc($queryData0); 
-
-                //! Jika qty 0 maka hapus data tersebut
-                if ($cekQty != 0) {
-
-                  //! Delete Kasir
-                  $sqlhapuskasir   = "DELETE FROM kasir WHERE nomor_tr = '$Tr' AND qty = 0 ";
-                  $queryhapuskasir = mysqli_query($host, $sqlhapuskasir);
-                  
-                  //! Delete Detail Transaksi
-                  $sqlhapusdetail   = "DELETE FROM detail_transaksi WHERE nomor_tr = '$Tr' AND qty = 0 "; 
-                  $queryhapusdetail = mysqli_query($host, $sqlhapusdetail);  
-                } 
               ?>
 
               <div class="form-box-clear">
@@ -99,6 +153,7 @@
                     <h2>Data Transaksi</h2>
                   </div>
                 </center>
+
                 <form>
 
                   <label>Nomor Transaksi</label>
@@ -113,6 +168,7 @@
                   <label>Nama Petugas Kasir</label>
                   <input type="text" class="form" value="<?= $detailDataTr['nama_kasir'] ?>" readonly>
                 </form>
+
               </div>
 
               <div class="box-konten-radius backgorund-e7">
@@ -131,7 +187,6 @@
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
-
                   <!-- Modal content -->
                   <div class="modal-content">
                     <span class="close">
@@ -149,7 +204,7 @@
                             while ($listBarang = mysqli_fetch_assoc($query) ) {
 
                           ?>
-                            <option value="<?= $listBarang['id_barang'] ?>"><?= $listBarang['nama_barang'] . " | " . " Stok : " . $listBarang['stok_barang'] ?></option>
+                            <option value="<?= $listBarang['id_barang'] ?>"><?= $listBarang['nama_barang'] . " | " . " Stok : " . $listBarang['stok_barang'] . " | " ?><?= "@" . "Rp. " . number_format($listBarang['harga_jual_item'],0,',','.') ?></option>
                           <?php } ?>
 
                         </select>
@@ -159,18 +214,15 @@
 
                         <input type="submit" name="simpan_barang" class="tmbl-radius tmbl-hijau margin-20-0" value="Simpan">
                       </form>
-
                   </div>
-
                 </div>
+
               </div>
 
             </div>
 
 						<div class="kolom-100">
-
 							<div class="table-box">
-
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
@@ -213,13 +265,7 @@
 
                   <?php } ?>
 								</table>
-
-                <form action="../../backend/temp/hapus_temp.php" method="post">
-                  <input type="submit" value="Simpan" class="tmbl tmbl-hijau margin-20-0" name="hapus_temp">
-                </form>
-
 							</div>
-
               <div class="kolom-kalulasi-sementara">
                 <div class="box-header-radius-20 background-hijau teks-putih float-right margin-20-0">
                   <?php
@@ -232,53 +278,30 @@
 
                   Total
                   <b> : <?= "Rp " . number_format($total['total'],0,',','.') ?></b>
-                  <!-- <b> : Rp. 250.000</b> -->
                 </div>
               </div>
+              <form action="../../backend/barang_keluar/tambah.php?Tr=<?= $Tr ?>" method="post">
 
-							<!-- <div class="penomoran">
+                <input type="hidden" name="Tr" value="<?= $Tr ?>">
+                <input type="hidden" name="total_transaksi" value="<?= $total['total'] ?>">
+                <input type="hidden" name="nama_kasir" value="<?= $detailDataTr['nama_kasir'] ?>">
+                <input type="hidden" name="keterangan" value="<?= $detailDataTr['keterangan'] ?>">
 
-								<?php
-									for ($i=1; $i <= $pages ; $i++) { 
+                <button type="submit" name="transaksiSelesai" class="tmbl tmbl-biru margin-20-0">
+                  Selesai
+                </button>
 
-								?>
-									<a href="?halaman=<?php echo $i; ?>&page=databarang" class="tmbl tmbl-abu-abu margin-20-0">
-											<?php echo $i; ?>
-										</a>
-								<?php
-									}
-								?>
+                <br>
 
-								<table style="margin-bottom: 50px;">
-									<tr>
-										<td>Jumlah data per halaman </td>
-										<td>
-											: <span class="lencana-radius lencana-info"><?php echo $halaman; ?></span> 
-										</td>
-									</tr>
-									<tr>
-										<td>Total data</td>
-										<td> : <span class="lencana-radius lencana-info"><?php echo $total; ?></span> </td>
-									</tr>
-									<tr>
-										<td>Halaman ke</td>
-										<td> : <span class="lencana-radius lencana-info"><?php echo $page; ?></span> </td>
-									</tr>
-									<tr>
-										<td>Total halaman</td>
-										<td> : <span class="lencana-radius lencana-info"><?php echo $pages; ?></span> </td>
-									</tr>
-								</table>
-							</div> -->
+                <small>
+                  * Pastikan anda sudah menekan tombol <b>selesai</b>, jika tidak data transaksi akan di hapus otomatis oleh sistem ketika melakukan transaksi baru
+                </small>
 
+              </form>
 						</div>
-
 					</div>
 				</div>
-
-				
       </section>
-
 		</main>
 
     <!-- Javascript -->

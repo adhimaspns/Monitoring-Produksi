@@ -24,70 +24,50 @@
 
 		<main class="main">
 			<section>
-
-				<!-- <h2>Produksi</h2> -->
-
-				<!-- <div class="breadcrumb">
-						<h3>
-							<a href="../../beranda.php">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Produksi</span>
-						</h3>
-				</div> -->
-
 				<div class="container">
-
 					<div class="baris baris-tengah">
+						<div class="kolom-50">
+							<div class="box-konten margin-top-150">
+								<h2>Mengurangi Qty Barang</h2>
+								<form action="../../backend/barang_keluar/tambah.php" method="POST">
 
-          <div class="kolom-50">
+									<?php
 
-            <div class="box-konten margin-top-150">
-              <h2>Mengurangi Qty Barang</h2>
-              <form action="../../backend/barang_keluar/tambah.php" method="POST">
+										$i    = $_GET['i'];
+										$Tr   = $_GET['Tr'];
+										$b    = $_GET['b'];
 
-                <?php
+										$sql   = "SELECT * FROM kasir INNER JOIN barang ON kasir.barang_id = barang.id_barang WHERE  id_kasir = '$i' ";
+										$query = mysqli_query($host, $sql);
+										$data   = mysqli_fetch_assoc($query);
 
-                  $i    = $_GET['i'];
-                  $Tr   = $_GET['Tr'];
-                  $b    = $_GET['b'];
+									?>
 
-                  $sql   = "SELECT * FROM kasir INNER JOIN barang ON kasir.barang_id = barang.id_barang WHERE  id_kasir = '$i' ";
-                  $query = mysqli_query($host, $sql);
-                  $data   = mysqli_fetch_assoc($query);
+									<input type="hidden" name="i" value="<?php echo $i?>">
+									<input type="hidden" name="Tr" value="<?php echo $Tr?>">
+									<input type="hidden" name="b" value="<?php echo $b?>">
 
-                ?>
+									<label>Nama Produk</label>
+									<input type="text" class="form" value="<?php echo $data['nama_barang']?>" readonly>
 
-                <input type="hidden" name="i" value="<?php echo $i?>">
-                <input type="hidden" name="Tr" value="<?php echo $Tr?>">
-                <input type="hidden" name="b" value="<?php echo $b?>">
+									<label>Qty Awal</label>
+									<input type="text" name="qtyawal" class="form" value="<?php echo $data['qty']?>" readonly>
 
-								<label>Nama Produk</label>
-								<input type="text" class="form" value="<?php echo $data['nama_barang']?>" readonly>
+									<label>Qty Yang Dikurangi</label>
+									<input type="number" name="qtykurang" class="form" required>
 
-                <label>Qty Awal</label>
-								<input type="text" name="qtyawal" class="form" value="<?php echo $data['qty']?>" readonly>
+									<input type="submit" value="Simpan" name="qtyKurang" class="tmbl tmbl-hijau">
 
-                <label>Qty Yang Dikurangi</label>
-                <input type="number" name="qtykurang" class="form" required>
-
-                <input type="submit" value="Simpan" name="qtyKurang" class="tmbl tmbl-hijau">
-
-								<a href="kasir.php?Tr=<?php echo $Tr?>&page=barangkeluar" class="tmbl tmbl-abu-abu">
-									Kembali
-								</a>
-              </form>
-            </div>
-
-          </div>
-
+									<a href="kasir.php?Tr=<?php echo $Tr?>&page=barangkeluar" class="tmbl tmbl-abu-abu">
+										Kembali
+									</a>
+								</form>
+							</div>
+						</div>
 					</div>
-
 				</div>
-
 			</section>
-
 		</main>
-
-		
 
 	</body>
 </html>
