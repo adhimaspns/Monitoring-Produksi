@@ -32,7 +32,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="/Monitoring/frontend/barang_keluar/index.php?page=laporan" class="sidebar__nav__link <?php if($_GET['page'] == 'laporan'){  ?>sidebar-active <?php } ?>">
+				<a href="/Monitoring/frontend/laporan/index.php?page=laporan" class="sidebar__nav__link <?php if($_GET['page'] == 'laporan'){  ?>sidebar-active <?php } ?>">
 					<i class="fas fa-clipboard"></i>
 					<span class="sidebar__nav__text">Laporan</span>
 				</a>
