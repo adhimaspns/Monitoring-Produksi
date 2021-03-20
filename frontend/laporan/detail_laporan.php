@@ -89,6 +89,11 @@
                     $sqlDetailBarangSub   = "SELECT SUM(sub_total) AS sub_total FROM detail_transaksi WHERE nomor_tr = '$Tr' ";
                     $queryDetailBarangSub = mysqli_query($host, $sqlDetailBarangSub);
                     $dataSubDetail_barang = mysqli_fetch_assoc($queryDetailBarangSub);
+
+                    //! Sum Keuntungan Pertransaksi
+                    $sumUntungTransaksi      = "SELECT SUM(untung_item_detail) AS untung_bersih FROM detail_transaksi WHERE nomor_tr = '$Tr' ";
+                    $querySumUntungTransaksi = mysqli_query($host, $sumUntungTransaksi);
+                    $keuntunganBersih        = mysqli_fetch_assoc($querySumUntungTransaksi); 
                   ?>
                   <table class="table-responsive">
                     <tr>
@@ -103,9 +108,9 @@
                       </td>
                     </tr>
                     </tr>
-                      <td>Keuntungan Yang Di Dapat</td>
+                      <td>Keuntungan Bersih Yang Didapat</td>
                       <td class="background-putih teks-hijau"> <span class="teks-hitam"> : </span> 
-                      <?= "Rp. " . number_format($dataSubDetail_barang['sub_total'],0,',','.') ?>
+                      <?= "Rp. " . number_format($keuntunganBersih['untung_bersih'],0,',','.') ?>
                       </td>
                     </tr>
                   </table>
