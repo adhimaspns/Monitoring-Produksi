@@ -458,6 +458,10 @@ body {
     .huruf-kapital {
       text-transform: uppercase !important;
     }
+
+    .letter-spacing-2px {
+      letter-spacing: 2px !important;
+    }
   
   
     .teks-center {

@@ -272,40 +272,6 @@
                     $sqlTotal   = "SELECT SUM(sub_total_kasir) AS total FROM kasir  WHERE nomor_tr = '$Tr' ";
                     $queryTotal = mysqli_query($host, $sqlTotal);
                     $total      = mysqli_fetch_assoc($queryTotal);
-
-                    // //! Select Data pada tabel kasir
-                    // $sqlSelectData     = "SELECT * FROM kasir WHERE nomor_tr = '$Tr' ";
-                    // $querySelectData   = mysqli_query($host, $sqlSelectData);
-                    // $cekSelecetData    = mysqli_num_rows($querySelectData);
-
-                    // if ($cekSelecetData != 0) {
-
-                    //   while ($data   = mysqli_fetch_assoc($querySelectData) ) {
-
-                    //     $BrgId            = $data['barang_id'];
-
-                    //     //! Select Data Barang Where BrgId
-                    //     $sqlSelectbrgId   = "SELECT * FROM barang WHERE id_barang = '$BrgId' ";
-                    //     $querySelectBrgId = mysqli_query($host, $sqlSelectbrgId);
-                    //     $dataSelectBrgId  = mysqli_fetch_assoc($querySelectBrgId);
-                    //     $untung_barang    = $dataSelectBrgId['untung_barang'];
-
-
-                    //     //! Select Data Kasir Where Tr & Qty
-                    //     $sqlSelectDataId   = "SELECT * FROM kasir WHERE nomor_tr = '$Tr' AND barang_id = '$BrgId' ";
-                    //     $querySelectDataId = mysqli_query($host, $sqlSelectDataId);
-                    //     $dataId            = mysqli_fetch_assoc($querySelectDataId) ;
-
-                    //     $qtyBrg            = $dataId['qty'];
-                    //     $hargaBrg          = $dataId['harga_item'];
-                    //     $totalHargaBarang  = $hargaBrg * $qtyBrg;
-                    //     $total_untung      = $untung_barang * $qtyBrg;
-
-                    //     // $totalHargaBarang . "<br>";
-
-                    //     echo "Rp " . number_format($total_untung,0,',','.');
-                    //   } 
-                    // }
                   ?>
 
                   Total
