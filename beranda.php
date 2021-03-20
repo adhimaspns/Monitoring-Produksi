@@ -15,6 +15,7 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
 		/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/style.css" />
 		<link rel="stylesheet" href="assets/css/sidebar.css" />
@@ -36,6 +37,15 @@
 
 				<div class="container">
 					<div class="baris baris-tengah">
+
+						<?php
+							$today = date('d');
+
+							//! Keuntungan Hari Ini
+							// $untungHariIni   = "SELECT * FROM detail_transaksi WHERE  "; 
+
+						
+						?>
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-biru padding-10">
