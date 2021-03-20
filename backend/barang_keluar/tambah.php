@@ -70,6 +70,7 @@
     $barang_id  = $_POST['barang_id'];
     $jumlah_qty = $_POST['jumlah_qty'];
     $qty        = 1;
+    $tglHrini   = date('Ymd');
 
 
     //! Query Harga (didapat dari tabel barang)
@@ -104,7 +105,7 @@
       $query      = mysqli_query($host, $sqlKasir);
 
       //! Insert Data Table Detail Transaksi
-      $sqlDetail  = "INSERT INTO detail_transaksi VALUES(0, '$Tr', '$barang_id', '$jumlah_qty', '$harga', '$keuntunganBarang', '$subTotal')";
+      $sqlDetail  = "INSERT INTO detail_transaksi VALUES(0, '$tglHrini', '$Tr', '$barang_id', '$jumlah_qty', '$harga', '$keuntunganBarang', '$subTotal')";
       $query      = mysqli_query($host, $sqlDetail); 
 
 
