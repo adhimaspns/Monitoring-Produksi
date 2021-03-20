@@ -70,8 +70,48 @@
                 </form>
               </div>
             </div>
-            </div>
+            <div class="kolom-50-kanan">
+              <div class="box-konten-radius backgorund-e7 padding-20">
+                <center>
+                  <div class="box-header-radius-80 background-biru teks-putih margin-bottom-50">
+                    <h3>Kalkulasi Keuntungan</h3>
+                  </div>
+                </center>
 
+                <div class="table-box">
+                  <?php
+                    $sqlKalkulasiUntung   = "SELECT * FROM detail_transaksi INNER JOIN barang ON detail_transaksi.barang_id = barang.id_barang WHERE nomor_tr = '$Tr' ";
+                    $queryKalkulasiUntung = mysqli_query($host, $sqlKalkulasiUntung);
+                    $dataKalulasi         = mysqli_fetch_assoc($queryKalkulasiUntung);
+                    $cekDataKalkulasi     = mysqli_num_rows($queryKalkulasiUntung);
+
+                    //! Sum Subtotal 
+                    $sqlDetailBarangSub   = "SELECT SUM(sub_total) AS sub_total FROM detail_transaksi WHERE nomor_tr = '$Tr' ";
+                    $queryDetailBarangSub = mysqli_query($host, $sqlDetailBarangSub);
+                    $dataSubDetail_barang = mysqli_fetch_assoc($queryDetailBarangSub);
+                  ?>
+                  <table class="table-responsive">
+                    <tr>
+                      <td>Barang Yang Terjual</td>
+                      <td> <span class="teks-hitam"> : </span> 
+                        <?= $cekDataKalkulasi . " " . "<span class='lencana-radius lencana-hijau'>" . $dataKalulasi['satuan_stok_barang'] ."</span>"  ?>
+                      </td>
+                    </tr>
+                      <td>Omzet Yang Di Dapat</td>
+                      <td class="background-putih teks-hijau"> <span class="teks-hitam"> : </span> 
+                      <?= "Rp. " . number_format($dataSubDetail_barang['sub_total'],0,',','.') ?>
+                      </td>
+                    </tr>
+                    </tr>
+                      <td>Keuntungan Yang Di Dapat</td>
+                      <td class="background-putih teks-hijau"> <span class="teks-hitam"> : </span> 
+                      <?= "Rp. " . number_format($dataSubDetail_barang['sub_total'],0,',','.') ?>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
             <div class="kolom-100 margin-top-50">
               <center>
                 <div class="box-header-radius-80 background-biru teks-putih margin-bottom-50">
@@ -84,6 +124,7 @@
                     <th>No</th>
                     <th>Nama Barang</th>
                     <th>Qty</th>
+                    <th>Harga Satuan</th>
                     <th>Sub Total</th>
                   </tr>
 
@@ -99,19 +140,13 @@
                     <td><?= $no++ ?></td>
                     <td><?= $DetailBarang['nama_barang'] ?></td>
                     <td><?= $DetailBarang['qty'] . " " . $DetailBarang['satuan_stok_barang'] ?></td>
+                    <td><?= "Rp. " . number_format($DetailBarang['harga_jual_item'],0,',','.') ?></td>
                     <td><?= "Rp. " . number_format($DetailBarang['sub_total'],0,',','.') ?></td>
                   </tr>
                   <?php } ?>
 
-                  <?php
-
-                    $sqlDetailBarangSub   = "SELECT SUM(sub_total) AS sub_total FROM detail_transaksi WHERE nomor_tr = '$Tr' ";
-                    $queryDetailBarangSub = mysqli_query($host, $sqlDetailBarangSub);
-                    $dataSubDetail_barang = mysqli_fetch_assoc($queryDetailBarangSub);
-
-                  ?>
                   <tr>
-                    <td colspan="3">Total Pembelian</td>
+                    <td colspan="4">Total Pembelian</td>
                     <td class="background-hijau teks-putih">
                       <?= "Rp. " . number_format($dataSubDetail_barang['sub_total'],0,',','.') ?>
                     </td>
@@ -122,11 +157,10 @@
                 Kembali
               </a>
             </div>
+
           </div>
 				</div>
-				
       </section>
-
 		</main>
 	</body>
 </html>
