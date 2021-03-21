@@ -28,8 +28,14 @@
 		<main class="main">
 			<section>
 				<h2>
-					Monitoring Biaya Produksi | <span id="span"></span>
+					Monitoring Biaya Produksi
 				</h2>
+				<h3 class="text-right">
+					<?= tgl_indo(date('Y-m-d'))?>
+					--
+					<span class="lencana-radius lencana-biru" id="span"></span>
+				</h3>
+
 				<h3>Beranda</h3>
 				<div class="breadcrumb">
 					<h3>
@@ -44,15 +50,75 @@
 							$today = date('Ymd');
 							$month = date('m', strtotime($today));
 
+							//! Select Bulan Detail Transaksi
+							$selectTanggal  = "SELECT * FROM detail_transaksi ORDER BY tgl_transaksi DESC";
+							$queryTanggal   = mysqli_query($host, $selectTanggal);
+							$dataTanggal    = mysqli_fetch_assoc($queryTanggal);
+							$tglTransaksi   = $dataTanggal['tgl_transaksi']; 
+
+							$orderdate  = explode('-', $tglTransaksi);
+							$years      = $orderdate[0];
+							$month      = $orderdate[1];
+							$day        = $orderdate[2];
+
+							function tgl_indo($tglTransaksi){
+								$bulan = array (
+									1 =>   'Januari',
+									'Februari',
+									'Maret',
+									'April',
+									'Mei',
+									'Juni',
+									'Juli',
+									'Agustus',
+									'September',
+									'Oktober',
+									'November',
+									'Desember'
+								);
+								$pecahkan = explode('-', $tglTransaksi);
+								
+								// variabel pecahkan 0 = tanggal
+								// variabel pecahkan 1 = bulan
+								// variabel pecahkan 2 = tahun
+							 
+								return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+							}
+
+							// echo tgl_indo(date('Y-m-d'));
+
+
 							//! Keuntungan Hari Ini
 							$sumUntungHariIni   = "SELECT SUM(untung_item_detail) AS untung_hari_ini FROM detail_transaksi WHERE tgl_transaksi = '$today' ";
 							$querySumUntungHrini= mysqli_query($host, $sumUntungHariIni);
 							$totalUntungHrini   = mysqli_fetch_assoc($querySumUntungHrini);
 
+							//! Keuntungan Bulanan
+							$untungBulanan    	= "SELECT SUM(untung_item_detail) AS untung_bulanan FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND MONTH(tgl_transaksi) = $month  ";
+							$queryBulanan     	= mysqli_query($host, $untungBulanan);
+							$totalUntungBulanan = mysqli_fetch_assoc($queryBulanan);
+
 							//! Omzet Bulanan
-							$sumOmzetBulanan   		= "SELECT SUM(sub_total) AS omzet_bulanan FROM detail_transaksi WHERE tgl_transaksi = '$month' ";
+							$sumOmzetBulanan   		= "SELECT SUM(sub_total) AS omzet_bulanan FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND MONTH(tgl_transaksi) = $month ";
 							$querySumOmzetBulanan = mysqli_query($host, $sumOmzetBulanan);
 							$omzetBulanan         = mysqli_fetch_assoc($querySumOmzetBulanan);
+
+							//! Omzet Harian 
+							$sumOmzetHarian       = "SELECT SUM(sub_total) AS omzet_harian FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND DAY(tgl_transaksi) = $day ";
+							$queryOmzetharian     = mysqli_query($host, $sumOmzetHarian);
+							$omzetHarian          = mysqli_fetch_assoc($queryOmzetharian);
+
+							//! Barang Terjual Harian 
+							$barangJualHarian    = "SELECT SUM(qty) AS jual_harian_barang FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND MONTH(tgl_transaksi) = $month AND DAY(tgl_transaksi) = '$day' ";
+							$queryJualHarian     = mysqli_query($host, $barangJualHarian);
+							$hitungJualHarian    = mysqli_fetch_assoc($queryJualHarian);
+							
+							//! Barang Terjual Bulanan
+							$barangJualBulanan   = "SELECT SUM(qty) AS jual_bulanan_barang FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND MONTH(tgl_transaksi) = $month ";
+							$queryJualBulanan    = mysqli_query($host, $barangJualBulanan);
+							$hitungJualBulanan   = mysqli_fetch_assoc($queryJualBulanan); 
+
+
 						?>
 
 						<div class="kolom-25">
@@ -72,10 +138,32 @@
 						<div class="kolom-25">
 							<div class="box-konten-radius background-hijau padding-20">
 								<h2 class="teks-putih text-center-sm letter-spacing-2px">
-									<?= "Rp. " . number_format($omzetBulanan['omzet_bulanan'],0,',','.') . ",-" ?>
+									<?= "Rp. " . number_format($totalUntungBulanan['untung_bulanan'],0,',','.') . ",-" ?>
 								</h2>
 								<p class="teks-putih text-center-sm">
 									<!-- Omzet Bulan <?php echo date('F', strtotime($today)) ?> -->
+									Keuntungan Bulan Ini
+								</p>
+							</div>
+						</div>
+
+						<div class="kolom-25">
+							<div class="box-konten-radius background-abu-abu padding-20">
+								<h2 class="teks-putih text-center-sm letter-spacing-2px">
+								<?= "Rp. " . number_format($omzetHarian['omzet_harian'],0,',','.') . ",-" ?>
+								</h2>
+								<p class="teks-putih text-center-sm">
+									Omzet Hari Ini
+								</p>
+							</div>
+						</div>
+
+						<div class="kolom-25">
+							<div class="box-konten-radius background-merah padding-20">
+								<h2 class="teks-putih text-center-sm letter-spacing-2px">
+								<?= "Rp. " . number_format($omzetBulanan['omzet_bulanan'],0,',','.') . ",-" ?>
+								</h2>
+								<p class="teks-putih text-center-sm">
 									Omzet Bulan Ini
 								</p>
 							</div>
@@ -83,18 +171,22 @@
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-info padding-20">
-								<h2 class="teks-putih text-center-sm letter-spacing-2px">150</h2>
+								<h2 class="teks-putih text-center-sm letter-spacing-2px">
+									<?= $hitungJualHarian['jual_harian_barang'] ; ?> Pcs
+								</h2>
 								<p class="teks-putih text-center-sm">
-									Penjualan Bulan Ini
+									Barang Terjual Hari Ini
 								</p>
 							</div>
 						</div>
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-kuning padding-20">
-								<h2 class="teks-hitam text-center-sm letter-spacing-2px">150</h2>
+								<h2 class="teks-hitam text-center-sm letter-spacing-2px">
+									<?= $hitungJualBulanan['jual_bulanan_barang'] ?> Pcs
+								</h2>
 								<p class="teks-hitam text-center-sm">
-									Penjualan Bulan Ini
+									Barang Terjual Bulan Ini
 								</p>
 							</div>
 						</div>
