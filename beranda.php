@@ -43,7 +43,7 @@
 					</h3>
 				</div>
 
-				<div class="container">
+				<div class="container margin-bottom-100">
 					<div class="baris baris-tengah">
 
 						<?php

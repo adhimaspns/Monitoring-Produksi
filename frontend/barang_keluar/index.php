@@ -35,7 +35,7 @@
 						</h3>
 				</div>
 
-				<div class="container">
+				<div class="container margin-bottom-100">
 					<div class="baris">
 						<div class="kolom-100">
 
@@ -98,64 +98,54 @@
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
-										<th>Tanggal Transaksi</th>
 										<th>No Transaksi</th>
 										<th>Pembeli</th>
-										<th>Keterangan</th>
+										<th>Petugas Kasir</th>
 										<th>Aksi</th>
 									</tr>
 
 									<?php
 
 										//? Pagination
-										// $halaman = 10;
-										// $page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
-										// $mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
-										// $result  = mysqli_query($host, "SELECT * FROM bahan WHERE kategori = 'bahan baku'");
-										// $total   = mysqli_num_rows($result);
-										// $pages   = ceil($total/$halaman);
+										$halaman = 10;
+										$page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
+										$mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
+										$result  = mysqli_query($host, "SELECT * FROM transaksi");
+										$total   = mysqli_num_rows($result);
+										$pages   = ceil($total/$halaman);
 
 										$no    = 1;
-										$sql   = "SELECT * FROM barang INNER JOIN produksi ON barang.produksi_id = produksi.id_produksi ORDER BY nama_barang ASC";
+										$sql   = "SELECT * FROM transaksi ORDER BY no_transaksi ASC";
 										$query = mysqli_query($host, $sql);
 
 										while ($data = mysqli_fetch_assoc($query) ) {
 
 									?>
 									<tr>
-										<!-- <td><?= $no++ ?></td>
-										<td><?= $data['nama_barang'] ?></td>
-										<td><?= date('d M Y', strtotime($data['tgl_produksi'])) ?></td>
+										<td><?= $no++ ?></td>
 										<td>
-											<?php 
-												if ($data['stok_barang'] >= 10) {
-													echo number_format($data['stok_barang'],0,',','.') . " " . "<span class='lencana-radius lencana-hijau'>" . $data['satuan_stok_barang'] . "</span>" ;
-												} elseif ($data['stok_barang'] >= 0) {
-													echo "<span class='teks-merah'>" .  number_format($data['stok_barang'],0,',','.') . "</span>" . " " . "<span class='lencana-radius lencana-hijau'>" . $data['satuan_stok_barang'] . "</span>" ;
-												} elseif ($data['stok_barang'] = 0) {
-													echo "<span class='lencana-radius lencana-merah'>Stok Habis</span>";
-												}
-											?>
+											<span class="lencana lencana-hijau"><?= $data['no_transaksi'] ?></span>
 										</td>
+										<td><?= $data['nama_pembeli'] ?></td>
+										<td><?= $data['nama_kasir'] ?></td>
 										<td>
-											<a onclick="return confirm('Anda yakin ingin menghapus data ?')" href="../../backend/data_barang/hapus.php?id_barang=<?php echo $data['id_barang']?>" class="tmbl tmbl-merah">
-												<i class="fa fa-trash"></i>
+											<a href="../../backend/data_barang/hapus.php?id_barang=<?php echo $data['id_barang']?>" class="tmbl tmbl-biru">
+												<i class="fa fa-eye"></i>
 											</a>
-										</td> -->
+										</td>
 									</tr>
 									<?php } ?>
 								</table>
 							</div>
 
-							<!-- <div class="penomoran">
+							<div class="penomoran">
 
 								<?php
 									for ($i=1; $i <= $pages ; $i++) { 
-
 								?>
 									<a href="?halaman=<?php echo $i; ?>&page=databarang" class="tmbl tmbl-abu-abu margin-20-0">
-											<?php echo $i; ?>
-										</a>
+										<?php echo $i; ?>
+									</a>
 								<?php
 									}
 								?>
@@ -180,11 +170,9 @@
 										<td> : <span class="lencana-radius lencana-info"><?php echo $pages; ?></span> </td>
 									</tr>
 								</table>
-							</div> -->
+							</div>
 
 						</div>
-
-							
 					</div>
 				</div>
 
