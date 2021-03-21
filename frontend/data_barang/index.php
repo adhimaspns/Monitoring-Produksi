@@ -74,7 +74,7 @@
 										$halaman = 10;
 										$page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
 										$mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
-										$result  = mysqli_query($host, "SELECT * FROM barang");
+										$result  = mysqli_query($host, "SELECT * FROM barang WHERE stok_barang != 0");
 										$total   = mysqli_num_rows($result);
 										$pages   = ceil($total/$halaman);
 
