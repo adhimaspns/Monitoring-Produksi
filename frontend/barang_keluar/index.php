@@ -29,10 +29,10 @@
 				<h2>Monitoring Biaya Produksi</h2>
 				<h3>Barang Keluar</h3>
 				<div class="breadcrumb">
-            <h3>
-							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Barang Keluar</span>
-						</h3>
+					<h3>
+						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Barang Keluar</span>
+					</h3>
 				</div>
 
 				<div class="container margin-bottom-100">
@@ -129,7 +129,7 @@
 										<td><?= $data['nama_pembeli'] ?></td>
 										<td><?= $data['nama_kasir'] ?></td>
 										<td>
-											<a href="../../backend/data_barang/hapus.php?id_barang=<?php echo $data['id_barang']?>" class="tmbl tmbl-biru">
+											<a href="detail_barang_keluar.php?Tr=<?php echo $data['no_transaksi']?>&page=barangkeluar" class="tmbl tmbl-biru">
 												<i class="fa fa-eye"></i>
 											</a>
 										</td>
