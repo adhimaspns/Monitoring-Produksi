@@ -36,6 +36,22 @@
 				<div class="container margin-bottom-100">
 					<div class="baris baris-tengah">
             <div class="kolom-50">
+              <?php
+                if (isset($_GET['pesan'])) {
+                  if ($_GET['pesan'] == "gagal") {
+                    echo "
+                      <div class='alert margin-20-0'>
+                        Username & Password Tidak Cocok!
+                        <a href='login.php' class='float-right teks-putih'>
+                          <i class='fas fa-times'></i>
+                        </a>
+                      </div>
+                    ";
+                  } 
+                }
+              
+              ?>
+              
               <div class="box-konten-radius backgorund-e7 padding-20">
                 <center>
                   <div class="box-header-radius-80 background-biru margin-bottom-50">
