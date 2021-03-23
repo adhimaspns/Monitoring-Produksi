@@ -37,7 +37,7 @@
 					<div class="baris baris-tengah">
             <div class="kolom-50">
               <?php
-                if (isset($_GET['pesan'])) {
+                if (isset($_GET['pesan']) ) {
                   if ($_GET['pesan'] == "gagal") {
                     echo "
                       <div class='alert margin-20-0'>
@@ -48,8 +48,22 @@
                       </div>
                     ";
                   } 
-                }
-              
+                } 
+								if (isset($_GET['pesan']) ) {
+									if ($_GET['pesan'] == "bukanadmin" ) {
+										echo "
+                      <div class='alert margin-20-0'>
+                        Anda Belum Login Sebagai Admin!
+                        <a href='login.php' class='float-right teks-putih'>
+                          <i class='fas fa-times'></i>
+                        </a>
+                      </div>
+                    ";
+
+										// echo "Anda Bukan ADmin";
+									}
+								}
+								
               ?>
               
               <div class="box-konten-radius backgorund-e7 padding-20">
