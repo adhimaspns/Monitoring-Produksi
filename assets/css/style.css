@@ -555,6 +555,10 @@ body {
       padding: 10px !important;
     } 
 
+    .koten-scroll-overflow {
+      overflow: scroll !important;
+    }
+
   /* GRID SISTEM */
 
 
