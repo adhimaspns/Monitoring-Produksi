@@ -38,7 +38,7 @@
 				</a>
 			</li>
 			<li>
-				<a onclick="return confirm('Anda yakin ingin logout ?')" href="#" class="sidebar__nav__link link-lgout">
+				<a onclick="return confirm('Anda yakin ingin logout ?')" href="/Monitoring/backend/login/logout.php" class="sidebar__nav__link link-lgout">
 					<i class="fas fa-user"></i>
 					<span class="sidebar__nav__text">Logout</span>
 				</a>
