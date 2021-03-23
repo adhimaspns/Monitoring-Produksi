@@ -23,7 +23,6 @@
 	<body>
 	<?php
 		include 'database/koneksi.php';
-		// include 'frontend/layout/sidebar.php';
 	?>
 		<main class="main">
 			<section>
@@ -44,15 +43,15 @@
                   </div>
                 </center>
 
-                <form action="" method="POST">
+                <form action="backend/login/proses_login.php" method="POST">
                   <label>Username</label>
-                  <input type="text" name="" class="form-radius">
+                  <input type="text" name="username" class="form-radius" required>
 
                   <label>Password</label>
-                  <input type="password" name="" class="form-radius">
+                  <input type="password" name="password" class="form-radius" required>
 
                   <center>
-                    <input type="text" class="tmbl-radius tmbl-biru margin-20-0" value="Login">
+                    <input type="submit" name="tombol-login" class="tmbl-radius tmbl-biru margin-20-0" value="Login">
                   </center>
                 </form>
               </div>
