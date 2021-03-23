@@ -1,3 +1,11 @@
+<?php
+	session_start();
+
+	if ($_SESSION['level'] != 'admin') {
+		header("location:../../../login.php?pesan=bukanadmin");
+	}
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 	<head>

@@ -1,4 +1,12 @@
-<?php include '../../database/koneksi.php'; ?>
+<?php
+	session_start();
+
+	if ($_SESSION['level'] != 'admin') {
+		header("location:../../login.php?pesan=bukanadmin");
+	}
+
+	include '../../database/koneksi.php'; 
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 	<head>

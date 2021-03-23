@@ -82,6 +82,18 @@ body {
     }
   /* FORM */
 
+  /* ALERT */
+    .alert{
+      background: #e44e4e;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      /* border:1px solid #b32929; */
+      border:1px solid #dc3545;
+      border-radius: 15px !important;
+    }
+  /* Akhir ALERT */
+
   /* TABLE */
     .table-box {
       overflow-x:auto !important;
