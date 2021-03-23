@@ -104,44 +104,42 @@
 							$omzetBulanan         = mysqli_fetch_assoc($querySumOmzetBulanan);
 
 							//! Omzet Harian 
-							$sumOmzetHarian       = "SELECT SUM(sub_total) AS omzet_harian FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND DAY(tgl_transaksi) = $day ";
+							$sumOmzetHarian       = "SELECT SUM(sub_total) AS omzet_harian FROM detail_transaksi WHERE tgl_transaksi = '$today' ";
 							$queryOmzetharian     = mysqli_query($host, $sumOmzetHarian);
 							$omzetHarian          = mysqli_fetch_assoc($queryOmzetharian);
 
 							//! Barang Terjual Harian 
-							$barangJualHarian    = "SELECT SUM(qty) AS jual_harian_barang FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND MONTH(tgl_transaksi) = $month AND DAY(tgl_transaksi) = '$day' ";
+							$barangJualHarian    = "SELECT SUM(qty) AS jual_harian_barang FROM detail_transaksi WHERE tgl_transaksi = '$today' ";
 							$queryJualHarian     = mysqli_query($host, $barangJualHarian);
 							$hitungJualHarian    = mysqli_fetch_assoc($queryJualHarian);
-							
+							$cekDataJualHarian   = mysqli_num_rows($queryJualHarian);
+
 							//! Barang Terjual Bulanan
 							$barangJualBulanan   = "SELECT SUM(qty) AS jual_bulanan_barang FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND MONTH(tgl_transaksi) = $month ";
 							$queryJualBulanan    = mysqli_query($host, $barangJualBulanan);
 							$hitungJualBulanan   = mysqli_fetch_assoc($queryJualBulanan); 
+							$cekDataJualBulanan  = mysqli_num_rows($queryJualBulanan);
 
 
 						?>
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-biru padding-20">
-								<h2 class="teks-putih text-center-sm letter-spacing-2px">
+								<h3 class="teks-putih text-center-sm letter-spacing-2px">
 									<?= "Rp. " . number_format($totalUntungHrini['untung_hari_ini'],0,',','.') . ",-" ?>
-								</h2>
+								</h3>
 								<p class="teks-putih text-center-sm">
 									Keuntungan Hari Ini
 								</p>
-								<!-- <p class="teks-center">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aut sapiente similique atque totam beatae, esse odio doloremque deleniti dignissimos expedita repellendus accusantium iusto nihil, harum consequuntur quia error sit.
-								</p> -->
 							</div>
 						</div>
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-hijau padding-20">
-								<h2 class="teks-putih text-center-sm letter-spacing-2px">
+								<h3 class="teks-putih text-center-sm letter-spacing-2px">
 									<?= "Rp. " . number_format($totalUntungBulanan['untung_bulanan'],0,',','.') . ",-" ?>
-								</h2>
+								</h3>
 								<p class="teks-putih text-center-sm">
-									<!-- Omzet Bulan <?php echo date('F', strtotime($today)) ?> -->
 									Keuntungan Bulan Ini
 								</p>
 							</div>
@@ -149,9 +147,9 @@
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-abu-abu padding-20">
-								<h2 class="teks-putih text-center-sm letter-spacing-2px">
+								<h3 class="teks-putih text-center-sm letter-spacing-2px">
 								<?= "Rp. " . number_format($omzetHarian['omzet_harian'],0,',','.') . ",-" ?>
-								</h2>
+								</h3>
 								<p class="teks-putih text-center-sm">
 									Omzet Hari Ini
 								</p>
@@ -160,9 +158,9 @@
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-merah padding-20">
-								<h2 class="teks-putih text-center-sm letter-spacing-2px">
+								<h3 class="teks-putih text-center-sm letter-spacing-2px">
 								<?= "Rp. " . number_format($omzetBulanan['omzet_bulanan'],0,',','.') . ",-" ?>
-								</h2>
+								</h3>
 								<p class="teks-putih text-center-sm">
 									Omzet Bulan Ini
 								</p>
@@ -171,9 +169,16 @@
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-info padding-20">
-								<h2 class="teks-putih text-center-sm letter-spacing-2px">
-									<?= $hitungJualHarian['jual_harian_barang'] ; ?> Pcs
-								</h2>
+								<h3 class="teks-putih text-center-sm letter-spacing-2px">
+									<?php
+										if ($cekDataJualHarian = 0) {
+											echo $hitungJualHarian['jual_harian_barang'];
+										} else {
+											echo "0";
+										}
+									?>
+									Pcs
+								</h3>
 								<p class="teks-putih text-center-sm">
 									Barang Terjual Hari Ini
 								</p>
@@ -182,9 +187,15 @@
 
 						<div class="kolom-25">
 							<div class="box-konten-radius background-kuning padding-20">
-								<h2 class="teks-hitam text-center-sm letter-spacing-2px">
-									<?= $hitungJualBulanan['jual_bulanan_barang'] ?> Pcs
-								</h2>
+								<h3 class="teks-hitam text-center-sm letter-spacing-2px">
+									<?php
+										if ($cekDataJualBulanan = 0) {
+											echo 0;
+										}else {
+											echo $hitungJualBulanan['jual_bulanan_barang'];
+										}
+									?>Pcs
+								</h3>
 								<p class="teks-hitam text-center-sm">
 									Barang Terjual Bulan Ini
 								</p>
