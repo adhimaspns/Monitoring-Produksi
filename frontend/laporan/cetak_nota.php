@@ -109,9 +109,9 @@
     </section>
   </main>
 
-  <!-- <script>
+  <script>
 		window.print();
-	</script> -->
+	</script>
 
 
 </body>
