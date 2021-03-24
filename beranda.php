@@ -179,7 +179,7 @@
 							<div class="box-konten-radius background-info padding-20">
 								<h3 class="teks-putih text-center-sm letter-spacing-2px">
 									<?php
-										if ($cekDataJualHarian = 0) {
+										if ($cekDataJualHarian != 0) {
 											echo $hitungJualHarian['jual_harian_barang'];
 										} else {
 											echo "0";
