@@ -100,7 +100,7 @@
                       <a href="detail_laporan.php?Tr=<?= $dataLaporan['nomor_transaksi'] ?>&page=laporan" class="tmbl tmbl-biru">
                         <i class="fa fa-eye"></i>
                       </a>
-                      <a href="" class="tmbl tmbl-hijau">
+                      <a target="blank" href="cetak_nota.php?Tr=<?php echo $dataLaporan['nomor_transaksi']?>" class="tmbl tmbl-hijau">
                         <i class="fa fa-clipboard"></i>
                       </a>
                     </td>
