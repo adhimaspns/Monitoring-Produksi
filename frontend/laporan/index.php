@@ -85,6 +85,14 @@
 
                   <?php
 
+                    //? Pagination
+										$halaman = 15;
+										$page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
+										$mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
+										$result  = mysqli_query($host, "SELECT * FROM laporan_brg_keluar");
+										$total   = mysqli_num_rows($result);
+										$pages   = ceil($total/$halaman);
+
                     $no                 = 1;
                     $sqlSelectLaporan   = "SELECT * FROM laporan_brg_keluar";
                     $querySelectLaporan = mysqli_query($host, $sqlSelectLaporan);
@@ -108,6 +116,40 @@
                   <?php } ?>
                 </table>
               </div>
+              <div class="penomoran">
+
+								<?php
+									for ($i=1; $i <= $pages ; $i++) { 
+
+								?>
+									<a href="?halaman=<?php echo $i; ?>&page=laporan" class="tmbl tmbl-abu-abu margin-20-0">
+                    <?php echo $i; ?>
+                  </a>
+								<?php
+									}
+								?>
+
+								<table style="margin-bottom: 50px;">
+									<tr>
+										<td>Jumlah data per halaman </td>
+										<td>
+											: <span class="lencana-radius lencana-info"><?php echo $halaman; ?></span> 
+										</td>
+									</tr>
+									<tr>
+										<td>Total data</td>
+										<td> : <span class="lencana-radius lencana-info"><?php echo $total; ?></span> </td>
+									</tr>
+									<tr>
+										<td>Halaman ke</td>
+										<td> : <span class="lencana-radius lencana-info"><?php echo $page; ?></span> </td>
+									</tr>
+									<tr>
+										<td>Total halaman</td>
+										<td> : <span class="lencana-radius lencana-info"><?php echo $pages; ?></span> </td>
+									</tr>
+								</table>
+							</div>
             </div>
           </div>
 				</div>
