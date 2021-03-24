@@ -64,7 +64,19 @@
                   <!-- Modal content -->
                   <div class="modal-content">
                     <span class="close">&times;</span>
-                    <p>Some text in the Modal..</p>
+                    <h2 class="text-center">Tentukan Tanggal</h2>
+
+                    <div class="form-box-clear">
+                      <form action="laporan_per_tanggal.php?page=laporan" method="POST">
+                        <label>Tanggal Awal</label>
+                        <input type="date" name="tgl_awal" class="form-radius">
+
+                        <label>Tanggal Akhir</label>
+                        <input type="date" name="tgl_akhir" class="form-radius">
+
+                        <input type="submit" name="tampil_dari_tanggal" value="Tampilkan" class="tmbl tmbl-biru">
+                      </form>
+                    </div>
                   </div>
 
                 </div>
