@@ -55,21 +55,15 @@
 					<div class="baris baris-tengah">
 
 						<?php
-							$today = date('Ymd');
+							$today = date('Y-m-d');
 							$month = date('m', strtotime($today));
 
-							//! Select Bulan Detail Transaksi
-							$selectTanggal  = "SELECT * FROM detail_transaksi ORDER BY tgl_transaksi DESC";
-							$queryTanggal   = mysqli_query($host, $selectTanggal);
-							$dataTanggal    = mysqli_fetch_assoc($queryTanggal);
-							$tglTransaksi   = $dataTanggal['tgl_transaksi']; 
-
-							$orderdate  = explode('-', $tglTransaksi);
+							$orderdate  = explode('-', $today);
 							$years      = $orderdate[0];
 							$month      = $orderdate[1];
 							$day        = $orderdate[2];
 
-							function tgl_indo($tglTransaksi){
+							function tgl_indo($today){
 								$bulan = array (
 									1 =>   'Januari',
 									'Februari',
@@ -84,17 +78,10 @@
 									'November',
 									'Desember'
 								);
-								$pecahkan = explode('-', $tglTransaksi);
-								
-								// variabel pecahkan 0 = tanggal
-								// variabel pecahkan 1 = bulan
-								// variabel pecahkan 2 = tahun
-							 
+								$pecahkan = explode('-', $today);
+
 								return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
 							}
-
-							// echo tgl_indo(date('Y-m-d'));
-
 
 							//! Keuntungan Hari Ini
 							$sumUntungHariIni   = "SELECT SUM(untung_item_detail) AS untung_hari_ini FROM detail_transaksi WHERE tgl_transaksi = '$today' ";
@@ -122,13 +109,12 @@
 							$hitungJualHarian    = mysqli_fetch_assoc($queryJualHarian);
 							$cekDataJualHarian   = mysqli_num_rows($queryJualHarian);
 
+
 							//! Barang Terjual Bulanan
 							$barangJualBulanan   = "SELECT SUM(qty) AS jual_bulanan_barang FROM detail_transaksi WHERE YEAR(tgl_transaksi) = $years AND MONTH(tgl_transaksi) = $month ";
 							$queryJualBulanan    = mysqli_query($host, $barangJualBulanan);
 							$hitungJualBulanan   = mysqli_fetch_assoc($queryJualBulanan); 
 							$cekDataJualBulanan  = mysqli_num_rows($queryJualBulanan);
-
-
 						?>
 
 						<div class="kolom-25">
@@ -179,10 +165,10 @@
 							<div class="box-konten-radius background-info padding-20">
 								<h3 class="teks-putih text-center-sm letter-spacing-2px">
 									<?php
-										if ($cekDataJualHarian != 0) {
-											echo $hitungJualHarian['jual_harian_barang'];
+										if ($hitungJualHarian['jual_harian_barang'] == null) {
+											echo 0;
 										} else {
-											echo "0";
+											echo $hitungJualHarian['jual_harian_barang'];
 										}
 									?>
 									Pcs
@@ -197,12 +183,13 @@
 							<div class="box-konten-radius background-kuning padding-20">
 								<h3 class="teks-hitam text-center-sm letter-spacing-2px">
 									<?php
-										if ($cekDataJualBulanan = 0) {
+										if ($hitungJualBulanan['jual_bulanan_barang'] == null) {
 											echo 0;
 										}else {
 											echo $hitungJualBulanan['jual_bulanan_barang'];
 										}
-									?>Pcs
+									?> 
+									Pcs
 								</h3>
 								<p class="teks-hitam text-center-sm">
 									Barang Terjual Bulan Ini
