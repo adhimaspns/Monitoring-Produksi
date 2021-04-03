@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Beranda</title>
+		<title>Monitoring Biaya Produksi | Barang Keluar</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -76,9 +76,15 @@
                   </tr>
                   <?php } ?>
                   <tr>
-                    <!-- <td colspan="1"></td> -->
+                    <?php
+                      $sumSubtotal = "SELECT SUM(sub_total) AS grandtotal FROM detail_transaksi WHERE nomor_tr = '$Tr' ";
+                      $querySum    = mysqli_query($host, $sumSubtotal);
+                      $grandTotal  = mysqli_fetch_assoc($querySum);
+                    ?>
                     <td colspan="4">Grand Total</td>
-                    <td colspan="1" class="background-hijau teks-putih">20.0000</td>
+                    <td colspan="1" class="background-hijau teks-putih">
+                      <?= "Rp. " . number_format($grandTotal['grandtotal'],0,',','.') ?>
+                    </td>
                   </tr>
                 </table>
               </div>
