@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Beranda</title>
+		<title>Monitoring Biaya Produksi | Laporan</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -60,7 +60,6 @@
 
                 <!-- The Modal -->
                 <div id="myModal" class="modal">
-
                   <!-- Modal content -->
                   <div class="modal-content">
                     <span class="close">&times;</span>
@@ -78,9 +77,7 @@
                       </form>
                     </div>
                   </div>
-
                 </div>
-
               </div>
             </div>
 
