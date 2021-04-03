@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Beranda</title>
+		<title>Monitoring Biaya Produksi | Barang Keluar</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -80,29 +80,6 @@
               </div>
 
 							<div class="table-box">
-
-								<!-- <div class="kolom-20 float-left">
-									<?php
-										if (isset($_GET['cari'])) {
-											$cari = $_GET['cari'];
-
-											echo "<b> Hasil Pencarian : " .$cari. "</b>";
-										}
-									
-									?>
-								</div> -->
-
-								<!-- <div class="kolom-20 float-right margin-20-0">
-									
-									<form action="cari.php?page=databarang" method="post">	
-										<label>Carikan</label>
-										<input type="text" name="cari" class="form" placeholder="Ketikan Sesuatu..."> 
-										
-										<input type="submit" name="btncari" value="Cari" class="tmbl tmbl-hijau">
-									</form>
-								</div> -->
-
-
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
