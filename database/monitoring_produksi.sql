@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Mar 2021 pada 18.41
+-- Waktu pembuatan: 04 Apr 2021 pada 12.36
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -76,7 +76,7 @@ CREATE TABLE `barang` (
 INSERT INTO `barang` (`id_barang`, `nama_barang`, `stok_barang`, `satuan_stok_barang`, `untung_barang`, `harga_jual_item`, `produksi_id`) VALUES
 (10, 'Cowek', 0, 'Pcs', 1000, 1835, '93'),
 (11, 'Kendil', 0, 'Pcs', 1000, 4129, '94'),
-(12, 'Cowek', 900, 'Pcs', 1500, 2185, '95');
+(12, 'Cowek', 740, 'Pcs', 1500, 2185, '95');
 
 -- --------------------------------------------------------
 
@@ -145,7 +145,11 @@ INSERT INTO `detail_transaksi` (`id_detail_transaksi`, `tgl_transaksi`, `nomor_t
 (70, '2021-03-21', '202103210001', '10', 50, 1835, 50000, 91750),
 (71, '2021-03-21', '202103210002', '10', 120, 1835, 120000, 220200),
 (72, '2021-03-21', '202103210003', '10', 5, 1835, 5000, 9175),
-(73, '2021-03-22', '202103220001', '12', 100, 2185, 150000, 218500);
+(73, '2021-03-22', '202103220001', '12', 100, 2185, 150000, 218500),
+(74, '2021-03-24', '202103240001', '12', 20, 2185, 30000, 43700),
+(75, '2021-03-31', '202103310001', '12', 100, 2185, 150000, 218500),
+(77, '2021-04-03', '202104030001', '12', 10, 2185, 15000, 21850),
+(78, '2021-04-03', '202104030002', '12', 30, 2185, 45000, 65550);
 
 -- --------------------------------------------------------
 
@@ -188,7 +192,11 @@ INSERT INTO `laporan_brg_keluar` (`id_laporan`, `tgl_laporan`, `nomor_transaksi`
 (8, '2021-03-21', '202103210001', 91750, 'Adhimas Pns', 'Beli Cowek'),
 (9, '2021-03-21', '202103210002', 220200, 'Adhimas Pns', 'Beli Cowek'),
 (10, '2021-03-21', '202103210003', 9175, 'Adhimas Pns', 'Beli Cowek'),
-(11, '2021-03-22', '202103220001', 218500, 'Adhimas ', 'Beli Cowek');
+(11, '2021-03-22', '202103220001', 218500, 'Adhimas ', 'Beli Cowek'),
+(12, '2021-03-24', '202103240001', 43700, 'Adhimas Pns', 'Beli Cowek'),
+(13, '2021-03-31', '202103310001', 218500, 'Adhimas Pns', 'Beli Cowek & Kendil'),
+(14, '2021-04-03', '202104030001', 21850, 'Adhimas Pns', 'Beli Cowek 10'),
+(15, '2021-04-03', '202104030002', 65550, 'Adhimas Pns', 'Beli Cowek 30');
 
 -- --------------------------------------------------------
 
@@ -253,7 +261,11 @@ INSERT INTO `transaksi` (`id_tbl_transaksi`, `no_transaksi`, `nama_pembeli`, `ke
 (26, '202103210001', 'Putra', 'Beli Cowek', 'Adhimas Pns'),
 (27, '202103210002', 'Bambang Hadi Prayitno', 'Beli Cowek', 'Adhimas Pns'),
 (28, '202103210003', 'Tri Wahyu', 'Beli Cowek', 'Adhimas Pns'),
-(29, '202103220001', 'Galoh', 'Beli Cowek', 'Adhimas ');
+(29, '202103220001', 'Galoh', 'Beli Cowek', 'Adhimas '),
+(30, '202103240001', 'Nur Cahyo', 'Beli Cowek', 'Adhimas Pns'),
+(31, '202103310001', 'Putri Nova', 'Beli Cowek & Kendil', 'Adhimas Pns'),
+(32, '202104030001', 'Suprapto', 'Beli Cowek 10', 'Adhimas Pns'),
+(33, '202104030002', 'Sugianto', 'Beli Cowek 30', 'Adhimas Pns');
 
 -- --------------------------------------------------------
 
@@ -268,6 +280,13 @@ CREATE TABLE `user` (
   `password` text NOT NULL,
   `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `level`) VALUES
+(2, 'Admin', 'admin', '452de49db912b3681f2dc59ec8acd88d', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -360,19 +379,19 @@ ALTER TABLE `detail_produksi`
 -- AUTO_INCREMENT untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id_detail_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT untuk tabel `kasir`
 --
 ALTER TABLE `kasir`
-  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan_brg_keluar`
 --
 ALTER TABLE `laporan_brg_keluar`
-  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_laporan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `produksi`
@@ -390,13 +409,13 @@ ALTER TABLE `temp`
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_tbl_transaksi` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_tbl_transaksi` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
