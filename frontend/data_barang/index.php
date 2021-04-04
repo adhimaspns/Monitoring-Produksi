@@ -39,7 +39,7 @@
 				<div class="breadcrumb">
 					<h3>
 						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-						<span class="akhir-link-breadcrumb">Data produksi</span>
+						<span class="akhir-link-breadcrumb">Data Barang</span>
 					</h3>
 				</div>
 
