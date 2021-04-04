@@ -105,9 +105,9 @@
 											<td>
 												<?php 
 													if ($listBahan['kategori'] == 'bahan baku') {
-														echo "<span class='lencana-radius lencana-biru'>" . ucwords(strtolower($listBahan['kategori']))  ."</span>";
+														echo "<span class='lencana lencana-biru'>" . ucwords(strtolower($listBahan['kategori']))  ."</span>";
 													} else {
-														echo "<span class='lencana-radius lencana-hijau'>" . ucwords(strtolower($listBahan['kategori'])) ."</span>";
+														echo "<span class='lencana lencana-hijau'>" . ucwords(strtolower($listBahan['kategori'])) ."</span>";
 													}
 												?>
 											</td>
