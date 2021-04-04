@@ -74,24 +74,12 @@
 
 										include '../../../database/koneksi.php';
 
-										//? Pagination
-										$halaman = 10;
-										$page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
-										$mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
-										$result  = mysqli_query($host, "SELECT * FROM bahan WHERE kategori = 'bahan baku'");
-										$total   = mysqli_num_rows($result);
-										$pages   = ceil($total/$halaman);
-
 										//? Pencarian 
 										if (isset($_POST['btncari']))  {
 											$cari        = $_POST['cari'];
-											$sql_cari    = "SELECT * FROM bahan WHERE kategori = 'bahan baku' AND nama_bahan LIKE '%".$cari."%' LIMIT $mulai, $halaman";
+											$sql_cari    = "SELECT * FROM bahan WHERE kategori = 'bahan baku' AND nama_bahan LIKE '%".$cari."%'";
 											$query       = mysqli_query($host, $sql_cari);
-										} else {
-
-											$sql   = "SELECT * FROM bahan WHERE kategori = 'bahan baku' ORDER BY nama_bahan ASC LIMIT $mulai, $halaman";
-											$query = mysqli_query($host, $sql);
-										}
+										} 
 
 										$no  = 1;
 										while ($data = mysqli_fetch_assoc($query) ) {
@@ -115,38 +103,6 @@
 									<?php
 										}
 									?>
-								</table>
-							</div>
-
-							<div class="penomoran">
-								<?php
-									for ($i=1; $i <= $pages ; $i++) { 
-								?>
-									<a href="?halaman=<?php echo $i; ?>&page=bahan" class="tmbl tmbl-abu-abu margin-20-0">
-										<?php echo $i; ?>
-									</a>
-								<?php
-									}
-								?>
-								<table style="margin-bottom: 50px;">
-									<tr>
-										<td>Jumlah data per halaman </td>
-										<td>
-											: <span class="lencana-radius lencana-info"><?php echo $halaman; ?></span> 
-										</td>
-									</tr>
-									<tr>
-										<td>Total data</td>
-										<td> : <span class="lencana-radius lencana-info"><?php echo $total; ?></span> </td>
-									</tr>
-									<tr>
-										<td>Halaman ke</td>
-										<td> : <span class="lencana-radius lencana-info"><?php echo $page; ?></span> </td>
-									</tr>
-									<tr>
-										<td>Total halaman</td>
-										<td> : <span class="lencana-radius lencana-info"><?php echo $pages; ?></span> </td>
-									</tr>
 								</table>
 							</div>
 						</div>
