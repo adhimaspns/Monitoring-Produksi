@@ -46,7 +46,7 @@
 						</h3>
 				</div>
 
-				<div class="container">
+				<div class="container margin-bottom-100">
 					<div class="baris baris-tengah">
 						<div class="kolom-50-kiri">
 							<div class="box-konten-radius backgorund-e7 padding-20">
