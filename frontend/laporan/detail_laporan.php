@@ -153,7 +153,7 @@
                     <td><?= $no++ ?></td>
                     <td><?= $DetailBarang['nama_barang'] ?></td>
                     <td><?= $DetailBarang['qty'] . " " . $DetailBarang['satuan_stok_barang'] ?></td>
-                    <td><?= "Rp. " . number_format($DetailBarang['harga_jual_item'],0,',','.') ?></td>
+                    <td><?= "Rp. " . number_format($DetailBarang['harga_item'],0,',','.') ?></td>
                     <td><?= "Rp. " . number_format($DetailBarang['sub_total'],0,',','.') ?></td>
                   </tr>
                   <?php } ?>

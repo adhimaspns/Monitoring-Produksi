@@ -55,7 +55,6 @@
                     <th>Qty</th>
                     <th>Harga Satuan</th>
                     <th>Subtotal</th>
-                    <!-- <th>Grand Total</th> -->
                   </tr>
 
                   <?php
@@ -71,7 +70,7 @@
                     <td><?= $no++ ?></td>
                     <td><?= $data['nama_barang'] ?></td>
                     <td><?= $data['qty'] . " " . "<span class='lencana-radius lencana-hijau'>". $data['satuan_stok_barang'] ."</span>" ?></td>
-                    <td><?= "Rp. " . number_format($data['harga_jual_item'],0,',','.') ?></td>
+                    <td><?= "Rp. " . number_format($data['harga_item'],0,',','.') ?></td>
                     <td><?= "Rp. " . number_format($data['sub_total'],0,',','.') ?></td>
                   </tr>
                   <?php } ?>

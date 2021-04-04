@@ -52,7 +52,7 @@
             <td><?php echo date('d M Y', strtotime($detail['tgl_transaksi'])) ?></td>
             <td><?php echo $detail['nama_barang'] ?></td>
             <td><?php echo $detail['qty'] . " " . $detail['satuan_stok_barang'] ?></td>
-            <td><?php echo "Rp. " . number_format($detail['harga_jual_item'],0,',','.') ?></td>
+            <td><?php echo "Rp. " . number_format($detail['harga_item'],0,',','.') ?></td>
             <td><?php echo "Rp. " . number_format($detail['sub_total'],0,',','.') ?></td>
           </tr>
           <?php } ?>
