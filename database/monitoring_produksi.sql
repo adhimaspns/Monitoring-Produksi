@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Apr 2021 pada 23.37
+-- Waktu pembuatan: 04 Apr 2021 pada 23.47
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -116,8 +116,7 @@ INSERT INTO `detail_produksi` (`id_detail_produksi`, `produksi_id`, `bhn_id`, `q
 (98, 95, 18, 4, 60000),
 (99, 95, 19, 1, 75000),
 (100, 95, 20, 2, 200000),
-(101, 95, 25, 3, 150000),
-(108, 96, 23, 380, 114000);
+(101, 95, 25, 3, 150000);
 
 -- --------------------------------------------------------
 
