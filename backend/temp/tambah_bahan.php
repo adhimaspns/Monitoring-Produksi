@@ -23,7 +23,7 @@
     $id_produksi          = $dataProduksi['id_produksi'];
 
     //! INSERT DATA BARANG
-    $sqlBarang      = "INSERT INTO barang VALUES(0, '$nama_produk', '$stok_pra_produksi', '$satuan_pra_produksi', '$untung_pra_produksi', 0, '$id_produksi') ";
+    $sqlBarang      = "INSERT INTO barang VALUES(0, '$nama_produk', '$stok_pra_produksi', '$satuan_pra_produksi', '$untung_pra_produksi', 0, '$id_produksi', '$tgl_produksi') ";
     $query          = mysqli_query($host, $sqlBarang);
 
 
