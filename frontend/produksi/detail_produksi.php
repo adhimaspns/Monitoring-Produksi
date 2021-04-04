@@ -75,6 +75,17 @@
 								$hargaSatuan = $dataSum['total_biaya_produksi'] / $list_biaya['stok_produk'] + $list_biaya['untung_produk'];
 								$cuan        = $list_biaya['stok_produk'] * $list_biaya['untung_produk'];
 
+								//! Variabel 
+								$produksi_id      = $list_biaya['produksi_id'];
+								$total_biaya      = $dataSum['total_biaya_produksi'];
+								$stok_produk      = $list_biaya['stok_produk'];
+
+								//! Select Data barang  
+								$selectStokBarang = "SELECT * FROM barang WHERE produksi_id = '$ip' ";
+								$queryStokBarang  = mysqli_query($host, $selectStokBarang);
+								$dataStokBarang   = mysqli_fetch_assoc($queryStokBarang);
+								$stokBarang       = $dataStokBarang['stok_barang'];
+
 						?>
 
 							<div class="kolom-100 margin-top-50 margin-bottom-100">
@@ -101,9 +112,15 @@
 													<td><?= $list_biaya['stok_produk'] . " " . $list_biaya['satuan_stok_produk'] ?></td>
 													<td>
 														<?= "Rp. " . number_format($list_biaya['untung_produk'], 0, ',' , '.') ?>
-														<a href="edit_untung.php?ip=<?= $list_biaya['produksi_id']?>&biaya_produksi=<?= $dataSum['total_biaya_produksi'] ?>&stok=<?= $list_biaya['stok_produk'] ?>" class="lencana lencana-kuning">
-															<i class="fa fa-edit"></i>
-														</a>
+														<?php
+															if ($stokBarang != 0) {
+																echo "
+																	<a href='edit_untung.php?ip=$produksi_id&biaya_produksi=$total_biaya&stok=$stok_produk' class='lencana lencana-kuning'>
+																		<i class='fa fa-edit'></i>
+																	</a>
+																";
+															}
+														?>
 													</td>
 													<td><?= "Rp. " . number_format($hargaSatuan, 0, ',' , '.') ?></td>
 													<td class="background-hijau teks-putih"><?= "Rp. " . number_format($cuan, 0, ',' , '.') ?></td>
@@ -119,9 +136,16 @@
 
 							<div class="kolom-50">
 								<h2>Detail Bahan</h2>
-								<a href="edit_detail_produksi.php?ip=<?php echo $ip?>&page=produksi" class="tmbl tmbl-kuning float-left">
-									Edit Bahan
-								</a>
+								<?php
+								if ($stokBarang != 0) {
+									echo "
+									<a href='edit_detail_produksi.php?ip=$produksi_id&page=produksi' class='tmbl tmbl-kuning float-left'>
+										Edit Bahan
+									</a>
+									";
+								}
+								?>
+								
 							</div>
 
 							<div class="kolom-100 margin-bottom-50">
