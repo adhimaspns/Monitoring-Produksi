@@ -100,7 +100,7 @@
 										$pages   = ceil($total/$halaman);
 
 										$no    = 1;
-										$sql   = "SELECT * FROM transaksi ORDER BY no_transaksi ASC";
+										$sql   = "SELECT * FROM transaksi ORDER BY no_transaksi ASC LIMIT $mulai, $halaman";
 										$query = mysqli_query($host, $sql);
 
 										while ($data = mysqli_fetch_assoc($query) ) {
