@@ -82,6 +82,9 @@
             </div>
 
             <div class="kolom-100 margin-top-50">
+              <a target="blank" href="cetak_excel.php" class="tmbl tmbl-hijau margin-20-0">
+              <i class="fa fa-file-excel"></i>
+              </a>
               <div class="table-box">
                 <table class="table-responsive">
                   <tr class="thead-dark">
@@ -117,8 +120,8 @@
                       <a href="detail_laporan.php?Tr=<?= $dataLaporan['nomor_transaksi'] ?>&page=laporan" class="tmbl tmbl-biru">
                         <i class="fa fa-eye"></i>
                       </a>
-                      <a target="blank" href="cetak_nota.php?Tr=<?php echo $dataLaporan['nomor_transaksi']?>" class="tmbl tmbl-hijau">
-                        <i class="fa fa-clipboard"></i>
+                      <a target="blank" href="cetak_nota.php?Tr=<?php echo $dataLaporan['nomor_transaksi']?>" class="tmbl tmbl-merah">
+                        <i class="fa fa-file-pdf"></i>
                       </a>
                     </td>
                   </tr>
