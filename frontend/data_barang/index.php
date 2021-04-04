@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Beranda</title>
+		<title>Monitoring Biaya Produksi | Data Barang</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -70,10 +70,10 @@
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
-										<th>Nama Produk</th>
 										<th>Tanggal Produksi</th>
+										<th>Nama Produk</th>
 										<th>Stok</th>
-										<th>Aksi</th>
+										<th>Harga Jual</th>
 									</tr>
 
 									<?php
@@ -94,8 +94,8 @@
 									?>
 									<tr>
 										<td><?= $no++ ?></td>
-										<td><?= $data['nama_barang'] ?></td>
 										<td><?= date('d M Y', strtotime($data['tgl_produksi'])) ?></td>
+										<td><?= $data['nama_barang'] ?></td>
 										<td>
 											<?php 
 												if ($data['stok_barang'] >= 10) {
@@ -108,9 +108,7 @@
 											?>
 										</td>
 										<td>
-											<a onclick="return confirm('Anda yakin ingin menghapus data ?')" href="../../backend/data_barang/hapus.php?id_barang=<?php echo $data['id_barang']?>" class="tmbl tmbl-merah">
-												<i class="fa fa-trash"></i>
-											</a>
+											<?php echo "Rp. " . number_format($data['harga_jual_item'],0,',','.') ?>
 										</td>
 									</tr>
 									<?php } ?>
