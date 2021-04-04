@@ -96,7 +96,7 @@
 
 												<tr>
 													<td><?= $list_biaya['nama_produk'] ?></td>
-													<td><?= date('d-m-Y', strtotime($list_biaya['tgl_produksi'])) ?></td>
+													<td><?= date('d M Y', strtotime($list_biaya['tgl_produksi'])) ?></td>
 													<td><?= "Rp. " . number_format($dataSum['total_biaya_produksi'],0, ',' , '.') ?></td>
 													<td><?= $list_biaya['stok_produk'] . " " . $list_biaya['satuan_stok_produk'] ?></td>
 													<td>
