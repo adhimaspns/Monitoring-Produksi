@@ -53,7 +53,7 @@
 
 						<div class="kolom-100 margin-top-50 margin-bottom-100">
 
-							<h2>Data Produksi</h2>
+							<h2>Histori Produksi</h2>
 							<div class="box-konten-radius backgorund-e7">
 								<div class="box-badan-konten">
 
