@@ -61,9 +61,10 @@
 										<table class="table-responsive">
 											<tr class="thead-dark">
 												<th>No</th>
-												<th>Nama Produk</th>
 												<th>Tanggal Produksi</th>
-												<th>Stok</th>
+												<th>Nama Produk</th>
+												<th>Stok Produksi</th>
+												<th>Stok Barang Tersedia</th>
 												<th>Aksi</th>
 											</tr>
 
@@ -78,14 +79,14 @@
 												$pages   = ceil($total/$halaman);
                       
                         $nomor = 1;
-                        $sql   = "SELECT * FROM produksi ORDER BY nama_produk LIMIT $mulai, $halaman";
+                        $sql   = "SELECT * FROM produksi ORDER BY tgl_produksi DESC LIMIT $mulai, $halaman";
                         $query = mysqli_query($host, $sql);
                         while ($data = mysqli_fetch_assoc($query) ) {
                       ?>
                       <tr>
                         <td><?= $nomor++?></td>
-                        <td><?= $data['nama_produk']?></td>
                         <td><?= date('d M Y', strtotime($data['tgl_produksi'])) ?></td>
+                        <td><?= $data['nama_produk']?></td>
                         <td>
 													<?php 
 														if ($data['stok_produk'] >= 10) {
@@ -95,6 +96,23 @@
 														} elseif ($data['stok_produk'] = 0) {
 															echo "<span class='lencana-radius lencana-merah'>Stok Habis</span>";
 														}
+													?>
+												</td>
+												<td>
+													<?php
+														$id_produksi = $data['id_produksi'];
+														//! Select Stok Terkini Barang 
+														$selectStokBarang = "SELECT * FROM barang WHERE produksi_id = '$id_produksi'";
+														$queryStokBarang  = mysqli_query($host, $selectStokBarang);
+														$dataStokBarang   = mysqli_fetch_assoc($queryStokBarang);
+														$stok             = $dataStokBarang['stok_barang'];
+
+														if ($stok != 0) {
+															echo number_format($stok,0,',','.') . " " . "<span class='lencana-radius lencana-hijau'>" . $data['satuan_stok_produk'] . "</span>" ;
+														} else {
+															echo "<span class='lencana-radius lencana-merah'>Stok Sudah Habis</span>";
+														}
+														
 													?>
 												</td>
                         <td>
