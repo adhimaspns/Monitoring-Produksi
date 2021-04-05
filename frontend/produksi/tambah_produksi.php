@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monitoring Biaya Produksi | </title>
+  <title>Monitoring Biaya Produksi</title>
 
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -60,16 +60,21 @@
                 <form action="../../backend/temp/tambah_bahan.php" method="POST">
 
                   <label>Nama Produk</label>
-                  <input type="text" name="nama_produk" class="form" placeholder="Cowek">
+                  <input type="text" name="nama_produk" class="form" placeholder="Cowek" required>
 
                   <label>Estimasi Barang Jadi </label>
-                  <input type="number" name="stok_pra_produksi" class="form" placeholder="1000">
+                  <input type="number" name="stok_pra_produksi" class="form" placeholder="1000" required>
 
                   <label>Satuan Barang Jadi</label>
-                  <input type="text" name="satuan_pra_produksi" class="form" placeholder="Pcs / Pak / Biji / dst. ">
+                  <select name="satuan_pra_produksi" class="form" required>
+                    <option value="Pcs">Pcs</option>
+                    <option value="Pack">Pack</option>
+                    <option value="Kodi">Kodi</option>
+                    <option value="Lusin">Lusin</option>
+                  </select>
 
                   <label>Keinginan Untung Per Item</label>
-                  <input id="untung" type="text" name="untung_pra_produksi" class="form">
+                  <input id="untung" type="text" name="untung_pra_produksi" class="form" required>
 
                   <button type="submit" name="btnbuat" class="tmbl tmbl-biru">
                     Buat
