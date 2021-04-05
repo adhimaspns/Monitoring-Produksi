@@ -41,6 +41,28 @@
     }
   }
 
+  //! EDIT NAMA PRODUK
+  if (isset($_POST['editNamaProduk'])) {
+    
+    //! Variabel
+    $ip          = $_POST['ip']; 
+    $nama_produk = ucwords(strtolower($_POST['nama_produk'])); 
+
+    //! Update Nama Produk Tabel Produk
+    $sqlProduk   = "UPDATE produksi SET nama_produk = '$nama_produk' WHERE id_produksi = '$ip' ";
+    $queryProduk = mysqli_query($host, $sqlProduk);
+    
+    //! Update Nama Produk Tabel Barang
+    $sqlBarang   = "UPDATE barang SET nama_barang = '$nama_produk' WHERE produksi_id = '$ip' ";
+    $queryBarang = mysqli_query($host, $sqlBarang); 
+
+    if($queryBarang){
+      echo "<script>window.location.href='../../frontend/produksi/detail_produksi.php?ip=$ip&page=produksi'</script>";
+    }else{
+      echo "<script>alert('Operasi Gagal');window.location.href='../../frontend/produksi/edit_nama_bahan.php?ip=$ip&page=produksi'</script>";
+    }
+  } 
+
 
 ?>
 
