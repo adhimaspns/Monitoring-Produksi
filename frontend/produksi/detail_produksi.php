@@ -102,7 +102,7 @@
 															echo $list_biaya['nama_produk'];
 															if ($stokBarang != 0) {
 																echo "
-																	<a href='edit_nama_bahan.php?ip=$produksi_id' class='lencana lencana-kuning'>
+																	<a href='edit_nama_produk.php?ip=$produksi_id' class='lencana lencana-kuning'>
 																		<i class='fa fa-edit'></i>
 																	</a>
 																";
