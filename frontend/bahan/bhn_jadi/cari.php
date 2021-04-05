@@ -36,13 +36,13 @@
 		<main class="main">
 			<section>
 				<h2>Monitoring Biaya Produksi</h2>
-				<h3>Data Bahan Jadi</h3>
+				<h3>Data Bahan Pendukung</h3>
 				<div class="breadcrumb">
 					<h3>
 						<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
 						<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
-						<a href="index.php?page=bahan">Data Bahan Jadi</a> <i class="fa fa-angle-right"></i>
-						<span class="akhir-link-breadcrumb">Cari Bahan Jadi</span>
+						<a href="index.php?page=bahan">Data Bahan Pendukung</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Cari Bahan Pendukung</span>
 					</h3>
 				</div>
 
@@ -66,8 +66,7 @@
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
-										<th>Bahan Baku</th>
-										<th>Tanggal Beli</th>
+										<th>Nama Bahan</th>
 										<th>Satuan</th>
 										<th>Harga Satuan</th>
 										<th>Aksi</th>
@@ -91,7 +90,6 @@
 									<tr>
 										<td><?php echo $no++;?></td>
 										<td><?php echo $data['nama_bahan']; ?></td>
-										<td><?php echo date('d F Y', strtotime($data['tgl']))?></td>
 										<td><?php echo $data['kuantitas'] . " " . $data['satuan']?></td>
 										<td><?php echo "Rp " . number_format($data['harga'],0,',','.')?></td>
 										<td>

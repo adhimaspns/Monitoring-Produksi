@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Tambah Data Jasa</title>
+		<title>Monitoring Biaya Produksi | Tambah Data</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -36,14 +36,14 @@
 		<main class="main">
 			<section>
 				<h2>Monitoring Biaya Produksi</h2>
-				<h3>Tambah Data Bahan Jadi</h3>
+				<h3>Tambah Data Bahan Pendukung</h3>
 
 				<div class="breadcrumb">
 					<h3>
 						<a href="../../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
 						<a href="../index.php?page=bahan">Data Bahan</a> <i class="fa fa-angle-right"></i>
-						<a href="index.php?page=bahan">Bahan Jadi</a> <i class="fa fa-angle-right"></i>
-						<span class="akhir-link-breadcrumb">Tambah Data Bahan Jadi</span>
+						<a href="index.php?page=bahan">Bahan Pendukung</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Tambah Data Pendukung</span>
 					</h3>
 				</div>
 
@@ -51,10 +51,10 @@
           <div class="baris baris-tengah">
             <div class="kolom-50">
               <div class="form-box">
-                <h2 class="text-center">Tambah Data Bahan Jadi</h2>
+                <h2 class="text-center">Tambah Data Bahan Pendukung</h2>
                 <form action="../../../backend/bhn_jadi/tambah.php" method="POST">
 
-                  <label>Nama Bahan Jadi</label>
+                  <label>Nama Bahan Pendukung</label>
                   <input type="text" name="nama_bahan" class="form" placeholder="Selep Tanah" required>
 
 									<label>Kuantitas</label>

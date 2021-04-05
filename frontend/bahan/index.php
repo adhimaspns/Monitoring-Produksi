@@ -37,12 +37,12 @@
 			<section>
 
 				<h2>Monitoring Biaya Produksi</h2>
-				<h3>Data Bahan Baku & Bahan Jadi</h3>
+				<h3>Data Bahan Baku & Bahan Pendukung</h3>
 				
 				<div class="breadcrumb">
 						<h3>
 							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<span class="akhir-link-breadcrumb">Data Bahan Baku & Bahan Jadi</span>
+							<span class="akhir-link-breadcrumb">Data Bahan Baku & Bahan Pendukung</span>
 						</h3>
 				</div>
 
@@ -65,7 +65,7 @@
 								<center>
 									<a href="bhn_jadi/index.php?page=bahan">
 										<div class="box-header-radius-80 background-hijau teks-putih">
-											<h2>Data Bahan Jadi</h2>
+											<h2>Data Bahan Pendukung</h2>
 										</div>
 									</a>
 								</center>
@@ -107,7 +107,7 @@
 													if ($listBahan['kategori'] == 'bahan baku') {
 														echo "<span class='lencana lencana-biru'>" . ucwords(strtolower($listBahan['kategori']))  ."</span>";
 													} else {
-														echo "<span class='lencana lencana-hijau'>" . ucwords(strtolower($listBahan['kategori'])) ."</span>";
+														echo "<span class='lencana lencana-hijau'>Bahan Pendukung</span>";
 													}
 												?>
 											</td>
