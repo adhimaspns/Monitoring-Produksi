@@ -94,7 +94,62 @@
 								<div class="box-konten-radius backgorund-e7">
 									<div class="box-badan-konten">
 										<div class="table-box">
-											<table class="table-responsive">
+											<table class="margin-bottom-20">
+												<tr>
+													<td>Nama Produk</td>
+													<td>:
+														<?php 
+															echo $list_biaya['nama_produk'];
+															if ($stokBarang != 0) {
+																echo "
+																	<a href='edit_nama_bahan.php?ip=$produksi_id' class='lencana lencana-kuning'>
+																		<i class='fa fa-edit'></i>
+																	</a>
+																";
+															}
+														?>
+													</td>
+												</tr>
+												<tr>
+													<td>Tanggal Produksi</td>
+													<td>: <?= date('d M Y', strtotime($list_biaya['tgl_produksi'])) ?></td>
+												</tr>
+												<tr>
+													<td>Biaya Produksi</td>
+													<td>: <?= "Rp. " . number_format($dataSum['total_biaya_produksi'],0, ',' , '.') ?></td>
+												</tr>
+												<tr>
+													<td>Stok Produk</td>
+													<td>: <?= number_format($list_biaya['stok_produk'],0, ',' , '.') . " " . $list_biaya['satuan_stok_produk'] ?></td>
+												</tr>
+												<tr>
+													<td>Keinginan Untung Per Item</td>
+													<td>: 
+														<?= "Rp. " . number_format($list_biaya['untung_produk'], 0, ',' , '.') ?>
+														<?php
+															if ($stokBarang != 0) {
+																echo "
+																	<a href='edit_untung.php?ip=$produksi_id&biaya_produksi=$total_biaya&stok=$stok_produk' class='lencana lencana-kuning'>
+																		<i class='fa fa-edit'></i>
+																	</a>
+																";
+															}
+														?>
+													</td>
+												</tr>
+												<tr>
+													<td>Harga Jual Per Item</td>
+													<td>: <?= "Rp. " . number_format($hargaSatuan, 0, ',' , '.') ?></td>
+												</tr>
+												<tr>
+													<td>Estimasi Keuntungan Bersih Yang Didapat</td>
+													<td>: <?= "Rp. " . number_format($cuan, 0, ',' , '.') ?></td>
+												</tr>
+											</table>
+											<i class="teks-mati margin-top-20">
+												<b>* Estimasi Keuntungan Bersih</b> adalah keuntungan yang didapat jika semua barang telah laku terjual
+											</i>
+											<!-- <table class="table-responsive">
 												<tr class="thead-dark">
 													<th>Nama Produk</th>
 													<th>Tanggal Produksi</th>
@@ -125,10 +180,10 @@
 													<td><?= "Rp. " . number_format($hargaSatuan, 0, ',' , '.') ?></td>
 													<td class="background-hijau teks-putih"><?= "Rp. " . number_format($cuan, 0, ',' , '.') ?></td>
 												</tr>
-											</table>
-											<i class="teks-mati">
+											</table> -->
+											<!-- <i class="teks-mati">
 												<b>* Estimasi Keuntungan Bersih</b> adalah keuntungan yang didapat jika semua barang telah laku terjual
-											</i>
+											</i> -->
 										</div>
 									</div>
 								</div>
@@ -213,7 +268,7 @@
 									<div class="box-konten-radius backgorund-e7">
 										<center>
 											<div class="box-header-radius-80 background-biru teks-putih">
-												<h2 class="text-center">Bahan Jadi</h2>
+												<h2 class="text-center">Bahan Pendukung</h2>
 											</div>
 										</center>
 										<div class="box-badan-konten">
