@@ -144,14 +144,14 @@
 								<div class="box-konten-radius backgorund-e7">
 									<center>
 										<div class="box-header-radius-80 background-biru teks-putih">
-											<h2 class="text-center">Bahan Jadi</h2>
+											<h2 class="text-center">Bahan Pendukung</h2>
 										</div>
 									</center>
 
 									<div class="box-badan-konten">
 										<center>
 											<button onclick="btn2()" id="myBtn" class="tmbl tmbl-biru margin-20-0">
-												Tambah Bahan Jadi
+												Tambah Bahan Pendukung
 											</button>
 
 											<!-- The Modal -->
@@ -163,10 +163,10 @@
 													<span class="close" id="close2" >
 														<i class="fa fa-times"> </i>
 													</span>
-													<h2>Tambah Bahan Jadi</h2>
+													<h2>Tambah Bahan Pendukung</h2>
 													<form action="../../backend/temp/tambah_bahan.php?ket=bhn_jadi&id_produksi=<?php echo $id_produksi ?>" method="POST">
 
-														<label>Bahan Jadi</label>
+														<label>Bahan Pendukung</label>
 														<select name="bhn_id" class="form-radius">
 															<?php
 																$sql   = "SELECT * FROM bahan WHERE kategori = 'bahan jadi' ";
