@@ -14,7 +14,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Beranda</title>
+		<title>Monitoring Biaya Produksi | Kasir</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -149,11 +149,8 @@
                       //! Hapus Data Transaksi
                       $sqlHpusTransaksi     = "DELETE FROM transaksi WHERE no_transaksi  = '$nmrTrs' "; 
                       $queryHpusTransaksi   = mysqli_query($host, $sqlHpusTransaksi);
-
                   }
-
                 }
-
               ?>
 
               <div class="form-box-clear">
@@ -163,16 +160,9 @@
                   </div>
                 </center>
 
-                <form>
-
+                <form class="margin-bottom-50">
                   <label>Nomor Transaksi</label>
                   <input type="text" class="form background-hijau teks-putih" value="<?= $detailDataTr['no_transaksi'] ?>" readonly>
-
-                  <label>Nama Pembeli</label>
-                  <input type="text" class="form" value="<?= $detailDataTr['nama_pembeli'] ?>" readonly>
-
-                  <label>Keterangan</label>
-                  <textarea class="form textarea-no-resize" rows="5" readonly><?= $detailDataTr['keterangan'] ?></textarea>
 
                   <label>Nama Petugas Kasir</label>
                   <input type="text" class="form" value="<?= $detailDataTr['nama_kasir'] ?>" readonly>
