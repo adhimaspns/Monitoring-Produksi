@@ -28,7 +28,7 @@
 			<li>
 				<a href="/Monitoring/frontend/barang_keluar/index.php?page=barangkeluar" class="sidebar__nav__link <?php if($_GET['page'] == 'barangkeluar'){  ?>sidebar-active <?php } ?>">
 					<i class="fas fa-shopping-cart"></i>
-					<span class="sidebar__nav__text">Barang Keluar</span>
+					<span class="sidebar__nav__text">Penjualan</span>
 				</a>
 			</li>
 			<li>
