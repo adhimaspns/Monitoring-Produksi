@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Apr 2021 pada 00.59
+-- Waktu pembuatan: 07 Apr 2021 pada 01.07
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -183,29 +183,28 @@ CREATE TABLE `laporan_brg_keluar` (
   `tgl_laporan` date NOT NULL,
   `nomor_transaksi` varchar(20) NOT NULL,
   `omzet` int(20) NOT NULL,
-  `petugas_kasir` varchar(50) NOT NULL,
-  `ket_laporan` text NOT NULL
+  `petugas_kasir` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `laporan_brg_keluar`
 --
 
-INSERT INTO `laporan_brg_keluar` (`id_laporan`, `tgl_laporan`, `nomor_transaksi`, `omzet`, `petugas_kasir`, `ket_laporan`) VALUES
-(6, '2021-03-20', '202103200013', 596400, 'Adhimas Pns', 'Beli Cowek 100'),
-(7, '2021-03-20', '202103200014', 45875, 'Adhimas Pns', 'Beli Kendil 25'),
-(8, '2021-03-21', '202103210001', 91750, 'Adhimas Pns', 'Beli Cowek'),
-(9, '2021-03-21', '202103210002', 220200, 'Adhimas Pns', 'Beli Cowek'),
-(10, '2021-03-21', '202103210003', 9175, 'Adhimas Pns', 'Beli Cowek'),
-(11, '2021-03-22', '202103220001', 218500, 'Adhimas ', 'Beli Cowek'),
-(12, '2021-03-24', '202103240001', 43700, 'Adhimas Pns', 'Beli Cowek'),
-(13, '2021-03-31', '202103310001', 218500, 'Adhimas Pns', 'Beli Cowek & Kendil'),
-(14, '2021-04-03', '202104030001', 21850, 'Adhimas Pns', 'Beli Cowek 10'),
-(15, '2021-04-03', '202104030002', 65550, 'Adhimas Pns', 'Beli Cowek 30'),
-(16, '2021-04-04', '202104040001', 16850, 'Adhimas Pns', 'Beli Cowek'),
-(17, '2021-04-05', '202104050001', 16850, 'Adhimas Pns', 'Beli Barang'),
-(18, '2021-04-06', '202104060001', 16850, 'Adhimas Pns', '<br />\r\n<b>Notice</b>:  Undefined index: keterangan in <b>C:xampphtdocsMonitoringfrontendarang_keluarkasir.php</b> on line <b>286</b><br />\r\n'),
-(19, '2021-04-07', '202104070001', 8425, 'Adhimas Pns', '<br />\r\n<b>Notice</b>:  Undefined index: keterangan in <b>C:xampphtdocsMonitoringfrontendarang_keluarkasir.php</b> on line <b>286</b><br />\r\n');
+INSERT INTO `laporan_brg_keluar` (`id_laporan`, `tgl_laporan`, `nomor_transaksi`, `omzet`, `petugas_kasir`) VALUES
+(6, '2021-03-20', '202103200013', 596400, 'Adhimas Pns'),
+(7, '2021-03-20', '202103200014', 45875, 'Adhimas Pns'),
+(8, '2021-03-21', '202103210001', 91750, 'Adhimas Pns'),
+(9, '2021-03-21', '202103210002', 220200, 'Adhimas Pns'),
+(10, '2021-03-21', '202103210003', 9175, 'Adhimas Pns'),
+(11, '2021-03-22', '202103220001', 218500, 'Adhimas '),
+(12, '2021-03-24', '202103240001', 43700, 'Adhimas Pns'),
+(13, '2021-03-31', '202103310001', 218500, 'Adhimas Pns'),
+(14, '2021-04-03', '202104030001', 21850, 'Adhimas Pns'),
+(15, '2021-04-03', '202104030002', 65550, 'Adhimas Pns'),
+(16, '2021-04-04', '202104040001', 16850, 'Adhimas Pns'),
+(17, '2021-04-05', '202104050001', 16850, 'Adhimas Pns'),
+(18, '2021-04-06', '202104060001', 16850, 'Adhimas Pns'),
+(19, '2021-04-07', '202104070001', 8425, 'Adhimas Pns');
 
 -- --------------------------------------------------------
 
