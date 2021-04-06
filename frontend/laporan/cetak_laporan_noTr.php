@@ -34,7 +34,7 @@
     $tgl    = $_GET['tgl']; 
     $Tr     = $_GET['Tr'];
 
-    $cariTanggal   = "SELECT * FROM laporan_brg_keluar WHERE tgl_laporan = '$tgl'";  
+    $cariTanggal   = "SELECT * FROM laporan_brg_keluar WHERE tgl_laporan = '$tgl' ORDER BY tgl_laporan DESC";  
     $queryTanggal  = mysqli_query($host, $cariTanggal); 
 
 	?>
@@ -42,7 +42,7 @@
 			<section>
 				<div class="container margin-bottom-100">
           <center>
-            <h1>Laporan Barang Keluar</h1>
+            <h1>Laporan Penjualan</h1>
             <table>
               <tr>
                 <td>Tanggal</td>
@@ -56,7 +56,6 @@
                 <th>Tanggal Transaksi</th>
                 <th>Nomor Transaksi</th>
                 <th>Petugas Kasir</th>
-                <th>Keterangan</th>
                 <th>Omzet</th>
               </tr>
 
@@ -70,7 +69,6 @@
                 <td><?php echo date('d M Y', strtotime($detail_transaksi['tgl_laporan'])) ?></td>
                 <td><?php echo $detail_transaksi['nomor_transaksi'] ?></td>
                 <td><?php echo $detail_transaksi['petugas_kasir'] ?></td>
-                <td><?php echo $detail_transaksi['ket_laporan'] ?></td>
                 <td><?php echo "Rp " . number_format($detail_transaksi['omzet'],0,',','.') ?></td>
               </tr>
               <?php
@@ -83,7 +81,7 @@
                   $queryOmzet  = mysqli_query($host, $sumOmzet);
                   $total_omzet = mysqli_fetch_assoc($queryOmzet); 
                 ?>
-                <td colspan="5">Total Omzet</td>
+                <td colspan="4">Total Omzet</td>
                 <td colspan="1">
                   <?php echo "Rp. " . number_format($total_omzet['total_omzet'],0,',','.') ?>
                 </td>
@@ -95,7 +93,7 @@
                   $queryUntung  = mysqli_query($host, $sumUntung);
                   $total_untung = mysqli_fetch_assoc($queryUntung); 
                 ?>
-                <td colspan="5">Total Keuntungan Bersih</td>
+                <td colspan="4">Total Keuntungan Bersih</td>
                 <td colspan="1">
                   <?php echo "Rp. " . number_format($total_untung['total_untung'],0,',','.') ?>
                 </td>

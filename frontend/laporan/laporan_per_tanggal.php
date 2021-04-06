@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Laporan</title>
+		<title>Monitoring Biaya Produksi | Laporan Penjualan</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -38,12 +38,12 @@
 		<main class="main">
 			<section>
 				<h2>Monitoring Biaya Produksi</h2>
-				<h3>Laporan Barang Keluar</h3>
+				<h3>Laporan Penjualan</h3>
 				<div class="breadcrumb">
           <h3>
 						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-						<a href="index.php?page=laporan">Data Laporan</a> <i class="fa fa-angle-right"></i>
-						<span class="akhir-link-breadcrumb">Data Laporan Per Tanggal</span>
+						<a href="index.php?page=laporan">Data Laporan Penjualan</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Laporan Pertanggal</span>
 					</h3>
 				</div>
 
@@ -68,7 +68,6 @@
                     <th>Tanggal Pembelian</th>
                     <th>Nomor Nota</th>
                     <th>Omzet Yang Di Dapat</th>
-                    <th>Keterangan</th>
                     <th>Petugas Kasir</th>
                     <th>Aksi</th>
                   </tr>
@@ -76,7 +75,7 @@
                   <?php
                     $no                 = 1;
                     //! Cari Data Berdasarkan Tanggal 
-                    $cariTanggal  = "SELECT * FROM laporan_brg_keluar WHERE tgl_laporan BETWEEN '$tgl_awal' AND '$tgl_akhir' ORDER BY tgl_laporan ASC";  
+                    $cariTanggal  = "SELECT * FROM laporan_brg_keluar WHERE tgl_laporan BETWEEN '$tgl_awal' AND '$tgl_akhir' ORDER BY tgl_laporan DESC";  
                     $queryTanggal = mysqli_query($host, $cariTanggal); 
                     
                     while ($dataLaporan = mysqli_fetch_assoc($queryTanggal)) {
@@ -87,7 +86,6 @@
                     <td><?= date('d M Y', strtotime($dataLaporan['tgl_laporan']))  ?></td>
                     <td><?= $dataLaporan['nomor_transaksi'] ?></td>
                     <td><?= "Rp " . number_format($dataLaporan['omzet'],0,',','.') ?></td>
-                    <td><?= $dataLaporan['ket_laporan'] ?></td>
                     <td><?= $dataLaporan['petugas_kasir'] ?></td>
                     <td>
                       <a target="blank" href="cetak_laporan_noTr.php?Tr=<?php echo $dataLaporan['nomor_transaksi']?>&tgl=<?php echo $dataLaporan['tgl_laporan']?>" class="tmbl tmbl-merah">

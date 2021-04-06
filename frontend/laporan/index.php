@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Laporan</title>
+		<title>Monitoring Biaya Produksi | Laporan Penjualan</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -35,11 +35,11 @@
 		<main class="main">
 			<section>
 				<h2>Monitoring Biaya Produksi</h2>
-				<h3>Laporan Barang Keluar</h3>
+				<h3>Laporan Barang Penjualan</h3>
 				<div class="breadcrumb">
           <h3>
 						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-						<span class="akhir-link-breadcrumb">Data Laporan Barang Keluar</span>
+						<span class="akhir-link-breadcrumb">Data Laporan Penjualan</span>
 					</h3>
 				</div>
 
@@ -101,12 +101,12 @@
 										$halaman = 15;
 										$page    = isset($_GET["halaman"]) ? (int)$_GET["halaman"] :1;
 										$mulai   = ($page>1) ? ($page * $halaman) - $halaman : 0;
-										$result  = mysqli_query($host, "SELECT * FROM laporan_brg_keluar");
+										$result  = mysqli_query($host, "SELECT * FROM laporan_brg_keluar ORDER BY tgl_laporan DESC");
 										$total   = mysqli_num_rows($result);
 										$pages   = ceil($total/$halaman);
 
                     $no                 = 1;
-                    $sqlSelectLaporan   = "SELECT * FROM laporan_brg_keluar";
+                    $sqlSelectLaporan   = "SELECT * FROM laporan_brg_keluar ORDER BY tgl_laporan DESC";
                     $querySelectLaporan = mysqli_query($host, $sqlSelectLaporan);
                     while ($dataLaporan = mysqli_fetch_assoc($querySelectLaporan)) {
 
@@ -120,8 +120,8 @@
                       <a href="detail_laporan.php?Tr=<?= $dataLaporan['nomor_transaksi'] ?>&page=laporan" class="tmbl tmbl-biru">
                         <i class="fa fa-eye"></i>
                       </a>
-                      <a target="blank" href="cetak_nota.php?Tr=<?php echo $dataLaporan['nomor_transaksi']?>" class="tmbl tmbl-merah">
-                        <i class="fa fa-file-pdf"></i>
+                      <a target="blank" href="cetak_nota.php?Tr=<?php echo $dataLaporan['nomor_transaksi']?>" class="tmbl tmbl-hijau">
+                        Cetak Nota
                       </a>
                     </td>
                   </tr>

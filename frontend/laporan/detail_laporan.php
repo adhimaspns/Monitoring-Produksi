@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Beranda</title>
+		<title>Monitoring Biaya Produksi | Detail Laporan Penjualan</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -35,12 +35,12 @@
 		<main class="main">
 			<section>
 				<h2>Monitoring Biaya Produksi</h2>
-				<h3>Laporan Barang Keluar</h3>
+				<h3>Laporan Penjualan</h3>
 				<div class="breadcrumb">
           <h3>
 						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-						<a href="index.php?page=laporan">Data Laporan Barang Keluar</a> <i class="fa fa-angle-right"></i>
-						<span class="akhir-link-breadcrumb">Detail Laporan Barang Keluar</span>
+						<a href="index.php?page=laporan">Data Laporan Penjualan</a> <i class="fa fa-angle-right"></i>
+						<span class="akhir-link-breadcrumb">Detail Laporan Penjualan</span>
 					</h3>
 				</div>
 
@@ -55,23 +55,14 @@
                 </center>
 
                 <?php
-
                   $Tr                    = $_GET['Tr'];
                   $sqlSelectTransaksi    = "SELECT * FROM transaksi WHERE no_transaksi = '$Tr' ";
                   $querySelectTransaksi  = mysqli_query($host, $sqlSelectTransaksi);
                   $DetailTransaksi       = mysqli_fetch_assoc($querySelectTransaksi);
-
                 ?>
                 <form>
-                  <label>Nama Pembeli</label>
-                  <input type="text" class="form" value="<?= $DetailTransaksi['nama_pembeli'] ?>" readonly>
-
                   <label>Nomor Transaksi</label>
                   <input type="text" class="form" value="<?= $DetailTransaksi['no_transaksi'] ?>" readonly>
-
-                  <label>Keterangan Transaksi</label>
-                  <label>Keterangan</label>
-                  <textarea class="form textarea-no-resize" rows="5" readonly><?= $DetailTransaksi['keterangan'] ?></textarea>
 
                   <label>Petugas Kasir</label>
                   <input type="text" class="form" value="<?= $DetailTransaksi['nama_kasir'] ?>" readonly>
@@ -88,17 +79,23 @@
 
                 <div class="table-box">
                   <?php
+                    //! Select Data Detail Transaksi 
                     $sqlKalkulasiUntung   = "SELECT * FROM detail_transaksi INNER JOIN barang ON detail_transaksi.barang_id = barang.id_barang WHERE nomor_tr = '$Tr' ";
                     $queryKalkulasiUntung = mysqli_query($host, $sqlKalkulasiUntung);
                     $dataKalulasi         = mysqli_fetch_assoc($queryKalkulasiUntung);
-                    $cekDataKalkulasi     = mysqli_num_rows($queryKalkulasiUntung);
+
+                    //! Sum Barang Terjual
+                    $sumJmlBrg   = "SELECT SUM(qty) AS total_barang FROM detail_transaksi WHERE nomor_tr = '$Tr' ";
+                    $querySum    = mysqli_query($host, $sumJmlBrg);
+                    $dataBarang  = mysqli_fetch_assoc($querySum);
+                    $totalBarang = $dataBarang['total_barang'];
 
                     //! Sum Subtotal 
                     $sqlDetailBarangSub   = "SELECT SUM(sub_total) AS sub_total FROM detail_transaksi WHERE nomor_tr = '$Tr' ";
                     $queryDetailBarangSub = mysqli_query($host, $sqlDetailBarangSub);
                     $dataSubDetail_barang = mysqli_fetch_assoc($queryDetailBarangSub);
 
-                    //! Sum Keuntungan Pertransaksi
+                    //! Sum Keuntungan Per transaksi
                     $sumUntungTransaksi      = "SELECT SUM(untung_item_detail) AS untung_bersih FROM detail_transaksi WHERE nomor_tr = '$Tr' ";
                     $querySumUntungTransaksi = mysqli_query($host, $sumUntungTransaksi);
                     $keuntunganBersih        = mysqli_fetch_assoc($querySumUntungTransaksi); 
@@ -107,7 +104,7 @@
                     <tr>
                       <td>Barang Yang Terjual</td>
                       <td> <span class="teks-hitam"> : </span> 
-                        <?= $cekDataKalkulasi . " " . "<span class='lencana-radius lencana-hijau'>" . $dataKalulasi['satuan_stok_barang'] ."</span>"  ?>
+                        <?= $totalBarang . " " . "<span class='lencana-radius lencana-hijau'>" . $dataKalulasi['satuan_stok_barang'] ."</span>"  ?>
                       </td>
                     </tr>
                       <td>Omzet Yang Di Dapat</td>
@@ -128,7 +125,7 @@
             <div class="kolom-100 margin-top-50">
               <center>
                 <div class="box-header-radius-80 background-biru teks-putih margin-bottom-50">
-                  <h3>Barang Yang Di Beli</h3>
+                  <h3>Barang Yang Terjual</h3>
                 </div>
               </center>
               <div class="table-box">
