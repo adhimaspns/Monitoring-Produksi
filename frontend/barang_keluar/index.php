@@ -47,37 +47,11 @@
 					<div class="baris">
 						<div class="kolom-100">
 
-              <!-- Trigger/Open The Modal -->
-              <button id="myBtn" class="tmbl tmbl-biru margin-20-0">
-                <i class="fa fa-plus"></i> Barang Keluar
-              </button>
-
-              <!-- The Modal -->
-              <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <span class="close">
-                    <i class="fa fa-times"></i>
-                  </span>
-                  <h2 class="teks-center">Data Barang Keluar</h2>
-
-                    <form action="../../backend/barang_keluar/tambah.php" method="POST">
-                      <label>Nama Pembeli</label>
-                      <input type="text" name="nama_pembeli" class="form-radius" placeholder="Cth : Bambang Putro Aji" required>
-
-                      <label>Keterangan</label>
-                      <textarea name="keterangan_transaksi" class="form-radius textarea-no-resize" placeholder="Tambahkan Keterangan" required></textarea>
-
-                      <label>Nama Pegawai Kasir</label>
-                      <input type="text" name="nama_kasir" class="form-radius" placeholder="Cth : Adhimas Putra" required>
-
-                      <input type="submit" name="simpan_tr" class="tmbl-radius tmbl-biru margin-20-0" value="Simpan">
-                    </form>
-
-                </div>
-
-              </div>
+							<form action="../../backend/barang_keluar/tambah.php" method="POST">
+								<button type="submit" name="simpan_tr" class="tmbl tmbl-biru margin-20-0">
+									<i class="fa fa-plus"></i> Barang Keluar
+								</button>
+							</form>
 
 							<div class="table-box">
 								<table class="table-responsive">
