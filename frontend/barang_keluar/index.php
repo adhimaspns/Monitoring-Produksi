@@ -11,7 +11,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Monitoring Biaya Produksi | Barang Keluar</title>
+		<title>Monitoring Biaya Produksi | Penjualan</title>
 
 		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
@@ -35,11 +35,11 @@
 		<main class="main">
 			<section>
 				<h2>Monitoring Biaya Produksi</h2>
-				<h3>Barang Keluar</h3>
+				<h3>Penjualan</h3>
 				<div class="breadcrumb">
 					<h3>
 						<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-						<span class="akhir-link-breadcrumb">Barang Keluar</span>
+						<span class="akhir-link-breadcrumb">Penjualan</span>
 					</h3>
 				</div>
 
@@ -49,7 +49,7 @@
 
 							<form action="../../backend/barang_keluar/tambah.php" method="POST">
 								<button type="submit" name="simpan_tr" class="tmbl tmbl-biru margin-20-0">
-									<i class="fa fa-plus"></i> Barang Keluar
+									<i class="fa fa-plus"></i> Penjualan
 								</button>
 							</form>
 
@@ -57,7 +57,7 @@
 								<table class="table-responsive">
 									<tr class="thead-dark">
 										<th>No</th>
-										<th>No Transaksi</th>
+										<th>Nomor Transaksi</th>
 										<th>Petugas Kasir</th>
 										<th>Aksi</th>
 									</tr>

@@ -35,11 +35,11 @@
 		<main class="main">
 			<section>
 				<h2>Monitoring Biaya Produksi</h2>
-				<h3>Barang Keluar</h3>
+				<h3>Penjualan</h3>
 				<div class="breadcrumb">
             <h3>
 							<a href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-							<a href="index.php?page=barangkeluar">Barang Keluar</a> <i class="fa fa-angle-right"></i>
+							<a href="index.php?page=barangkeluar">Penjualan</a> <i class="fa fa-angle-right"></i>
 							<span class="akhir-link-breadcrumb">Transaksi Selesai</span>
 						</h3>
 				</div>
@@ -138,7 +138,7 @@
               </div>
               <center class="margin-bottom-100 margin-top-50">
                 <a href="index.php?page=barangkeluar" class="tmbl tmbl-abu-abu">
-                <i class="fa fa-shopping-cart"></i> Barang Keluar
+                <i class="fa fa-shopping-cart"></i> Penjualan
                 </a> 
                 <a target="_blank" href="cetak_nota.php?Tr=<?php echo $Tr ?>" class="tmbl tmbl-biru">
                   <i class="fa fa-clipboard"></i> Cetak Nota

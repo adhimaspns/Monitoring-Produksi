@@ -65,7 +65,7 @@
           <li>
             <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="/Monitoring/frontend/barang_keluar/index.php?page=barangkeluar" class="sidebar__nav__link <?php if($_GET['page'] == 'barangkeluar'){  ?>sidebar-active <?php } ?>">
               <i class="fas fa-shopping-cart"></i>
-              <span class="sidebar__nav__text">Barang Keluar</span>
+              <span class="sidebar__nav__text">Penjualan</span>
             </a>
           </li>
           <li>
@@ -87,11 +87,11 @@
 		<main class="main">
 			<section>
         <h2>Monitoring Biaya Produksi</h2>
-				<h3>Barang Keluar</h3>
+				<h3>Penjualan</h3>
 				<div class="breadcrumb">
           <h3>
             <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="../../beranda.php?page=beranda">Beranda</a> <i class="fa fa-angle-right"></i>
-            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="../../beranda.php?page=beranda">Barang Keluar</a> <i class="fa fa-angle-right"></i>
+            <a onclick="return confirm('Anda punya perubahan yang belum disimpan, Anda yakin hendak meninggalkan halaman ini?')" href="../../beranda.php?page=beranda">Penjualan</a> <i class="fa fa-angle-right"></i>
             <span class="akhir-link-breadcrumb">Kasir</span>
           </h3>
 				</div>
