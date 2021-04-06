@@ -61,7 +61,7 @@
 								<div class="kolom-20 float-right margin-20-0">
 									<form action="cari.php?page=databarang" method="post">	
 										<label>Carikan</label>
-										<input type="text" name="cari" class="form" placeholder="Ketikan Sesuatu..."> 
+										<input type="text" name="cari" class="form" placeholder="Carikan Nama Produk"> 
 
 										<input type="submit" name="btncari" value="Cari" class="tmbl tmbl-hijau">
 									</form>
