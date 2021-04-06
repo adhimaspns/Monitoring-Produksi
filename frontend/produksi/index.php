@@ -63,7 +63,7 @@
 												<th>No</th>
 												<th>Tanggal Produksi</th>
 												<th>Nama Produk</th>
-												<th>Stok Produksi</th>
+												<th>Stok Awal Produksi</th>
 												<th>Stok Barang Tersedia</th>
 												<th>Aksi</th>
 											</tr>
