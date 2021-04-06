@@ -283,7 +283,6 @@
                 <input type="hidden" name="Tr" value="<?= $Tr ?>">
                 <input type="hidden" name="total_transaksi" value="<?= $total['total'] ?>">
                 <input type="hidden" name="nama_kasir" value="<?= $detailDataTr['nama_kasir'] ?>">
-                <input type="hidden" name="keterangan" value="<?= $detailDataTr['keterangan'] ?>">
 
                 <button type="submit" name="transaksiSelesai" class="tmbl tmbl-biru margin-20-0">
                   Selesai

@@ -374,11 +374,10 @@
     $tgl_hari_ini    = date('Ymd'); 
     $total_transaksi = $_POST['total_transaksi']; 
     $nama_kasir      = $_POST['nama_kasir'];
-    $keterangan      = $_POST['keterangan'];
 
 
     //! Simpan Laporan Transaksi
-    $sqlSimpanTr     = "INSERT INTO laporan_brg_keluar VALUES(0, '$tgl_hari_ini', '$Tr', '$total_transaksi', '$nama_kasir', '$keterangan' )";
+    $sqlSimpanTr     = "INSERT INTO laporan_brg_keluar VALUES(0, '$tgl_hari_ini', '$Tr', '$total_transaksi', '$nama_kasir',)";
     $querySimpanTr   = mysqli_query($host, $sqlSimpanTr); 
 
     //! Hapus Data Transaksi Pada Tabel Kasir 
