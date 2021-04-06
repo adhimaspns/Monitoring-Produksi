@@ -19,7 +19,9 @@
       if($data['level']=="admin"){
     
         $_SESSION['username'] = $username;
-        $_SESSION['level'] = "admin";
+        $_SESSION['level']    = "admin";
+        $_SESSION['nama']     = $data['nama'];
+        $_SESSION['id_user']  = $data['id_user'];
 
           echo "
             <script>
