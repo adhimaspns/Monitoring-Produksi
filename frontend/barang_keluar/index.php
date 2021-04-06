@@ -58,7 +58,6 @@
 									<tr class="thead-dark">
 										<th>No</th>
 										<th>No Transaksi</th>
-										<th>Pembeli</th>
 										<th>Petugas Kasir</th>
 										<th>Aksi</th>
 									</tr>
@@ -85,7 +84,6 @@
 										<td>
 											<span class="lencana lencana-hijau"><?= $data['no_transaksi'] ?></span>
 										</td>
-										<td><?= $data['nama_pembeli'] ?></td>
 										<td><?= $data['nama_kasir'] ?></td>
 										<td>
 											<a href="detail_barang_keluar.php?Tr=<?php echo $data['no_transaksi']?>&page=barangkeluar" class="tmbl tmbl-biru">
