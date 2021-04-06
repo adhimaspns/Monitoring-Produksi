@@ -1,17 +1,14 @@
 <?php
 
+  session_start();
+  $nama = $_SESSION['nama']; // Menampung Nama Akun Yang Login
   include '../../database/koneksi.php';
-
 
   //! Simpan Data Ke Table Transaksi 
   if (isset($_POST['simpan_tr'])) {
 
     //! Variabel Data Barang Keluar
-    $nama_pembeli            = ucwords(strtolower($_POST['nama_pembeli']));
-    $keterangan_transaksi    = ucwords(strtolower($_POST['keterangan_transaksi']));
-    $nama_kasir              = ucwords(strtolower($_POST['nama_kasir']));
-    $hariIni                 = date('Ymd');
-
+    $hariIni  = date('Ymd');
 
     //! Buat Nomor Transaksi
 
@@ -34,7 +31,7 @@
 
 
     //! Insert Data Ke Tabel Transaksi 
-    $sql   = "INSERT INTO transaksi VALUES(0, '$nextNoTransaksi', '$nama_pembeli',  '$keterangan_transaksi', '$nama_kasir')";
+    $sql   = "INSERT INTO transaksi VALUES(0, '$nextNoTransaksi', '$nama')";
     $query = mysqli_query($host, $sql);
 
 
