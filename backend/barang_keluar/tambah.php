@@ -75,11 +75,11 @@
     $dataQtyBarang     = mysqli_fetch_assoc($queryCekQtyBarang);
     $stokBarang        = $dataQtyBarang['stok_barang']; 
 
-    //! Kondisi Jika Barang Yang Di Pilih Melebihi Dari Pada Stok 
-    if ($jumlah_qty > $stokBarang) {
+    // ! Kondisi Jika Barang Yang Di Pilih Melebihi Dari Pada Stok 
+    if ($jumlah_qty > $stokBarang OR $jumlah_qty == 0) {
       echo "
         <script>
-            alert('Jumlah yang anda masukan melebihi stok barang!');
+            alert('Jumlah yang anda masukan tidak wajar!');
             window.location.href='../../frontend/barang_keluar/kasir.php?Tr=$Tr&page=barangkeluar';
         </script>
       ";
