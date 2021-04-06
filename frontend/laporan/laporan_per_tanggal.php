@@ -58,6 +58,9 @@
                   <td> : <?php echo date('d M Y', strtotime($tgl_awal))  ?> - <?php echo date('d M Y', strtotime($tgl_akhir)) ?></td>
                 </tr>
               </table>
+              <a target="blank" href="cetak_laporan_pertgl_excel.php?tglawl=<?php echo $tgl_awal?>&tglakhr=<?php echo $tgl_akhir?>" class="tmbl tmbl-hijau margin-20-0">
+                <i class="fa fa-file-excel"></i>
+              </a>
               <div class="table-box">
                 <table class="table-responsive">
                   <tr class="thead-dark">
@@ -87,8 +90,8 @@
                     <td><?= $dataLaporan['ket_laporan'] ?></td>
                     <td><?= $dataLaporan['petugas_kasir'] ?></td>
                     <td>
-                      <a target="blank" href="cetak_laporan_noTr.php?Tr=<?php echo $dataLaporan['nomor_transaksi']?>&tgl=<?php echo $dataLaporan['tgl_laporan']?>" class="tmbl tmbl-hijau">
-                        Cetak Laporan
+                      <a target="blank" href="cetak_laporan_noTr.php?Tr=<?php echo $dataLaporan['nomor_transaksi']?>&tgl=<?php echo $dataLaporan['tgl_laporan']?>" class="tmbl tmbl-merah">
+                        <i class="fa fa-file-pdf"></i>
                       </a>
                     </td>
                   </tr>
@@ -97,9 +100,6 @@
               </div>
               <a href="index.php?page=laporan" class="tmbl tmbl-abu-abu margin-20-0">
                 Kembali
-              </a>
-              <a target="blank" href="cetak_laporan.php?tglawl=<?php echo $tgl_awal?>&tglakhr=<?php echo $tgl_akhir?>" class="tmbl tmbl-biru">
-                Cetak Semua Laporan
               </a>
             </div>
           </div>
