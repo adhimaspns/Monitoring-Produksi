@@ -46,7 +46,7 @@
 					</h3>
 				</div>
 
-				<div class="container">
+				<div class="container margin-bottom-100">
 					<div class="baris">
 						<div class="kolom-100">
 							<a href="index.php?page=bahan" class="tmbl tmbl-abu-abu margin-20-0">
