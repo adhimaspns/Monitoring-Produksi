@@ -377,7 +377,7 @@
 
 
     //! Simpan Laporan Transaksi
-    $sqlSimpanTr     = "INSERT INTO laporan_brg_keluar VALUES(0, '$tgl_hari_ini', '$Tr', '$total_transaksi', '$nama_kasir',)";
+    echo $sqlSimpanTr     = "INSERT INTO laporan_brg_keluar VALUES(0, '$tgl_hari_ini', '$Tr', '$total_transaksi', '$nama_kasir')";
     $querySimpanTr   = mysqli_query($host, $sqlSimpanTr); 
 
     //! Hapus Data Transaksi Pada Tabel Kasir 
