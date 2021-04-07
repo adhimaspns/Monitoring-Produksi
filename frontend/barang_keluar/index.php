@@ -53,6 +53,7 @@
 								</button>
 							</form>
 
+							<h2>Data Penjualan</h2>
 							<div class="table-box">
 								<table class="table-responsive">
 									<tr class="thead-dark">
@@ -73,7 +74,7 @@
 										$pages   = ceil($total/$halaman);
 
 										$no    = 1;
-										$sql   = "SELECT * FROM transaksi ORDER BY no_transaksi ASC LIMIT $mulai, $halaman";
+										$sql   = "SELECT * FROM transaksi ORDER BY no_transaksi DESC LIMIT $mulai, $halaman";
 										$query = mysqli_query($host, $sql);
 
 										while ($data = mysqli_fetch_assoc($query) ) {
